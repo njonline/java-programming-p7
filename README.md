@@ -5,7 +5,7 @@ Commit your changes to this repository, when you are making changes.
 
 |                  | External Product | Inventory | Balance | Own product|
 |------------------|------------------|-----------|---------|------------|
-| Product Received |         x        |     x     |    x    |      x     |
+| Product Received |         x        |     x     |         |      x     |
 | Sold             |         x        |     x     |    x    |      x     |
 | Bought           |         x        |     x     |    x    |            |
 | Max Limit        |                  |     x     |         |            |
