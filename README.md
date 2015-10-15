@@ -9,5 +9,5 @@ Commit your changes to this repository, when you are making changes.
 | Sold             |         x        |     x     |    x    |      x     |
 | Bought           |         x        |     x     |    x    |            |
 | Max Limit        |                  |     x     |         |            |
-| Min limit        |                  |     x     |         |      x     |
+| Min limit        |                  |     x     |         |            |
 | Sold out         |         x        |     x     |         |      x     |
