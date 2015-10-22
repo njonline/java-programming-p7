@@ -3,11 +3,12 @@ Repository for the Java-code in connection to the P7 project.
 
 Commit your changes to this repository, when you are making changes.
 
-|                  | External Product | Inventory | Balance | Own product|
-|------------------|------------------|-----------|---------|------------|
-| Product Received |         x        |     x     |         |      x     |
-| Sold             |         x        |     x     |    x    |      x     |
-| Bought           |         x        |     x     |    x    |            |
-| Max Limit        |                  |     x     |         |            |
-| Min limit        |                  |     x     |         |            |
-| Sold out         |         x        |     x     |         |      x     |
+|                  | Order | Employee | Product | Sale |
+|------------------|-------|----------|---------|------|
+| Product created  |       |          |    x    |      |
+| Product deleted  |       |          |    x    |      |
+| Sale ocurred     |   x   |    x     |    x    |   x  |
+| Sale cancelled   |   x   |    x     |    x    |   x  |
+| Employee hired   |       |    x     |         |      |
+| Employee fired   |       |    x     |         |      |
+| Product received |       |          |    x    |      |
