@@ -9,6 +9,6 @@ Commit your changes to this repository, when you are making changes.
 | Sale cancelled   |       |    x     |         |   x  |
 | Employee hired   |       |    x     |         |      |
 | Employee fired   |       |    x     |         |      |
-| Order accepted   |   x   |          |         |      |
-| Order cancelled  |   x   |          |         |      |
+| Order accepted   |   x   |          |    x    |      |
+| Order cancelled  |   x   |          |    x    |      |
 | Order payed      |   x   |          |         |   x  |
