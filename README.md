@@ -5,10 +5,10 @@ Commit your changes to this repository, when you are making changes.
 
 |                  | Order | Employee | Product | Sale |
 |------------------|-------|----------|---------|------|
-| Product created  |       |          |    x    |      |
-| Product deleted  |       |          |    x    |      |
-| Sale ocurred     |   x   |    x     |    x    |   x  |
-| Sale cancelled   |   x   |    x     |    x    |   x  |
+| Sale ocurred     |   x   |    x     |         |   x  |
+| Sale cancelled   |       |    x     |         |   x  |
 | Employee hired   |       |    x     |         |      |
 | Employee fired   |       |    x     |         |      |
-| Product received |       |          |    x    |      |
+| Order accepted   |   x   |          |         |      |
+| Order cancelled  |   x   |          |         |      |
+| Order payed      |   x   |          |         |   x  |
