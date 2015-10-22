@@ -11,6 +11,7 @@ Commit your changes to this repository, when you are making changes.
 | Employee fired   |          |    x     |         |      |       |
 | Order placed     |   x      |    x     |         |      |   x   |
 | Order accepted   |   x      |          |    x    |      |   x   |
+| Order edited     |   x      |          |    x    |      |   x   |
 | Order cancelled  |   x      |          |    x    |      |   x   |
 | Order payed      |   x      |          |         |   x  |   x   |
 
@@ -21,5 +22,6 @@ Commit your changes to this repository, when you are making changes.
 | Employee hired   |       |    x     |         |      |
 | Employee fired   |       |    x     |         |      |
 | Order accepted   |   x   |          |    x    |      |
+| Order edited     |   x   |          |    x    |      |
 | Order cancelled  |   x   |          |    x    |      |
 | Order payed      |   x   |          |         |   x  |
