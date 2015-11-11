@@ -4,10 +4,12 @@ public class Employee extends Person {
 	private int revenue;
 	private int numOfSales;
 
-	public Employee(int id, String name, CakeShop cakeshop) {
-		super(id, name);
-		revenue = 0; // revenue is 0, when employee is created
-		numOfSales = 0;
+	public Employee() {
+		super();
+	}
+	
+	public void createEmployee() {
+		this.nameInput(getName());
 	}
 	
 	public void setRevenue(int revenue) {

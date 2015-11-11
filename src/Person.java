@@ -1,12 +1,25 @@
+import java.util.Scanner;
 
 public abstract class Person {
 
 	private String name;
 	private int id;
 	
-	public Person(int id, String name) {
-		this.id = id;
+	Scanner scanner = new Scanner(System.in);
+	
+	public Person() {
+
+	}
+	
+	public void createEmployee(String name, int id) {
 		this.name = name;
+		this.id = id;
+	}
+	
+	protected void nameInput(String name) {
+		System.out.println("Employee name: ");
+		name = scanner.nextLine();
+		this.setName(name);
 	}
 	
 	public void setName(String name) {
