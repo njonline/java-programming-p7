@@ -47,9 +47,11 @@ public abstract class Cupcake {
 	public String getFlavor() {
 		return flavor;
 	}
+	
 	public double getPrice() {
 		return price;
 	}
+	
 	public int getQuantity() {
 		return cupcakedatabase.numOfCupcakes();
 	}

@@ -25,18 +25,5 @@ public class Employee extends Person {
 	public int getNumOfSales() {
 		return numOfSales;
 	}
-	
-	/**
-	 * Convert Arraylist items to string.
-	 */
-	 @Override
-	 public String toString() {
-	        return ("Employee name: " + this.getName()+ ", Employee id: " + this.getId() + ", Employee revenue: " + this.getRevenue());
-	 }
-	 
-	 public void newSale(Cupcake cake) {
-		 this.numOfSales = numOfSales +1;
-		 this.revenue = (int) (revenue + cake.getPrice());
-	 }
 
 }
