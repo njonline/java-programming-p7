@@ -19,12 +19,16 @@ public abstract class Cupcake {
 		this.price = price;
 	}
 	
-	protected void numOfCakes() {
+	protected void numOfCakes() throws IllegalArgumentException {
 		System.out.println("Enter quantity to be added: ");
 		int n = scanner.nextInt();
 		
-		for(int i = 0; i < n; i++) {
-			cupcakedatabase.addCupcake(this);
+		if(n > 0) {
+			for(int i = 0; i < n; i++) {
+				cupcakedatabase.addCupcake(this);
+			}
+		} else {
+			throw new IllegalArgumentException("The amount has to be positive");
 		}
 	}
 	
