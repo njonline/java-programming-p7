@@ -5,6 +5,8 @@ public abstract class Person {
 	private String name;
 	private int id;
 	
+	EmployeeDB employeedatabase = new EmployeeDB();
+	
 	Scanner scanner = new Scanner(System.in);
 	
 	public Person() {
@@ -13,13 +15,18 @@ public abstract class Person {
 	
 	public void createEmployee(String name, int id) {
 		this.name = name;
-		this.id = id;
+		this.id = newId();
 	}
 	
 	protected void nameInput(String name) {
 		System.out.println("Employee name: ");
 		name = scanner.nextLine();
 		this.setName(name);
+	}
+	
+	protected int newId() {
+		this.id = employeedatabase.getEmployees() + 1;
+		return id;
 	}
 	
 	public void setName(String name) {

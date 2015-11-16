@@ -10,6 +10,11 @@ public class Employee extends Person {
 	
 	public void createEmployee() {
 		this.nameInput(getName());
+		id = newId();
+		this.revenue = 0;
+		this.numOfSales = 0;
+		
+		employeedatabase.addEmployee(this);
 	}
 	
 	public void setRevenue(int revenue) {

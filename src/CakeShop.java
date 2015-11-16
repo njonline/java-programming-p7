@@ -6,9 +6,8 @@ public class CakeShop {
 		Blueberry blueberry = new Blueberry();
 		Employee employee = new Employee();
 		
-		blueberry.createCupcake();
 		employee.createEmployee();
-		System.out.println("The current quantity is: " + blueberry.getQuantity() + ". The name of the employee is: " + employee.getName());
+		System.out.println("The name of the employee is: " + employee.getName() + " and the id is: " + employee.getId());
 				
 	}
 

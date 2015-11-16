@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-@SuppressWarnings("static-access")
-
 public class EmployeeDB {
 	
 	/*
@@ -10,27 +8,18 @@ public class EmployeeDB {
 	private static ArrayList<Employee> employees;
 	
 	public EmployeeDB() {
-		setEmployees(new ArrayList<Employee>());
+		new ArrayList<Employee>();
 	}
 	
 	public void addEmployee(Employee employee) {
-		getEmployees().add(employee);
+		employees.add(employee);
 	}
 	
-	public int numOfEmployees() {
-		return getEmployees().size();
-	}
-	
-	public Employee getIndex(int index) {
-		return getEmployees().get(index);
+	public void removeEmployee(Employee employee) {
+		employees.remove(employee);
 	}
 
-	public static ArrayList<Employee> getEmployees() {
-		return employees;
+	public int getEmployees() {
+		return employees.size();
 	}
-
-	public void setEmployees(ArrayList<Employee> employees) {
-		this.employees = employees;
-	}
-
 }
