@@ -19,5 +19,4 @@ public class CupcakeDB {
 	public int numOfCupcakes() {
 		return cupcakes.size();
 	}
-
 }

@@ -28,7 +28,7 @@ public abstract class Cupcake {
 	 * Ask the user for input, and adds the specific number of cakes to the list.
 	 * @throws IllegalArgumentException
 	 */
-	protected void numOfCakes() throws IllegalArgumentException {
+	protected void addCakes() throws IllegalArgumentException {
 		System.out.println("Enter quantity to be added: ");
 		int n = scanner.nextInt();
 		
@@ -39,6 +39,27 @@ public abstract class Cupcake {
 		} else {
 			throw new IllegalArgumentException("The amount has to be positive");
 		}
+	}
+	
+	public void removeCakes(int qty) throws IllegalArgumentException {
+		System.out.println("Enter quantity to be removed: ");
+		int n = scanner.nextInt();
+		
+		if(n > 0) {
+			for(int i = 0; i < n; i++) {
+				cupcakedatabase.removeCupcake(this);
+			}
+		} else {
+			throw new IllegalArgumentException("The amount has to be positive");
+		}
+	}
+	
+	public void changePrice(double price) {
+		this.setPrice(price);
+	}
+	
+	public void changeFlavor(String flavor) {
+		this.setFlavor(flavor);
 	}
 	
 	public void setFlavor(String flavor) {

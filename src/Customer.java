@@ -12,6 +12,10 @@ public class Customer extends Person {
 		
 		customerdatabase.addCustomer(this);
 	}
+	
+	public void deleteCustomer() {
+		customerdatabase.removeCustomer(this);
+	}
 
 	public int getNumOfOrders() {
 		return numOfOrders;
