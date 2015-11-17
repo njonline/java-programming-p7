@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public abstract class Cupcake {
@@ -15,11 +14,20 @@ public abstract class Cupcake {
 		
 	}
 	
+	/**
+	 * Creates a new cupcake. Sets the flavor and price.
+	 * @param flavor
+	 * @param price
+	 */
 	public void createCupcake(String flavor, double price) {
 		this.flavor = flavor;
 		this.price = price;
 	}
 	
+	/**
+	 * Ask the user for input, and adds the specific number of cakes to the list.
+	 * @throws IllegalArgumentException
+	 */
 	protected void numOfCakes() throws IllegalArgumentException {
 		System.out.println("Enter quantity to be added: ");
 		int n = scanner.nextInt();

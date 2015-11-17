@@ -3,11 +3,12 @@ import java.util.Scanner;
 public abstract class Person {
 
 	private String name;
-	private int id;
+	protected int id = 0;
 	
-	EmployeeDB employeedatabase = new EmployeeDB();
+	protected EmployeeDB employeedatabase = new EmployeeDB();
+	protected CustomerDB customerdatabase = new CustomerDB();
 	
-	Scanner scanner = new Scanner(System.in);
+	private Scanner scanner = new Scanner(System.in);
 	
 	public Person() {
 
@@ -15,18 +16,29 @@ public abstract class Person {
 	
 	public void createEmployee(String name, int id) {
 		this.name = name;
-		this.id = newId();
+		this.id = getId();
 	}
 	
-	protected void nameInput(String name) {
+	protected void nameInputEmployee(String name) {
 		System.out.println("Employee name: ");
 		name = scanner.nextLine();
 		this.setName(name);
 	}
 	
-	protected int newId() {
-		this.id = employeedatabase.getEmployees() + 1;
-		return id;
+	protected void nameInputCustomer(String name) {
+		System.out.println("Customer name: ");
+		name = scanner.nextLine();
+		this.setName(name);
+	}
+	
+	protected int newEmployeeId() {
+		this.id = employeedatabase.getNumOfEmployees() + 1;
+		return id;		
+	}
+	
+	protected int newCustomerId() {
+		this.id = customerdatabase.getCustomers() + 1;
+		return id;		
 	}
 	
 	public void setName(String name) {

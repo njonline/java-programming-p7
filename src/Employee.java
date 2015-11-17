@@ -1,23 +1,28 @@
 
 public class Employee extends Person {
 	
-	private int revenue;
+	private double revenue;
 	private int numOfSales;
 
 	public Employee() {
 		super();
 	}
 	
+	/**
+	 * Create an employee.
+	 * Ask for employee name and set new ID.
+	 * Set revenue and number of sales to 0.
+	 */
 	public void createEmployee() {
-		this.nameInput(getName());
-		id = newId();
-		this.revenue = 0;
-		this.numOfSales = 0;
+		this.nameInputEmployee(getName());
+		this.id = newEmployeeId();
+		this.setRevenue(0);
+		this.setNumOfSales(0);
 		
 		employeedatabase.addEmployee(this);
 	}
 	
-	public void setRevenue(int revenue) {
+	public void setRevenue(double revenue) {
 		this.revenue = revenue;
 	}
 	
@@ -25,7 +30,7 @@ public class Employee extends Person {
 		this.numOfSales = numOfSales;
 	}
 	
-	public int getRevenue() {
+	public double getRevenue() {
 		return revenue;
 	}
 	

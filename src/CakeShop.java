@@ -4,11 +4,15 @@ public class CakeShop {
 	public static void main(String[] args) {	
 		
 		Blueberry blueberry = new Blueberry();
-		Employee employee = new Employee();
+		Order order = new Order();
 		
-		employee.createEmployee();
-		System.out.println("The name of the employee is: " + employee.getName() + " and the id is: " + employee.getId());
-				
+		blueberry.createCupcake();
+		order.createOrder();
+		System.out.println("The order ID is: " + order.getOrderId());
+		
+		order.addItems(blueberry);
+		System.out.println("The total value of the order is: " + order.getOrderValue());
+	
 	}
 
 }
