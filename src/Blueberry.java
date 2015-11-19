@@ -1,6 +1,4 @@
 public class Blueberry extends Cupcake {
-	
-	CupcakeDB cupcakedatabase = new CupcakeDB();
 
 	public Blueberry() {
 		super();

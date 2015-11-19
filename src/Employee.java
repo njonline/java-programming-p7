@@ -3,7 +3,6 @@ public class Employee extends Person {
 	
 	private double revenue;
 	private int numOfSales;
-	private boolean loggedIn;
 
 	public Employee() {
 		super();
@@ -17,6 +16,8 @@ public class Employee extends Person {
 	public void createEmployee() {
 		this.nameInputEmployee(getName());
 		this.id = newEmployeeId();
+		this.usernameInputEmployee(getUsername());
+		this.passwordInputEmployee(getPassword());
 		this.setRevenue(0);
 		this.setNumOfSales(0);
 		
@@ -25,14 +26,6 @@ public class Employee extends Person {
 	
 	public void removeEmployee() {
 		employeedatabase.removeEmployee(this);
-	}
-	
-	public void login() {
-		loggedIn = true;
-	}
-	
-	public void logout() {
-		loggedIn = false;
 	}
 	
 	public void setRevenue(double revenue) {
@@ -49,10 +42,6 @@ public class Employee extends Person {
 	
 	public int getNumOfSales() {
 		return numOfSales;
-	}
-	
-	public boolean getLoggedIn() {
-		return loggedIn;
 	}
 
 }
