@@ -1,15 +1,14 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
+
+@SuppressWarnings("resource")
 
 public abstract class Person {
 
 	protected String name;
 	protected int id = 0;
+	
 	protected String username;
 	protected int password;
-	
-	private String usernameEntered;
-	private int passwordEntered;
 	
 	private boolean loggedIn;
 	
@@ -22,61 +21,81 @@ public abstract class Person {
 
 	}
 	
-	public void createEmployee(String name, int id, String username, int password) {
+	public void createEmployee(String name, int id) {
 		this.name = name;
 		this.id = getId();
-		this.username = username;
-		this.password = password;
 	}
 	
+	/**
+	 * Sets the entered name to the name of the employee.
+	 * @param name
+	 */
 	protected void nameInputEmployee(String name) {
 		System.out.println("Employee name: ");
 		name = scanner.nextLine();
 		this.setName(name);
 	}
 	
-	protected void usernameInputEmployee(String username) {
-		System.out.println("Employee username: ");
-		username = scanner.nextLine();
-		this.setUsername(username);
-	}
-	
-	protected void passwordInputEmployee(int password) {
-		System.out.println("Employee password: ");
-		password = scanner.nextInt();
-		this.setPassword(password);
-	}
-	
+	/**
+	 * Sets the entered name to the name of the customer.
+	 * @param name
+	 */
 	protected void nameInputCustomer(String name) {
 		System.out.println("Customer name: ");
 		name = scanner.nextLine();
 		this.setName(name);
 	}
 	
-	private void username() {
-		System.out.println("Employee username: ");
-		usernameEntered = scanner.nextLine();
-		this.setUsernameEntered(usernameEntered);
-	}
-	
-	private void password() {
-		System.out.println("Employee password: ");
-		passwordEntered = scanner.nextInt();
-		this.setPasswordEntered(passwordEntered);
-	}
-	
-	public void login() throws InputMismatchException {
-		this.username();
-		this.password();
+	/**
+	 * Method for creating username and password.
+	 * Username is converted to all lowercase, so no mistype will prevent login.
+	 * Password is entered twice, and if the two match - the password will be set.
+	 */
+	protected void credentials() {
+		Scanner scan = new Scanner(System.in);
 		
-		if(getUsernameEntered().equals(getUsername()) && getPasswordEntered() == getPassword()) {
-			loggedIn = true;
-			System.out.println("User correctly logged in");
+		System.out.println("Enter new username: ");
+		setUsername(scan.nextLine().toLowerCase());
+		
+		System.out.println("Enter new password: ");
+		int pass1 = scan.nextInt();
+		System.out.println("Repeat password: ");
+		int pass2 = scan.nextInt();
+		
+		if(pass1 == pass2) {
+			setPassword(pass1);
 		} else {
-			throw new InputMismatchException("The username or password in incorrect");
+			System.out.println("Passwords do not match.");
 		}
 	}
 	
+	/**
+	 * Allows the employees to login.
+	 * Asks for username and password - and logs the user in, if they match the password and username
+	 * given when employee was created.
+	 */
+	public void login() {
+		Scanner input = new Scanner(System.in);
+		String usernameInput;
+		int passwordInput;
+		
+		System.out.println("Enter username: ");
+		usernameInput = input.nextLine();
+		System.out.println("Enter password: ");
+		passwordInput = input.nextInt();
+
+		if(usernameInput.equals(getUsername()) && passwordInput == getPassword()) {
+			System.out.println("Succesfully logged in.");
+			loggedIn = true;
+		} else {
+			System.out.println("Username or password incorrect");
+			loggedIn = false;
+		}
+	}
+	
+	/**
+	 * Logs out user by setting boolean loggedIn to false.
+	 */
 	public void logout() {
 		loggedIn = false;
 	}
@@ -107,14 +126,6 @@ public abstract class Person {
 		this.password = password;
 	}
 	
-	public void setUsernameEntered(String usernameEntered) {
-		this.usernameEntered = usernameEntered;
-	}
-	
-	public void setPasswordEntered(int passwordEntered) {
-		this.passwordEntered = passwordEntered;
-	}
-	
 	public String getName() {
 		return name;
 	}
@@ -133,13 +144,5 @@ public abstract class Person {
 	
 	public boolean getLoggedIn() {
 		return loggedIn;
-	}
-	
-	public String getUsernameEntered() {
-		return usernameEntered;
-	}
-	
-	public int getPasswordEntered() {
-		return passwordEntered;
 	}
 }

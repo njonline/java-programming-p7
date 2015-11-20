@@ -16,12 +16,14 @@ public class Employee extends Person {
 	public void createEmployee() {
 		this.nameInputEmployee(getName());
 		this.id = newEmployeeId();
-		this.usernameInputEmployee(getUsername());
-		this.passwordInputEmployee(getPassword());
 		this.setRevenue(0);
 		this.setNumOfSales(0);
 		
+		this.credentials();
+		
 		employeedatabase.addEmployee(this);
+		
+		System.out.println("Employee succesfully created.");
 	}
 	
 	public void removeEmployee() {

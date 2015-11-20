@@ -17,12 +17,24 @@ public class Order {
 		
 	}
 	
+	/**
+	 * Creates a new order.
+	 * Assigns an ID.
+	 * Sets the value of the order to 0.
+	 */
 	public void createOrder() {
 		orderItems = new ArrayDeque<Cupcake>();
 		this.id = newOrderId();
 		this.value = 0;
 	}
 	
+	/**
+	 * Asks the user for the number of cupcakes to add to the order.
+	 * Everytime a cupcake is added to the order, a cupcake is removed from the inventory.
+	 * Updates the order value everytime a cupcake is added.
+	 * @param cupcake
+	 * @throws IllegalArgumentException if the amount to be added is less than equal to 0.
+	 */
 	public void addItems(Cupcake cupcake) throws IllegalArgumentException {
 		System.out.println("Enter number of cupcakes to add to the order: ");
 		int qty = scanner.nextInt();
@@ -42,7 +54,13 @@ public class Order {
 		}
 	}
 	
-	public void removeItems(Cupcake cupcake) {
+	/**
+	 * Asks the user for the number of cupcakes to remove from the order.
+	 * Everytime a cupcake is removed, a cupcake is added back to the inventory.
+	 * @param cupcake
+	 * @throws IllegalArgumentException if the amount to be removed is less than or equal to 0.
+	 */
+	public void removeItems(Cupcake cupcake) throws IllegalArgumentException {
 		System.out.println("Enter number of cupcakes to remove from the order: ");
 		int qty = scanner.nextInt();
 		
@@ -54,9 +72,20 @@ public class Order {
 					cupcakedatabase.addCupcake(cupcake);
 				}
 			}
+		} else {
+			throw new IllegalArgumentException("The number has to be positive.");
 		}
 	}
 	
+	/**
+	 * Closes the order if the employee trying to close the order, is already logged in.
+	 * Updates the employees' total revenue with the order value.
+	 * Updates the employees' number of sales.
+	 * Add the order to the order db.
+	 * Removes all items from the order.
+	 * @param employee
+	 * @throws IllegalArgumentException if the employee is not logged in.
+	 */
 	public void closeOrder(Employee employee) throws IllegalArgumentException {
 		if(employee.getLoggedIn()) {
 			employee.setRevenue(getOrderValue());
