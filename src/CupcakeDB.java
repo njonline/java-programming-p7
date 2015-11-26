@@ -2,23 +2,21 @@ import java.util.ArrayList;
 
 public class CupcakeDB {
 	
-	private static ArrayList<Product> cupcakes;
+	private static ArrayList<Cupcake> cupcakes;
 	
 	public CupcakeDB() {
-		cupcakes = new ArrayList<Product>();
+		cupcakes = new ArrayList<Cupcake>();
 	}
 	
-	public void addProduct(Product product) {
-		cupcakes.add(product);
+	public void addCupcake(Cupcake cupcake) {
+		cupcakes.add(cupcake);
 	}
 	
-	public void removeProduct(Product product) {
-		cupcakes.remove(product);
+	public void removeCupcake(Cupcake cupcake) {
+		cupcakes.remove(cupcake);
 	}
 	
-	public int numOfProducts() {
+	public int numOfCupcakes() {
 		return cupcakes.size();
 	}
-
-	
 }
