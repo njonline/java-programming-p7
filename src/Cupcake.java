@@ -31,7 +31,6 @@ public abstract class Cupcake {
 	protected void addCakes() throws IllegalArgumentException {
 		System.out.println("Enter quantity to be added: ");
 		int n = scanner.nextInt();
-		
 		if(n > 0) {
 			for(int i = 0; i < n; i++) {
 				cupcakedatabase.addCupcake(this);
