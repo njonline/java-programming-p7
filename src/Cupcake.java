@@ -1,10 +1,6 @@
 import java.util.Scanner;
 
-public abstract class Cupcake {
-
-	protected String flavor;
-	protected double price;
-	protected int quantity;
+public abstract class Cupcake extends Product {
 	
 	CupcakeDB cupcakedatabase = new CupcakeDB();
 	
@@ -12,16 +8,6 @@ public abstract class Cupcake {
 	
 	public Cupcake() {
 		
-	}
-	
-	/**
-	 * Creates a new cupcake. Sets the flavor and price.
-	 * @param flavor
-	 * @param price
-	 */
-	public void createCupcake(String flavor, double price) {
-		this.flavor = flavor;
-		this.price = price;
 	}
 	
 	/**

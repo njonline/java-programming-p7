@@ -12,6 +12,8 @@ public class Employee extends Person {
 	 * Create an employee.
 	 * Ask for employee name and set new ID.
 	 * Set revenue and number of sales to 0.
+	 * Run method for creating username and password.
+	 * Add to employee db.
 	 */
 	public void createEmployee() {
 		this.nameInputEmployee(getName());
