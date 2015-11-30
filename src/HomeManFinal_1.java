@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author daniele
  */
-public class HomeEmpFinal extends javax.swing.JFrame {
+public class HomeManFinal_1 extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public HomeEmpFinal() {
+    public HomeManFinal_1() {
         initComponents();
     }
 
@@ -34,9 +34,9 @@ public class HomeEmpFinal extends javax.swing.JFrame {
         Title = new javax.swing.JLabel();
         Title1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        OrderButton = new javax.swing.JButton();
-        InventoryButton = new javax.swing.JButton();
-        PersonalPageButton = new javax.swing.JButton();
+        ManageEmployeeButton = new javax.swing.JButton();
+        SalesRevenueManager = new javax.swing.JButton();
+        SalesRevenueManager1 = new javax.swing.JButton();
         ExitButton24 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,7 +52,7 @@ public class HomeEmpFinal extends javax.swing.JFrame {
 
         Title1.setFont(new java.awt.Font("STKaiti", 0, 24)); // NOI18N
         Title1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title1.setText("Employee");
+        Title1.setText("Manager");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -63,31 +63,36 @@ public class HomeEmpFinal extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(51, 255, 51));
 
-        OrderButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/order.png"))); // NOI18N
-        OrderButton.setText("Place Order");
-        OrderButton.setToolTipText("");
-        OrderButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        OrderButton.addActionListener(new java.awt.event.ActionListener() {
+        ManageEmployeeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/manageemployee.png"))); // NOI18N
+        ManageEmployeeButton.setText("Manage Employee");
+        ManageEmployeeButton.setToolTipText("");
+        ManageEmployeeButton.setActionCommand("");
+        ManageEmployeeButton.setIconTextGap(2);
+        ManageEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OrderButtonActionPerformed(evt);
+                ManageEmployeeButtonActionPerformed(evt);
             }
         });
 
-        InventoryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventory.png"))); // NOI18N
-        InventoryButton.setText("Inventory");
-        InventoryButton.setToolTipText("");
-        InventoryButton.addActionListener(new java.awt.event.ActionListener() {
+        SalesRevenueManager.setIcon(new javax.swing.ImageIcon(getClass().getResource("/revenue.png"))); // NOI18N
+        SalesRevenueManager.setText("Sales & Revenue");
+        SalesRevenueManager.setToolTipText("");
+        SalesRevenueManager.setActionCommand("");
+        SalesRevenueManager.setIconTextGap(2);
+        SalesRevenueManager.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InventoryButtonActionPerformed(evt);
+                SalesRevenueManagerActionPerformed(evt);
             }
         });
 
-        PersonalPageButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/profile.png"))); // NOI18N
-        PersonalPageButton.setText("Edit Profile");
-        PersonalPageButton.setToolTipText("");
-        PersonalPageButton.addActionListener(new java.awt.event.ActionListener() {
+        SalesRevenueManager1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/profile.png"))); // NOI18N
+        SalesRevenueManager1.setText("Edit Profile");
+        SalesRevenueManager1.setToolTipText("");
+        SalesRevenueManager1.setActionCommand("");
+        SalesRevenueManager1.setIconTextGap(2);
+        SalesRevenueManager1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PersonalPageButtonActionPerformed(evt);
+                SalesRevenueManager1ActionPerformed(evt);
             }
         });
 
@@ -96,23 +101,23 @@ public class HomeEmpFinal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(OrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85)
+                .addComponent(ManageEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
-                .addComponent(InventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SalesRevenueManager, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
-                .addComponent(PersonalPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SalesRevenueManager1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(180, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(OrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(InventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PersonalPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(152, 152, 152))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ManageEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SalesRevenueManager, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SalesRevenueManager1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         ExitButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exit.png"))); // NOI18N
@@ -156,36 +161,39 @@ public class HomeEmpFinal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ManageEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageEmployeeButtonActionPerformed
+        // go to manage employee
+         ManEmplFinal a = new ManEmplFinal();
+        a.setVisible(true);
+        a.setDefaultCloseOperation(ManEmplFinal.DISPOSE_ON_CLOSE);
+        this.dispose();
+                      
+    }//GEN-LAST:event_ManageEmployeeButtonActionPerformed
+
+    private void SalesRevenueManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalesRevenueManagerActionPerformed
+      //  go to Revenue
+        ManRevenueFinal a = new ManRevenueFinal();
+        a.setVisible(true);
+        a.setDefaultCloseOperation(ManRevenueFinal.DISPOSE_ON_CLOSE);
+        this.dispose();
+    
+
+    }//GEN-LAST:event_SalesRevenueManagerActionPerformed
+
     private void ExitButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButton24ActionPerformed
-       //exit method
+  //exit method
         int exit=JOptionPane.showConfirmDialog(null, "ARE YOU SURE YOU WANT TO EXIT?");
        if(exit==0){
-        System.exit(0);   }   
-    }//GEN-LAST:event_ExitButton24ActionPerformed
+        System.exit(0);   }       }//GEN-LAST:event_ExitButton24ActionPerformed
 
-    private void OrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderButtonActionPerformed
-  //go to order
-        OrderFinal a = new OrderFinal();
+    private void SalesRevenueManager1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalesRevenueManager1ActionPerformed
+ // go to Personal Page Manager
+       ManPersFinal a = new ManPersFinal();
         a.setVisible(true);
-        a.setDefaultCloseOperation(OrderFinal.DISPOSE_ON_CLOSE);
-        this.dispose();       
-    }//GEN-LAST:event_OrderButtonActionPerformed
-
-    private void InventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InventoryButtonActionPerformed
-       //go to inventory
-        InventoryFinal a = new InventoryFinal();
-        a.setVisible(true);
-        a.setDefaultCloseOperation(InventoryFinal.DISPOSE_ON_CLOSE);
-        this.dispose(); 
-    }//GEN-LAST:event_InventoryButtonActionPerformed
-
-    private void PersonalPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersonalPageButtonActionPerformed
-             // go to Personal Page Edit
-        EmpPersFinal a = new EmpPersFinal();
-        a.setVisible(true);
-        a.setDefaultCloseOperation(EmpPersFinal.DISPOSE_ON_CLOSE);
+        a.setDefaultCloseOperation(ManPersFinal.DISPOSE_ON_CLOSE);
         this.dispose();
-    }//GEN-LAST:event_PersonalPageButtonActionPerformed
+                               
+    }//GEN-LAST:event_SalesRevenueManager1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,16 +226,16 @@ public class HomeEmpFinal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomeEmpFinal().setVisible(true);
+                new HomeManFinal().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ExitButton24;
-    private javax.swing.JButton InventoryButton;
-    private javax.swing.JButton OrderButton;
-    private javax.swing.JButton PersonalPageButton;
+    private javax.swing.JButton ManageEmployeeButton;
+    private javax.swing.JButton SalesRevenueManager;
+    private javax.swing.JButton SalesRevenueManager1;
     private javax.swing.JLabel Title;
     private javax.swing.JLabel Title1;
     private javax.swing.JPanel jPanel1;
