@@ -16,6 +16,9 @@ public abstract class Person {
 	
 	private boolean loggedIn;
 	
+	protected static EmployeeDB employeedatabase = new EmployeeDB();
+	protected static AdminDB admindatabase = new AdminDB();
+	
 	protected Scanner scanner = new Scanner(System.in);
 	
 	public Person() {
@@ -50,23 +53,38 @@ public abstract class Person {
 	 * Asks for username and password - and logs the user in, if they match the password and username
 	 * given when employee was created.
 	 */
-	public void login() {
-		Scanner input = new Scanner(System.in);
-		String usernameInput;
-		int passwordInput;
+	public void login(int index) {
+		Employee employee = employeedatabase.lookAt(index);
 		
-		System.out.println("Enter username: ");
-		usernameInput = input.nextLine();
-		System.out.println("Enter password: ");
-		passwordInput = input.nextInt();
+		if(employee != null) {
+			Scanner input = new Scanner(System.in);
+			String usernameInput;
+			int passwordInput;
+			
+			System.out.println("Enter username: ");
+			usernameInput = input.nextLine();
+			System.out.println("Enter password: ");
+			passwordInput = input.nextInt();
 
-		if(usernameInput.equals(getUsername()) && passwordInput == getPassword()) {
-			System.out.println("Succesfully logged in.");
-			loggedIn = true;
+			if(usernameInput.equals(employee.getUsername()) && passwordInput == employee.getPassword()) {
+				System.out.println("Succesfully logged in.");
+				loggedIn = true;
+			} else {
+				System.out.println("Username or password incorrect");
+				loggedIn = false;
+			}
 		} else {
-			System.out.println("Username or password incorrect");
-			loggedIn = false;
+			throw new IllegalArgumentException("Employee ID does not exist");
 		}
+		
+	}
+	
+	public static Employee findEmployee(int id) {
+		return employeedatabase.searchFor(id);
+	}
+	
+	public static Employee lookAt(int index) {
+		return employeedatabase.lookAt(index);
 	}
 	
 	/**

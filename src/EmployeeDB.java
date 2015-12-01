@@ -5,10 +5,10 @@ public class EmployeeDB {
 	/*
 	 * Data structure for  the employee database
 	 */
-	private static ArrayList<Employee> employees = new ArrayList<Employee>();
+	private static ArrayList<Employee> employees;
 	
 	public EmployeeDB() {
-
+		employees = new ArrayList<Employee>();
 	}
 	
 	public Employee lookAt(int index) {
@@ -17,10 +17,14 @@ public class EmployeeDB {
 	
 	public Employee searchFor(int id) {
 		for(int i = 0; i > getNumOfEmployees(); i++) {
-			Employee employee = lookAt(i);
-			int employeeId = employee.getId();
+			Employee employee = lookAt(i); //current employeee
+			int employeeId = employee.getId(); //current employee ID
 			
-			if(employee.equals(employeeId)) {
+			/**
+			 * Check if the passed ID is equal to current employee.
+			 * If yes, return the employee.
+			 */
+			if(employeeId == id) {
 				return employee;
 			}
 		}

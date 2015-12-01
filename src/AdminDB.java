@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class AdminDB {
 
-	private static ArrayList<Administrator> admins = new ArrayList<Administrator>();
+	private static ArrayList<Administrator> admins;
 	
 	public AdminDB() {
-		
+		admins = new ArrayList<Administrator>();
 	}
 	
 	public void addAdmin(Administrator admin) {

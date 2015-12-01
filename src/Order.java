@@ -7,6 +7,8 @@ public class Order {
 	private int totalNumOfOrders = 0;
 	private double value;
 	
+	private EmployeeDB employeedatabase;
+	
 	private OrderDB orderdatabase = new OrderDB();
 	private ArrayDeque<Product> orderItems;
 	
@@ -84,11 +86,15 @@ public class Order {
 	 * @param employee
 	 * @throws IllegalArgumentException if the employee is not logged in.
 	 */
-	public void closeOrder(Employee employee) throws IllegalArgumentException {
-		employee.setRevenue(getOrderValue());
-		employee.setNumOfSales(employee.getNumOfSales() + 1);
-		orderdatabase.addOrder(this);
-		orderItems.removeAll(orderItems);
+	public void closeOrder(int id) throws IllegalArgumentException {
+		Employee employee = employeedatabase.lookAt(id);
+		
+		if(employee.getLoggedIn()) {
+			employee.setRevenue(getOrderValue());
+			employee.setNumOfSales(employee.getNumOfSales() + 1);
+			orderdatabase.addOrder(this);
+			orderItems.removeAll(orderItems);
+		}
 	}
 	
 	public void cancelOrder(Cupcake cupcake) {
