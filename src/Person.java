@@ -4,7 +4,11 @@ import java.util.Scanner;
 
 public abstract class Person {
 
-	protected String name;
+	protected String firstname;
+	protected String lastname;
+	protected String address;
+	protected int telephone;
+	
 	protected int id = 0;
 	
 	protected String username;
@@ -12,38 +16,10 @@ public abstract class Person {
 	
 	private boolean loggedIn;
 	
-	protected EmployeeDB employeedatabase = new EmployeeDB();
-	protected CustomerDB customerdatabase = new CustomerDB();
-	
 	protected Scanner scanner = new Scanner(System.in);
 	
 	public Person() {
 
-	}
-	
-	public void createEmployee(String name, int id) {
-		this.name = name;
-		this.id = getId();
-	}
-	
-	/**
-	 * Sets the entered name to the name of the employee.
-	 * @param name
-	 */
-	protected void nameInputEmployee(String name) {
-		System.out.println("Employee name: ");
-		name = scanner.nextLine();
-		this.setName(name);
-	}
-	
-	/**
-	 * Sets the entered name to the name of the customer.
-	 * @param name
-	 */
-	protected void nameInputCustomer(String name) {
-		System.out.println("Customer name: ");
-		name = scanner.nextLine();
-		this.setName(name);
 	}
 	
 	/**
@@ -55,7 +31,7 @@ public abstract class Person {
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("Enter new username: ");
-		setUsername(scan.nextLine().toLowerCase());
+		this.setUsername(scan.nextLine().toLowerCase());
 		
 		System.out.println("Enter new password: ");
 		int pass1 = scan.nextInt();
@@ -63,14 +39,14 @@ public abstract class Person {
 		int pass2 = scan.nextInt();
 		
 		if(pass1 == pass2) {
-			setPassword(pass1);
+			this.setPassword(pass1);
 		} else {
 			System.out.println("Passwords do not match.");
 		}
 	}
 	
 	/**
-	 * Allows the employees to login.
+	 * Allows the employees and admin to login.
 	 * Asks for username and password - and logs the user in, if they match the password and username
 	 * given when employee was created.
 	 */
@@ -100,18 +76,12 @@ public abstract class Person {
 		loggedIn = false;
 	}
 	
-	protected int newEmployeeId() {
-		this.id = employeedatabase.getNumOfEmployees() + 1;
-		return id;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 	
-	protected int newCustomerId() {
-		this.id = customerdatabase.getCustomers() + 1;
-		return id;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 	
 	public void setId(int id) {
@@ -126,12 +96,32 @@ public abstract class Person {
 		this.password = password;
 	}
 	
-	public String getName() {
-		return name;
+	public String getFirstname() {
+		return firstname;
+	}
+	
+	public String getLastname() {
+		return lastname;
 	}
 	
 	public int getId() {
 		return id;
+	}
+	
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	public void setTelephone(int telephone) {
+		this.telephone = telephone;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	
+	public int getTelephone() {
+		return telephone;
 	}
 	
 	public String getUsername() {

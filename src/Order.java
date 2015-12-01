@@ -8,8 +8,7 @@ public class Order {
 	private double value;
 	
 	private OrderDB orderdatabase = new OrderDB();
-	private ArrayDeque<Cupcake> orderItems;
-	private CupcakeDB cupcakedatabase = new CupcakeDB();
+	private ArrayDeque<Product> orderItems;
 	
 	private Scanner scanner = new Scanner(System.in);
 	
@@ -23,7 +22,7 @@ public class Order {
 	 * Sets the value of the order to 0.
 	 */
 	public void createOrder() {
-		orderItems = new ArrayDeque<Cupcake>();
+		orderItems = new ArrayDeque<Product>();
 		this.id = newOrderId();
 		this.value = 0;
 	}
@@ -35,16 +34,16 @@ public class Order {
 	 * @param cupcake
 	 * @throws IllegalArgumentException if the amount to be added is less than equal to 0.
 	 */
-	public void addItems(Cupcake cupcake) throws IllegalArgumentException {
+	public void addItems(Product product) throws IllegalArgumentException {
 		System.out.println("Enter number of cupcakes to add to the order: ");
 		int qty = scanner.nextInt();
 		
 		if(qty > 0) {
-			if(qty < cupcake.getQuantity()) {
+			if(qty <= product.getQuantity()) {
 				for(int i = 0; i < qty; i++) {
-					setOrderValue(value + cupcake.getPrice());
-					orderItems.add(cupcake);
-					cupcakedatabase.removeCupcake(cupcake);
+					setOrderValue(value + product.getPrice());
+					orderItems.add(product);
+					product.setQuantity(product.getQuantity() - 1);
 				} 
 			} else {
 				throw new IllegalArgumentException("There is not enough in stock");
@@ -60,16 +59,16 @@ public class Order {
 	 * @param cupcake
 	 * @throws IllegalArgumentException if the amount to be removed is less than or equal to 0.
 	 */
-	public void removeItems(Cupcake cupcake) throws IllegalArgumentException {
+	public void removeItems(Product product) throws IllegalArgumentException {
 		System.out.println("Enter number of cupcakes to remove from the order: ");
 		int qty = scanner.nextInt();
 		
 		if(qty > 0) {
-			if(qty < getNumOfOrderItems()) {
+			if(qty <= getNumOfOrderItems()) {
 				for(int i = 0; i < qty; i++) {
-					setOrderValue(value - cupcake.getPrice());
-					orderItems.remove(cupcake);
-					cupcakedatabase.addCupcake(cupcake);
+					setOrderValue(value - product.getPrice());
+					orderItems.remove(product);
+					product.setQuantity(product.getQuantity() + 1);
 				}
 			}
 		} else {
@@ -78,7 +77,6 @@ public class Order {
 	}
 	
 	/**
-	 * Closes the order if the employee trying to close the order, is already logged in.
 	 * Updates the employees' total revenue with the order value.
 	 * Updates the employees' number of sales.
 	 * Add the order to the order db.
@@ -87,14 +85,10 @@ public class Order {
 	 * @throws IllegalArgumentException if the employee is not logged in.
 	 */
 	public void closeOrder(Employee employee) throws IllegalArgumentException {
-		if(employee.getLoggedIn()) {
-			employee.setRevenue(getOrderValue());
-			employee.setNumOfSales(employee.getNumOfSales() + 1);
-			orderdatabase.addOrder(this);
-			orderItems.removeAll(orderItems);
-		} else {
-			throw new IllegalArgumentException("Employee is not logged in.");
-		}
+		employee.setRevenue(getOrderValue());
+		employee.setNumOfSales(employee.getNumOfSales() + 1);
+		orderdatabase.addOrder(this);
+		orderItems.removeAll(orderItems);
 	}
 	
 	public void cancelOrder(Cupcake cupcake) {

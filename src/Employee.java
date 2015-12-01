@@ -8,30 +8,6 @@ public class Employee extends Person {
 		super();
 	}
 	
-	/**
-	 * Create an employee.
-	 * Ask for employee name and set new ID.
-	 * Set revenue and number of sales to 0.
-	 * Run method for creating username and password.
-	 * Add to employee db.
-	 */
-	public void createEmployee() {
-		this.nameInputEmployee(getName());
-		this.id = newEmployeeId();
-		this.setRevenue(0);
-		this.setNumOfSales(0);
-		
-		this.credentials();
-		
-		employeedatabase.addEmployee(this);
-		
-		System.out.println("Employee succesfully created.");
-	}
-	
-	public void removeEmployee() {
-		employeedatabase.removeEmployee(this);
-	}
-	
 	public void setRevenue(double revenue) {
 		this.revenue = revenue;
 	}
@@ -47,5 +23,9 @@ public class Employee extends Person {
 	public int getNumOfSales() {
 		return numOfSales;
 	}
-
+	
+	@Override
+	 public String toString() {
+		 return ("Employee name: " + this.getFirstname() + " " + this.getLastname() + ". Employee ID: " + this.getId() + ". Employee revenue: " + this.getRevenue());
+	}
 }

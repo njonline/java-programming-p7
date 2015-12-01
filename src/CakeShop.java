@@ -3,26 +3,24 @@ public class CakeShop {
 	
 	public static void main(String[] args) {	
 		
-
 		Employee employee = new Employee();
-
-
-		Blueberry blueberry = new Blueberry();
+		Administrator admin = new Administrator();
+		Cupcake cupcake = new Cupcake();
 		Order order = new Order();
 		
-
-
-		employee.createEmployee();
-		employee.login();
-
-		blueberry.createCupcake();
-		order.createOrder();
-		System.out.println("The order ID is: " + order.getOrderId());
+		cupcake.createProduct();
+		System.out.println(cupcake);
 		
-		order.addItems(blueberry);
-		System.out.println("The total value of the order is: " + order.getOrderValue());
-	
-
+		order.createOrder();
+		order.addItems(cupcake);
+		//order.closeOrder(employee);
+		
+		System.out.println("The total order value is: " + order.getOrderValue() + ". Containing " + order.getNumOfOrderItems() + " items.");
+		
+		order.removeItems(cupcake);
+		System.out.println("The total order value is: " + order.getOrderValue() + ". Containing " + order.getNumOfOrderItems() + " items.");
+		
+		System.out.println(cupcake);
 	}
 
 }
