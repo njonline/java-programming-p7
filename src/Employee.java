@@ -26,6 +26,6 @@ public class Employee extends Person {
 	
 	@Override
 	 public String toString() {
-		 return ("Employee name: " + this.getFirstname() + " " + this.getLastname() + ". Employee ID: " + this.getId() + ". Employee revenue: " + this.getRevenue()) + ". Employee username: " + this.getUsername() + ". Employee password: " + this.getPassword();
+		 return ( "Employee name: " + this.getFirstname() + " " + this.getLastname() + ". Employee ID: " + this.getId() + ". Employee revenue: " + this.getRevenue() + ". Employee no. sales: " + this.getNumOfSales() + ". Employee username: " + this.getUsername() + ". Employee password: " + this.getPassword() );
 	}
 }

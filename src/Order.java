@@ -7,8 +7,6 @@ public class Order {
 	private int totalNumOfOrders = 0;
 	private double value;
 	
-	private EmployeeDB employeedatabase = new EmployeeDB();
-	
 	private OrderDB orderdatabase = new OrderDB();
 	private ArrayDeque<Product> orderItems;
 	
