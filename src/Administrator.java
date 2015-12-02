@@ -44,32 +44,6 @@ public class Administrator extends Person {
 		return employee;
 	}
 	
-	public static void save(Employee employee) throws FileNotFoundException {
-		String filename = "";
-		Scanner scanner = new Scanner(System.in);
-		
-		System.out.println("Enter filename: ");
-		filename = scanner.next();
-		
-		if(!filename.equals("")) {
-			File txtdatabase = new File(filename);
-			PrintWriter printwriter = new PrintWriter(txtdatabase);
-			
-			printwriter.print(employee.getFirstname());
-			printwriter.print(employee.getLastname());
-			printwriter.print(employee.getId());
-			printwriter.close();
-			
-			System.out.println("File succesfully created.");
-		}
-	}
-	
-	public static void show(Employee employee) {
-		System.out.println("Employees currently created in the system.");
-		System.out.println("Employee name: " + employee.getFirstname() + " " + employee.getLastname());
-		System.out.println("Employee ID: " + employee.getId());
-	}
-	
 	/**
 	 * Sets the entered name to the name of the employee.
 	 * @param name
@@ -101,10 +75,6 @@ public class Administrator extends Person {
 	protected int newEmployeeId() {
 		this.id = employeedatabase.getNumOfEmployees() + 1;
 		return id;
-	}
-	
-	public void removeEmployee() {
-		employeedatabase.removeEmployee(employee);
 	}
 	
 }

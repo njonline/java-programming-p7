@@ -54,7 +54,7 @@ public abstract class Person {
 	 * given when employee was created.
 	 */
 	public void login(int index) {
-		Employee employee = employeedatabase.lookAt(index);
+		Employee employee = lookAt(index);
 		
 		if(employee != null) {
 			Scanner input = new Scanner(System.in);
@@ -79,8 +79,8 @@ public abstract class Person {
 		
 	}
 	
-	public static Employee findEmployee(int id) {
-		return employeedatabase.searchFor(id);
+	public static Employee findEmployee(String username) {
+		return employeedatabase.searchFor(username);
 	}
 	
 	public static Employee lookAt(int index) {

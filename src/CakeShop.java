@@ -9,13 +9,15 @@ public class CakeShop {
 		Order order = new Order();
 		
 		admin.createEmployee();
-		System.out.println(admin.lookAt(0));
+		System.out.println(Person.lookAt(0));
 		employee.login(0);
+		
 		cupcake.createProduct();
 		order.createOrder();
 		order.addItems(cupcake);
+		System.out.println("Order value is: " + order.getOrderValue());
 		order.closeOrder(0);
-		System.out.println(admin.lookAt(0));
+		System.out.println(Person.lookAt(0));
 	}
 
 }

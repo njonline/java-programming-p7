@@ -15,16 +15,16 @@ public class EmployeeDB {
 		return employees.get(index);
 	}
 	
-	public Employee searchFor(int id) {
+	public Employee searchFor(String username) {
 		for(int i = 0; i > getNumOfEmployees(); i++) {
 			Employee employee = lookAt(i); //current employeee
-			int employeeId = employee.getId(); //current employee ID
+			String employeeUsername = employee.getUsername(); //current employee username
 			
 			/**
-			 * Check if the passed ID is equal to current employee.
+			 * Check if the passed username is equal to current employee.
 			 * If yes, return the employee.
 			 */
-			if(employeeId == id) {
+			if(employeeUsername.equals(username)) {
 				return employee;
 			}
 		}

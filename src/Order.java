@@ -7,7 +7,7 @@ public class Order {
 	private int totalNumOfOrders = 0;
 	private double value;
 	
-	private EmployeeDB employeedatabase;
+	private EmployeeDB employeedatabase = new EmployeeDB();
 	
 	private OrderDB orderdatabase = new OrderDB();
 	private ArrayDeque<Product> orderItems;
@@ -86,8 +86,8 @@ public class Order {
 	 * @param employee
 	 * @throws IllegalArgumentException if the employee is not logged in.
 	 */
-	public void closeOrder(int id) throws IllegalArgumentException {
-		Employee employee = employeedatabase.lookAt(id);
+	public void closeOrder(int index) throws IllegalArgumentException {
+		Employee employee = Person.lookAt(index);
 		
 		if(employee.getLoggedIn()) {
 			employee.setRevenue(getOrderValue());
