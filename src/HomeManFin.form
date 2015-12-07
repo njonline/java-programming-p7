@@ -39,11 +39,11 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="TitleBox" alignment="1" max="32767" attributes="0"/>
+                  <Component id="HeaderPanel" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel7" max="32767" attributes="0"/>
-                          <Component id="jPanel1" max="32767" attributes="0"/>
+                          <Component id="FooterPanel" max="32767" attributes="0"/>
+                          <Component id="BodyPanel" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -55,18 +55,18 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="TitleBox" min="-2" max="-2" attributes="0"/>
+              <Component id="HeaderPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <Component id="BodyPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
+              <Component id="FooterPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="TitleBox">
+    <Container class="javax.swing.JPanel" name="HeaderPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -149,7 +149,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="BodyPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -161,7 +161,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTabbedPane1" pref="0" max="32767" attributes="0"/>
+                  <Component id="ManTab" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -169,14 +169,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jTabbedPane1" min="-2" pref="540" max="-2" attributes="0"/>
+                  <Component id="ManTab" min="-2" pref="540" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+        <Container class="javax.swing.JTabbedPane" name="ManTab">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -206,9 +206,9 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="ManToolPanel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="StagePanel" max="32767" attributes="0"/>
+                          <Component id="ManStagePanel1" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -217,8 +217,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                              <Component id="StagePanel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="ManToolPanel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="ManStagePanel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -226,7 +226,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="jPanel2">
+                <Container class="javax.swing.JPanel" name="ManToolPanel1">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[616, 594]"/>
@@ -239,8 +239,8 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jPanel8" max="32767" attributes="0"/>
-                                  <Component id="jPanel21" max="32767" attributes="0"/>
+                                  <Component id="NewEmpPanel" max="32767" attributes="0"/>
+                                  <Component id="SearchEmpPanel" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -250,16 +250,16 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel21" min="-2" max="-2" attributes="0"/>
+                              <Component id="SearchEmpPanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel8" max="32767" attributes="0"/>
+                              <Component id="NewEmpPanel" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JPanel" name="jPanel21">
+                    <Container class="javax.swing.JPanel" name="SearchEmpPanel">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -331,7 +331,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Container class="javax.swing.JPanel" name="jPanel8">
+                    <Container class="javax.swing.JPanel" name="NewEmpPanel">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -356,7 +356,7 @@
                                           <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="HireEmpButton1" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                                      <Component id="NewEmpButton" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -368,7 +368,7 @@
                                   <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="HireEmpButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="NewEmpButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="82" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -382,13 +382,13 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="HireEmpButton1">
+                        <Component class="javax.swing.JButton" name="NewEmpButton">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="New Employee"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="HireEmpButton1MouseClicked"/>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HireEmpButton1ActionPerformed"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="NewEmpButtonMouseClicked"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NewEmpButtonActionPerformed"/>
                           </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
@@ -399,7 +399,7 @@
                     </Container>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="StagePanel">
+                <Container class="javax.swing.JPanel" name="ManStagePanel1">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -411,28 +411,28 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="LayerAdd" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="LayerCard" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LayerAddEmp" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LayerEmpCard" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="LayerFire" max="32767" attributes="0"/>
+                              <Component id="LayerDeleteEmp" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="LayerAdd" min="-2" max="-2" attributes="0"/>
-                          <Component id="LayerCard" min="-2" max="-2" attributes="0"/>
+                          <Component id="LayerAddEmp" min="-2" max="-2" attributes="0"/>
+                          <Component id="LayerEmpCard" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="LayerFire" min="-2" max="-2" attributes="0"/>
+                              <Component id="LayerDeleteEmp" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JLayeredPane" name="LayerAdd">
+                    <Container class="javax.swing.JLayeredPane" name="LayerAddEmp">
 
                       <Layout>
                         <DimensionLayout dim="0">
@@ -472,14 +472,14 @@
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="CreateNameField" alignment="0" pref="484" max="32767" attributes="0"/>
-                                                  <Component id="CreateNameField3" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="CreateEmpNameField" alignment="0" pref="484" max="32767" attributes="0"/>
+                                                  <Component id="CreateEmpSurnameField" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="CreateNameField2" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="CreateEmpNumberField" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="CreateNameField1" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="CreatePasswordField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="CreateEmpAddressField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="CreateEmpPasswordField" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="32767" attributes="0"/>
                                           </Group>
@@ -493,7 +493,7 @@
                                                   <Group type="102" alignment="1" attributes="0">
                                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                           <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="CreatePasswordField1" alignment="0" min="-2" pref="484" max="-2" attributes="0"/>
+                                                          <Component id="RepeatEmpPassword" alignment="0" min="-2" pref="484" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace max="-2" attributes="0"/>
                                                   </Group>
@@ -524,27 +524,27 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreateNameField" min="-2" max="-2" attributes="0"/>
+                                      <Component id="CreateEmpNameField" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreateNameField3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="CreateEmpSurnameField" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreateNameField1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="CreateEmpAddressField" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreateNameField2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="CreateEmpNumberField" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreatePasswordField" min="-2" max="-2" attributes="0"/>
+                                      <Component id="CreateEmpPasswordField" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreatePasswordField1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="RepeatEmpPassword" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace pref="46" max="32767" attributes="0"/>
                                       <Component id="CreateEmployeeButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -570,45 +570,33 @@
                                 <Property name="text" type="java.lang.String" value="Name"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="CreateNameField">
-                              <Properties>
-                                <Property name="horizontalAlignment" type="int" value="0"/>
-                              </Properties>
+                            <Component class="javax.swing.JTextField" name="CreateEmpNameField">
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateNameFieldActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateEmpNameFieldActionPerformed"/>
                               </Events>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="CreateNameField3">
-                              <Properties>
-                                <Property name="horizontalAlignment" type="int" value="0"/>
-                              </Properties>
+                            <Component class="javax.swing.JTextField" name="CreateEmpSurnameField">
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel9">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Surname"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="CreateNameField1">
-                              <Properties>
-                                <Property name="horizontalAlignment" type="int" value="0"/>
-                              </Properties>
+                            <Component class="javax.swing.JTextField" name="CreateEmpAddressField">
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateNameField1ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateEmpAddressFieldActionPerformed"/>
                               </Events>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="CreatePasswordField1">
+                            <Component class="javax.swing.JTextField" name="RepeatEmpPassword">
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel10">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Repeat Password"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="CreatePasswordField">
+                            <Component class="javax.swing.JTextField" name="CreateEmpPasswordField">
                             </Component>
-                            <Component class="javax.swing.JTextField" name="CreateNameField2">
-                              <Properties>
-                                <Property name="horizontalAlignment" type="int" value="0"/>
-                              </Properties>
+                            <Component class="javax.swing.JTextField" name="CreateEmpNumberField">
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel11">
                               <Properties>
@@ -637,7 +625,7 @@
                         </Container>
                       </SubComponents>
                     </Container>
-                    <Container class="javax.swing.JLayeredPane" name="LayerCard">
+                    <Container class="javax.swing.JLayeredPane" name="LayerEmpCard">
 
                       <Layout>
                         <DimensionLayout dim="0">
@@ -686,15 +674,15 @@
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="CreateNameField14" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EmpNameField" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="CreateNameField4" alignment="0" pref="484" max="32767" attributes="0"/>
-                                                  <Component id="CreateNameField5" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="IDField" alignment="0" pref="484" max="32767" attributes="0"/>
+                                                  <Component id="EmpSurnameField" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="CreateNameField7" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EmpNumberField" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="CreateNameField6" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EmpAddressField" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="32767" attributes="0"/>
                                           </Group>
@@ -713,23 +701,23 @@
                                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                       <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreateNameField4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="IDField" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreateNameField14" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EmpNameField" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreateNameField5" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EmpSurnameField" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreateNameField6" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EmpAddressField" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreateNameField7" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EmpNumberField" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace pref="102" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="EmpCardEditButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -753,18 +741,16 @@
                                 <Property name="text" type="java.lang.String" value="Name"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="CreateNameField4">
+                            <Component class="javax.swing.JTextField" name="IDField">
                               <Properties>
-                                <Property name="horizontalAlignment" type="int" value="11"/>
                                 <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateNameField4ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IDFieldActionPerformed"/>
                               </Events>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="CreateNameField5">
+                            <Component class="javax.swing.JTextField" name="EmpSurnameField">
                               <Properties>
-                                <Property name="horizontalAlignment" type="int" value="11"/>
                                 <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
                             </Component>
@@ -773,18 +759,16 @@
                                 <Property name="text" type="java.lang.String" value="Surname"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="CreateNameField6">
+                            <Component class="javax.swing.JTextField" name="EmpAddressField">
                               <Properties>
-                                <Property name="horizontalAlignment" type="int" value="11"/>
                                 <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
                               <AccessibilityProperties>
                                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
                               </AccessibilityProperties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="CreateNameField7">
+                            <Component class="javax.swing.JTextField" name="EmpNumberField">
                               <Properties>
-                                <Property name="horizontalAlignment" type="int" value="11"/>
                                 <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
                               <AccessibilityProperties>
@@ -817,13 +801,12 @@
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmpCardSaveButtonActionPerformed"/>
                               </Events>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="CreateNameField14">
+                            <Component class="javax.swing.JTextField" name="EmpNameField">
                               <Properties>
-                                <Property name="horizontalAlignment" type="int" value="11"/>
                                 <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateNameField14ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmpNameFieldActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel35">
@@ -835,7 +818,7 @@
                         </Container>
                       </SubComponents>
                     </Container>
-                    <Container class="javax.swing.JLayeredPane" name="LayerFire">
+                    <Container class="javax.swing.JLayeredPane" name="LayerDeleteEmp">
 
                       <Layout>
                         <DimensionLayout dim="0">
@@ -880,7 +863,7 @@
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                                              <Component id="DeleteEmployeeButton3" min="-2" pref="160" max="-2" attributes="0"/>
+                                              <Component id="DeleteEmployeeButton" min="-2" pref="160" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace pref="77" max="32767" attributes="0"/>
@@ -895,7 +878,7 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace pref="125" max="32767" attributes="0"/>
-                                      <Component id="DeleteEmployeeButton3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DeleteEmployeeButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -909,12 +892,12 @@
                                 <Property name="text" type="java.lang.String" value="Delete Employee"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JButton" name="DeleteEmployeeButton3">
+                            <Component class="javax.swing.JButton" name="DeleteEmployeeButton">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Delete"/>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteEmployeeButton3ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteEmployeeButtonActionPerformed"/>
                               </Events>
                             </Component>
                           </SubComponents>
@@ -928,7 +911,7 @@
             <Container class="javax.swing.JPanel" name="SalRev">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="ff" type="rgb"/>
+                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -943,10 +926,10 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="ManToolPanel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="StagePanel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="504" max="-2" attributes="0"/>
+                          <Component id="ManStagePanel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="551" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -954,8 +937,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                              <Component id="StagePanel3" min="-2" pref="517" max="-2" attributes="0"/>
+                              <Component id="ManToolPanel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="ManStagePanel2" min="-2" pref="517" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -963,7 +946,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="jPanel4">
+                <Container class="javax.swing.JPanel" name="ManToolPanel2">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[616, 594]"/>
@@ -999,7 +982,12 @@
                     <Container class="javax.swing.JPanel" name="jPanel22">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="33" red="cc" type="rgb"/>
+                          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                            <EmptyBorder/>
+                          </Border>
                         </Property>
                       </Properties>
 
@@ -1011,8 +999,8 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="SearchEmpButton1" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="SearchEmpField1" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                                              <Component id="SearchEmpSalesButton" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="SearchEmpSalesField" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -1041,9 +1029,9 @@
                                       <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="SearchEmpField1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="SearchEmpSalesField" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="SearchEmpButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="SearchEmpSalesButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="61" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1057,17 +1045,17 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="SearchEmpField1">
+                        <Component class="javax.swing.JTextField" name="SearchEmpSalesField">
                           <Properties>
                             <Property name="toolTipText" type="java.lang.String" value="Insert ID number or name"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="SearchEmpButton1">
+                        <Component class="javax.swing.JButton" name="SearchEmpSalesButton">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Search Employee"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SearchEmpButton1ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SearchEmpSalesButtonActionPerformed"/>
                           </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
@@ -1091,7 +1079,12 @@
                     <Container class="javax.swing.JPanel" name="jPanel9">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="99" green="ff" red="0" type="rgb"/>
+                          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                            <EmptyBorder/>
+                          </Border>
                         </Property>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[619, 284]"/>
@@ -1110,7 +1103,7 @@
                                                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                                                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="HireEmpButton2" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                                              <Component id="TotalSalesButton" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -1130,7 +1123,7 @@
                                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="HireEmpButton2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TotalSalesButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="85" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1144,12 +1137,12 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="HireEmpButton2">
+                        <Component class="javax.swing.JButton" name="TotalSalesButton">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Show"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HireEmpButton2ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TotalSalesButtonActionPerformed"/>
                           </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
@@ -1165,17 +1158,17 @@
                     </Container>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="StagePanel3">
+                <Container class="javax.swing.JPanel" name="ManStagePanel2">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="cc" type="rgb"/>
+                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
                     </Property>
                   </Properties>
 
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="LayerEmpRev" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="LayerEmpRev" alignment="1" min="-2" pref="496" max="-2" attributes="0"/>
                           <Component id="LayerGenRev" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -1193,27 +1186,27 @@
                   </Layout>
                   <SubComponents>
                     <Container class="javax.swing.JLayeredPane" name="LayerEmpRev">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                        </Property>
+                      </Properties>
 
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="494" max="32767" attributes="0"/>
-                              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="0" max="32767" attributes="0"/>
-                                      <Component id="AddPanel2" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="AddPanel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="570" max="32767" attributes="0"/>
-                              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="AddPanel2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="91" max="32767" attributes="0"/>
-                                  </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="AddPanel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="80" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1222,7 +1215,7 @@
                         <Container class="javax.swing.JPanel" name="AddPanel2">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="33" green="ff" red="33" type="rgb"/>
+                              <Color blue="bb" green="e5" red="ee" type="rgb"/>
                             </Property>
                           </Properties>
 
@@ -1244,7 +1237,7 @@
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
                                                           <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="CreateNameField13" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
+                                                          <Component id="EmpIDSalesField" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
                                                           <Group type="102" alignment="0" attributes="0">
                                                               <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
                                                               <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
@@ -1252,7 +1245,7 @@
                                                       </Group>
                                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                   </Group>
-                                                  <Component id="CreateNameField12" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EmpNameSalesField" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                           </Group>
@@ -1268,12 +1261,12 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreateNameField12" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EmpNameSalesField" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="CreateNameField13" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="81" max="32767" attributes="0"/>
+                                      <Component id="EmpIDSalesField" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="115" max="32767" attributes="0"/>
                                       <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jScrollPane2" min="-2" pref="83" max="-2" attributes="0"/>
@@ -1290,7 +1283,7 @@
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JTextPane" name="jTextPane2">
+                                <Component class="javax.swing.JTextPane" name="EmpSalesTextField">
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -1313,12 +1306,12 @@
                                 <Property name="text" type="java.lang.String" value="Name"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="CreateNameField12">
+                            <Component class="javax.swing.JTextField" name="EmpNameSalesField">
                               <Properties>
                                 <Property name="horizontalAlignment" type="int" value="0"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="CreateNameField13">
+                            <Component class="javax.swing.JTextField" name="EmpIDSalesField">
                               <Properties>
                                 <Property name="horizontalAlignment" type="int" value="0"/>
                               </Properties>
@@ -1425,7 +1418,7 @@
             <Container class="javax.swing.JPanel" name="PerPro">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="99" red="99" type="rgb"/>
+                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1440,9 +1433,9 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
+                          <Component id="ManToolPanel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="StagePanel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="ManStagePanel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -1451,10 +1444,10 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPanel11" min="-2" pref="494" max="-2" attributes="0"/>
+                              <Component id="ManToolPanel3" min="-2" pref="494" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="StagePanel4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ManStagePanel3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1463,7 +1456,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="jPanel11">
+                <Container class="javax.swing.JPanel" name="ManToolPanel3">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[616, 594]"/>
@@ -1494,7 +1487,12 @@
                     <Container class="javax.swing.JPanel" name="jPanel13">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="99" green="ff" red="0" type="rgb"/>
+                          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                            <EmptyBorder/>
+                          </Border>
                         </Property>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[619, 284]"/>
@@ -1511,7 +1509,7 @@
                                           <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                                           <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="HireEmpButton3" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                                      <Component id="EditPerProfileButton" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="116" max="32767" attributes="0"/>
                               </Group>
@@ -1523,7 +1521,7 @@
                                   <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
                                   <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="HireEmpButton3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EditPerProfileButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="306" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1537,12 +1535,12 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="HireEmpButton3">
+                        <Component class="javax.swing.JButton" name="EditPerProfileButton">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Edit Profile"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HireEmpButton3ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditPerProfileButtonActionPerformed"/>
                           </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
@@ -1553,10 +1551,10 @@
                     </Container>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="StagePanel4">
+                <Container class="javax.swing.JPanel" name="ManStagePanel3">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="ff" red="cc" type="rgb"/>
+                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
                     </Property>
                   </Properties>
 
@@ -1573,9 +1571,8 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="AddPanel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="222" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="212" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1584,7 +1581,7 @@
                     <Container class="javax.swing.JPanel" name="AddPanel3">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="33" green="ff" red="33" type="rgb"/>
+                          <Color blue="e5" green="e5" red="b3" type="rgb"/>
                         </Property>
                       </Properties>
 
@@ -1599,20 +1596,20 @@
                                               <Component id="jLabel32" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel31" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel29" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="CreateNameField8" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="CreateNameField9" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="ManNameField" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="ManSurnameField" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jLabel30" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel33" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="CreateNameField11" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="ManNumberField" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jLabel53" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="CreateNameField10" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="CreatePasswordField5" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="CreatePasswordField4" alignment="0" min="-2" pref="484" max="-2" attributes="0"/>
+                                              <Component id="ManAddressField" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="ManNewPasswordField" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="ManNewRepPasswordField" alignment="0" min="-2" pref="484" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
-                                          <Component id="CreateEmployeeButton2" min="-2" pref="160" max="-2" attributes="0"/>
+                                          <Component id="SaveManButton" min="-2" pref="160" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
@@ -1636,30 +1633,30 @@
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="CreateNameField8" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ManNameField" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="CreateNameField9" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ManSurnameField" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel53" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="CreateNameField10" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="ManAddressField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="22" max="32767" attributes="0"/>
                                   <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="CreateNameField11" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ManNumberField" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                   <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="CreatePasswordField5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ManNewPasswordField" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="CreatePasswordField4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="CreateEmployeeButton2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ManNewRepPasswordField" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="SaveManButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1682,39 +1679,27 @@
                             <Property name="text" type="java.lang.String" value="Name"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="CreateNameField8">
-                          <Properties>
-                            <Property name="horizontalAlignment" type="int" value="0"/>
-                          </Properties>
+                        <Component class="javax.swing.JTextField" name="ManNameField">
                         </Component>
-                        <Component class="javax.swing.JTextField" name="CreateNameField9">
-                          <Properties>
-                            <Property name="horizontalAlignment" type="int" value="0"/>
-                          </Properties>
+                        <Component class="javax.swing.JTextField" name="ManSurnameField">
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel30">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Surname"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="CreateNameField10">
-                          <Properties>
-                            <Property name="horizontalAlignment" type="int" value="0"/>
-                          </Properties>
+                        <Component class="javax.swing.JTextField" name="ManAddressField">
                         </Component>
-                        <Component class="javax.swing.JTextField" name="CreatePasswordField4">
+                        <Component class="javax.swing.JTextField" name="ManNewRepPasswordField">
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel31">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Repeat Password"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="CreatePasswordField5">
+                        <Component class="javax.swing.JTextField" name="ManNewPasswordField">
                         </Component>
-                        <Component class="javax.swing.JTextField" name="CreateNameField11">
-                          <Properties>
-                            <Property name="horizontalAlignment" type="int" value="0"/>
-                          </Properties>
+                        <Component class="javax.swing.JTextField" name="ManNumberField">
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel32">
                           <Properties>
@@ -1731,7 +1716,7 @@
                             <Property name="text" type="java.lang.String" value="Address"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="CreateEmployeeButton2">
+                        <Component class="javax.swing.JButton" name="SaveManButton">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Save"/>
                           </Properties>
@@ -1746,7 +1731,7 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel7">
+    <Container class="javax.swing.JPanel" name="FooterPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
