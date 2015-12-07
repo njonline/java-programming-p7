@@ -278,8 +278,8 @@ public class LogEmpFin extends javax.swing.JFrame implements Observer {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JButton loginButton;
-    protected javax.swing.JTextField usernameField;
-    protected javax.swing.JTextField passwordField;
+    protected static javax.swing.JTextField usernameField;
+    protected static javax.swing.JTextField passwordField;
     private javax.swing.JButton switchButton;
     private javax.swing.JLabel title;
     private javax.swing.JLabel title1;

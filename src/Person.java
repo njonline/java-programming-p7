@@ -5,10 +5,6 @@ import java.util.*;
 
 public abstract class Person extends Observable {
 
-    private LogEmpFin loginEmployee = new LogEmpFin();
-    private LogManFin loginManager = new LogManFin();
-    private HomeManFin managerHome;
-
     protected String firstname;
     protected String lastname;
     protected String address;
@@ -36,12 +32,11 @@ public abstract class Person extends Observable {
      * and if the two match - the password will be set.
      */
     protected void credentials() {
-        Scanner scan = new Scanner(System.in);
 
-        this.setUsername(scan.nextLine().toLowerCase());
+        this.setUsername(HomeManFin.getEmployeeName());
 
-        String pass1 = managerHome.createEmpPasswordField.getText();
-        String pass2 = managerHome.repeatEmpPassword.getText();
+        String pass1 = HomeManFin.getEmployeePassword();
+        String pass2 = HomeManFin.getEmployeePasswordConfirmed();
 
         if (pass1 == pass2) {
             this.setPassword(pass1);
@@ -62,8 +57,8 @@ public abstract class Person extends Observable {
             String usernameInput;
             String passwordInput;
 
-            usernameInput = loginEmployee.usernameField.getText();
-            passwordInput = loginEmployee.passwordField.getText();
+            usernameInput = LogEmpFin.usernameField.getText();
+            passwordInput = LogEmpFin.passwordField.getText();
 
             if (usernameInput.equals(employee.getUsername()) && passwordInput.equals(employee.getPassword())) {
                 System.out.println("Succesfully logged in.");
@@ -84,11 +79,9 @@ public abstract class Person extends Observable {
         Administrator administrator = lookAtAdmin(0);
 
         if (administrator != null) {
-            String usernameInput;
-            String passwordInput;
 
-            usernameInput = loginManager.usernameField.getText();
-            passwordInput = loginManager.passwordField.getText();
+            String usernameInput = LogManFin.getUsername();
+            String passwordInput = LogManFin.getPassword();
 
             if (usernameInput.equals(administrator.getUsername()) && passwordInput.equals(administrator.getPassword())) {
                 System.out.println("Succesfully logged in.");

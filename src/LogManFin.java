@@ -28,7 +28,7 @@ public class LogManFin extends javax.swing.JFrame implements Observer {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         usernameField = new javax.swing.JTextField();
-        passwordField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -216,13 +216,13 @@ public class LogManFin extends javax.swing.JFrame implements Observer {
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	administrator.adminLogin();
-    	
-    	if(administrator.getLoggedIn()) {
-    		HomeManFin a = new HomeManFin();
-            a.setVisible(true);
-            a.setDefaultCloseOperation(HomeManFin.DISPOSE_ON_CLOSE);
-            this.dispose();
-    	}
+     	
+     	if(administrator.getLoggedIn()) {
+     		HomeManFin a = new HomeManFin();
+             a.setVisible(true);
+             a.setDefaultCloseOperation(HomeManFin.DISPOSE_ON_CLOSE);
+             this.dispose();
+     	}
     }
 
     private void SwitchButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,6 +235,15 @@ public class LogManFin extends javax.swing.JFrame implements Observer {
     private void SwitchButtonMouseClicked(java.awt.event.MouseEvent evt) {
     	
     }
+    
+    public static String getUsername() {
+    	return usernameField.getText();
+    }
+    
+    public static String getPassword() {
+    	return passwordField.getText();
+    }
+
 
     /**
      * @param args the command line arguments
@@ -266,10 +275,10 @@ public class LogManFin extends javax.swing.JFrame implements Observer {
             
         });
     }
-
-    protected javax.swing.JButton loginButton;
-    protected javax.swing.JTextField usernameField;
-    protected javax.swing.JTextField passwordField;
+    
+    private javax.swing.JButton loginButton;
+    private static javax.swing.JTextField usernameField;
+    private static javax.swing.JPasswordField passwordField;
     private javax.swing.JButton switchButton;
     private javax.swing.JLabel title;
     private javax.swing.JLabel title1;

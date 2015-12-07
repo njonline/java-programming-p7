@@ -5,8 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Administrator extends Person {
-
-    private HomeManFin homeManager = new HomeManFin();
+	
     private Employee employee;
 
     private File file = new File("employees.txt");
@@ -34,7 +33,7 @@ public class Administrator extends Person {
     public Employee createEmployee() {
         employee = new Employee();
         employee.setFirstname(firstnameInputEmployee());
-        employee.setLastname(lastnameInputEmployee());
+        employee.setLastname(surnameInputEmployee());
         employee.setAddress(addressInputEmployee());
         employee.setTelephone(telephoneInputEmployee());
         employee.setId(newEmployeeId());
@@ -52,7 +51,7 @@ public class Administrator extends Person {
             writer.write(employee.getTelephone() + ",");
             writer.write(employee.getId() + ",");
             writer.write(employee.getRevenue() + ",");
-            writer.write(employee.getNumOfSales() + ",");
+            writer.write(employee.getNumOfSales() + "");
             writer.write("\n");
 
             writer.close();
@@ -72,22 +71,22 @@ public class Administrator extends Person {
      * @param name
      */
     private String firstnameInputEmployee() {
-        firstname = homeManager.createEmpNameField.getText();
+        firstname = HomeManFin.getEmployeeName();
         return firstname;
     }
 
-    private String lastnameInputEmployee() {
-        lastname = homeManager.createEmpSurnameField.getText();
+    private String surnameInputEmployee() {
+        lastname = HomeManFin.getEmployeeSurname();
         return lastname;
     }
 
     private String addressInputEmployee() {
-        address = homeManager.createEmpAddressField.getText();
+        address = HomeManFin.getEmployeeAddress();
         return address;
     }
 
     private String telephoneInputEmployee() {
-        telephone = homeManager.createEmpNumberField.getText();
+        telephone = HomeManFin.getEmployeePhone();
         return telephone;
     }
 
