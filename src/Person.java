@@ -1,15 +1,13 @@
 
-import java.io.*;
 import java.util.*;
 
 @SuppressWarnings("resource")
 
 public abstract class Person extends Observable {
 
-    private static final long serialVersionUID = -5339092616745772738L;
-
-    private LogEmpFin loginEmployee = new LogEmpFin();
-    private LogManFin loginManager = new LogManFin();
+    private LogEmpFin loginEmployee;
+    private LogManFin loginManager;
+    private HomeManFin managerHome;
 
     protected String firstname;
     protected String lastname;
@@ -40,13 +38,10 @@ public abstract class Person extends Observable {
     protected void credentials() {
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Enter new username: ");
         this.setUsername(scan.nextLine().toLowerCase());
 
-        System.out.println("Enter new password: ");
-        int pass1 = scan.nextInt();
-        System.out.println("Repeat password: ");
-        int pass2 = scan.nextInt();
+        int pass1 = Integer.parseInt(managerHome.createEmpPasswordField.getText());
+        int pass2 = Integer.parseInt(managerHome.repeatEmpPassword.getText());
 
         if (pass1 == pass2) {
             this.setPassword(pass1);
@@ -67,8 +62,8 @@ public abstract class Person extends Observable {
             String usernameInput;
             int passwordInput;
 
-            usernameInput = loginEmployee.jTextFieldUser.getText();
-            passwordInput = Integer.parseInt(loginEmployee.jTextFieldPass.getText());
+            usernameInput = loginEmployee.usernameField.getText();
+            passwordInput = Integer.parseInt(loginEmployee.passwordField.getText());
 
             if (usernameInput.equals(employee.getUsername()) && passwordInput == employee.getPassword()) {
                 System.out.println("Succesfully logged in.");
@@ -92,8 +87,8 @@ public abstract class Person extends Observable {
             String usernameInput;
             int passwordInput;
 
-            usernameInput = loginManager.jTextFieldUser.getText();
-            passwordInput = Integer.parseInt(loginManager.jTextFieldPass.getText());
+            usernameInput = loginManager.usernameField.getText();
+            passwordInput = Integer.parseInt(loginManager.passwordField.getText());
 
             if (usernameInput.equals(administrator.getUsername()) && passwordInput == administrator.getPassword()) {
                 System.out.println("Succesfully logged in.");

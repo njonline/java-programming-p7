@@ -1,42 +1,29 @@
 
+import java.awt.Color;
+import java.util.Observable;
+import java.util.Observer;
 
-
-
-
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-import finalpack.LogManFinal;
-import java.awt.Color;
-
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
  * @author daniele
  */
-public class HomeManFin extends javax.swing.JFrame {
+public class HomeManFin extends javax.swing.JFrame implements Observer {
+	private static final long serialVersionUID = -672205673403473842L;
 
- 
-
-    /**
+	/**
      * Creates new form NewJFrame
      */
     public HomeManFin() {
         initComponents();
-         LayerAddEmp.setVisible(false);
-       LayerEmpCard.setVisible(false);
-       LayerDeleteEmp.setVisible(false);
-        LayerGenRev.setVisible(false);
-        LayerEmpRev.setVisible(false);
-        EmpCardSaveButton.setVisible(false);
+        layerAddEmp.setVisible(false);
+        layerEmpCard.setVisible(false);
+        layerDeleteEmp.setVisible(false);
+        layerGenRev.setVisible(false);
+        layerEmpRev.setVisible(false);
+        empCardSaveButton.setVisible(false);
     }
 
     /**
@@ -48,64 +35,64 @@ public class HomeManFin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        HeaderPanel = new javax.swing.JPanel();
-        Title = new javax.swing.JLabel();
-        Title1 = new javax.swing.JLabel();
-        ExitButton24 = new javax.swing.JButton();
-        BodyPanel = new javax.swing.JPanel();
-        ManTab = new javax.swing.JTabbedPane();
-        ManEmp = new javax.swing.JPanel();
-        ManToolPanel1 = new javax.swing.JPanel();
-        SearchEmpPanel = new javax.swing.JPanel();
+        headerPanel = new javax.swing.JPanel();
+        title = new javax.swing.JLabel();
+        title1 = new javax.swing.JLabel();
+        exitButton24 = new javax.swing.JButton();
+        bodyPanel = new javax.swing.JPanel();
+        manTab = new javax.swing.JTabbedPane();
+        manEmp = new javax.swing.JPanel();
+        manToolPanel1 = new javax.swing.JPanel();
+        searchEmpPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        SearchEmpField = new javax.swing.JTextField();
+        searchEmpField = new javax.swing.JTextField();
         javax.swing.JButton SearchEmpButton = new javax.swing.JButton();
-        NewEmpPanel = new javax.swing.JPanel();
+        newEmpPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         javax.swing.JButton NewEmpButton = new javax.swing.JButton();
-        ManStagePanel1 = new javax.swing.JPanel();
-        LayerAddEmp = new javax.swing.JLayeredPane();
-        AddPanel = new javax.swing.JPanel();
+        manStagePanel1 = new javax.swing.JPanel();
+        layerAddEmp = new javax.swing.JLayeredPane();
+        addPanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        CreateEmpNameField = new javax.swing.JTextField();
-        CreateEmpSurnameField = new javax.swing.JTextField();
+        createEmpNameField = new javax.swing.JTextField();
+        createEmpSurnameField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        CreateEmpAddressField = new javax.swing.JTextField();
-        RepeatEmpPassword = new javax.swing.JTextField();
+        createEmpAddressField = new javax.swing.JTextField();
+        repeatEmpPassword = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        CreateEmpPasswordField = new javax.swing.JTextField();
-        CreateEmpNumberField = new javax.swing.JTextField();
+        createEmpPasswordField = new javax.swing.JTextField();
+        createEmpNumberField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        CreateEmployeeButton = new javax.swing.JButton();
-        LayerEmpCard = new javax.swing.JLayeredPane();
-        EmpCard = new javax.swing.JPanel();
+        createEmployeeButton = new javax.swing.JButton();
+        layerEmpCard = new javax.swing.JLayeredPane();
+        empCard = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        IDField = new javax.swing.JTextField();
-        EmpSurnameField = new javax.swing.JTextField();
+        iDField = new javax.swing.JTextField();
+        empSurnameField = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        EmpAddressField = new javax.swing.JTextField();
-        EmpNumberField = new javax.swing.JTextField();
+        empAddressField = new javax.swing.JTextField();
+        empNumberField = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        EmpCardEditButton = new javax.swing.JButton();
-        EmpCardSaveButton = new javax.swing.JButton();
-        EmpNameField = new javax.swing.JTextField();
+        empCardEditButton = new javax.swing.JButton();
+        empCardSaveButton = new javax.swing.JButton();
+        empNameField = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
-        LayerDeleteEmp = new javax.swing.JLayeredPane();
+        layerDeleteEmp = new javax.swing.JLayeredPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        DeleteEmployeeButton = new javax.swing.JButton();
-        SalRev = new javax.swing.JPanel();
-        ManToolPanel2 = new javax.swing.JPanel();
+        deleteEmployeeButton = new javax.swing.JButton();
+        salRev = new javax.swing.JPanel();
+        manToolPanel2 = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        SearchEmpSalesField = new javax.swing.JTextField();
+        searchEmpSalesField = new javax.swing.JTextField();
         javax.swing.JButton SearchEmpSalesButton = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -113,45 +100,45 @@ public class HomeManFin extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         javax.swing.JButton TotalSalesButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        ManStagePanel2 = new javax.swing.JPanel();
-        LayerEmpRev = new javax.swing.JLayeredPane();
-        AddPanel2 = new javax.swing.JPanel();
+        manStagePanel2 = new javax.swing.JPanel();
+        layerEmpRev = new javax.swing.JLayeredPane();
+        addPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        EmpSalesTextField = new javax.swing.JTextPane();
+        empSalesTextField = new javax.swing.JTextPane();
         jLabel39 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        EmpNameSalesField = new javax.swing.JTextField();
-        EmpIDSalesField = new javax.swing.JTextField();
+        empNameSalesField = new javax.swing.JTextField();
+        empIDSalesField = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
-        LayerGenRev = new javax.swing.JLayeredPane();
-        AddPanel4 = new javax.swing.JPanel();
+        layerGenRev = new javax.swing.JLayeredPane();
+        addPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextPane3 = new javax.swing.JTextPane();
         jLabel40 = new javax.swing.JLabel();
-        PerPro = new javax.swing.JPanel();
-        ManToolPanel3 = new javax.swing.JPanel();
+        perPro = new javax.swing.JPanel();
+        manToolPanel3 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         javax.swing.JButton EditPerProfileButton = new javax.swing.JButton();
-        ManStagePanel3 = new javax.swing.JPanel();
-        AddPanel3 = new javax.swing.JPanel();
+        manStagePanel3 = new javax.swing.JPanel();
+        addPanel3 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        ManNameField = new javax.swing.JTextField();
-        ManSurnameField = new javax.swing.JTextField();
+        manNameField = new javax.swing.JTextField();
+        manSurnameField = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
-        ManAddressField = new javax.swing.JTextField();
-        ManNewRepPasswordField = new javax.swing.JTextField();
+        manAddressField = new javax.swing.JTextField();
+        manNewRepPasswordField = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
-        ManNewPasswordField = new javax.swing.JTextField();
-        ManNumberField = new javax.swing.JTextField();
+        manNewPasswordField = new javax.swing.JTextField();
+        manNumberField = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
-        SaveManButton = new javax.swing.JButton();
-        FooterPanel = new javax.swing.JPanel();
+        saveManButton = new javax.swing.JButton();
+        footerPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -160,69 +147,69 @@ public class HomeManFin extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
 
-        HeaderPanel.setBackground(new java.awt.Color(204, 204, 204));
+        headerPanel.setBackground(new java.awt.Color(204, 204, 204));
 
-        Title.setFont(new java.awt.Font("STKaiti", 0, 48)); // NOI18N
-        Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title.setText("Mormors Kager");
+        title.setFont(new java.awt.Font("STKaiti", 0, 48)); // NOI18N
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("Mormors Kager");
 
-        Title1.setFont(new java.awt.Font("STKaiti", 0, 24)); // NOI18N
-        Title1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title1.setText("Manager");
+        title1.setFont(new java.awt.Font("STKaiti", 0, 24)); // NOI18N
+        title1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title1.setText("Manager");
 
-        ExitButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exit.png"))); // NOI18N
-        ExitButton24.setToolTipText("");
-        ExitButton24.setMaximumSize(new java.awt.Dimension(56, 49));
-        ExitButton24.setMinimumSize(new java.awt.Dimension(56, 49));
-        ExitButton24.addActionListener(new java.awt.event.ActionListener() {
+        exitButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exit.png"))); // NOI18N
+        exitButton24.setToolTipText("");
+        exitButton24.setMaximumSize(new java.awt.Dimension(56, 49));
+        exitButton24.setMinimumSize(new java.awt.Dimension(56, 49));
+        exitButton24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExitButton24ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout HeaderPanelLayout = new javax.swing.GroupLayout(HeaderPanel);
-        HeaderPanel.setLayout(HeaderPanelLayout);
+        javax.swing.GroupLayout HeaderPanelLayout = new javax.swing.GroupLayout(headerPanel);
+        headerPanel.setLayout(HeaderPanelLayout);
         HeaderPanelLayout.setHorizontalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderPanelLayout.createSequentialGroup()
                 .addGroup(HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(HeaderPanelLayout.createSequentialGroup()
                         .addGap(559, 559, 559)
-                        .addComponent(Title1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(title1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(HeaderPanelLayout.createSequentialGroup()
                         .addGap(451, 451, 451)
-                        .addComponent(Title)))
+                        .addComponent(title)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ExitButton24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(exitButton24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         HeaderPanelLayout.setVerticalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderPanelLayout.createSequentialGroup()
                 .addGap(3, 3, 3)
-                .addComponent(Title)
+                .addComponent(title)
                 .addGap(15, 15, 15)
-                .addComponent(Title1))
+                .addComponent(title1))
             .addGroup(HeaderPanelLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(ExitButton24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(exitButton24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        BodyPanel.setBackground(new java.awt.Color(204, 204, 204));
+        bodyPanel.setBackground(new java.awt.Color(204, 204, 204));
 
-        ManTab.setBackground(new java.awt.Color(204, 204, 204));
-        ManTab.setPreferredSize(new java.awt.Dimension(1270, 700));
+        manTab.setBackground(new java.awt.Color(204, 204, 204));
+        manTab.setPreferredSize(new java.awt.Dimension(1270, 700));
 
-        ManEmp.setBackground(new java.awt.Color(204, 204, 204));
+        manEmp.setBackground(new java.awt.Color(204, 204, 204));
 
-        ManToolPanel1.setMaximumSize(new java.awt.Dimension(616, 594));
+        manToolPanel1.setMaximumSize(new java.awt.Dimension(616, 594));
 
-        SearchEmpPanel.setBackground(new java.awt.Color(204, 204, 204));
-        SearchEmpPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        searchEmpPanel.setBackground(new java.awt.Color(204, 204, 204));
+        searchEmpPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/manageemployee.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/manageemployee.png"))); // NOI18N
 
-        SearchEmpField.setToolTipText("Insert ID number or name");
+        searchEmpField.setToolTipText("Insert ID number or name");
 
         SearchEmpButton.setText("Search Employee");
         SearchEmpButton.addActionListener(new java.awt.event.ActionListener() {
@@ -231,8 +218,8 @@ public class HomeManFin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout SearchEmpPanelLayout = new javax.swing.GroupLayout(SearchEmpPanel);
-        SearchEmpPanel.setLayout(SearchEmpPanelLayout);
+        javax.swing.GroupLayout SearchEmpPanelLayout = new javax.swing.GroupLayout(searchEmpPanel);
+        searchEmpPanel.setLayout(SearchEmpPanelLayout);
         SearchEmpPanelLayout.setHorizontalGroup(
             SearchEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SearchEmpPanelLayout.createSequentialGroup()
@@ -240,7 +227,7 @@ public class HomeManFin extends javax.swing.JFrame {
                 .addGroup(SearchEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SearchEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(SearchEmpButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(SearchEmpField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(searchEmpField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(SearchEmpPanelLayout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addComponent(jLabel5)))
@@ -252,17 +239,17 @@ public class HomeManFin extends javax.swing.JFrame {
                 .addGap(72, 72, 72)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SearchEmpField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(searchEmpField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SearchEmpButton)
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        NewEmpPanel.setBackground(new java.awt.Color(204, 204, 204));
-        NewEmpPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        NewEmpPanel.setMaximumSize(new java.awt.Dimension(619, 284));
+        newEmpPanel.setBackground(new java.awt.Color(204, 204, 204));
+        newEmpPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        newEmpPanel.setMaximumSize(new java.awt.Dimension(619, 284));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hire.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hire.png"))); // NOI18N
 
         NewEmpButton.setText("New Employee");
         NewEmpButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -276,8 +263,8 @@ public class HomeManFin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout NewEmpPanelLayout = new javax.swing.GroupLayout(NewEmpPanel);
-        NewEmpPanel.setLayout(NewEmpPanelLayout);
+        javax.swing.GroupLayout NewEmpPanelLayout = new javax.swing.GroupLayout(newEmpPanel);
+        newEmpPanel.setLayout(NewEmpPanelLayout);
         NewEmpPanelLayout.setHorizontalGroup(
             NewEmpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NewEmpPanelLayout.createSequentialGroup()
@@ -299,38 +286,38 @@ public class HomeManFin extends javax.swing.JFrame {
                 .addContainerGap(82, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout ManToolPanel1Layout = new javax.swing.GroupLayout(ManToolPanel1);
-        ManToolPanel1.setLayout(ManToolPanel1Layout);
+        javax.swing.GroupLayout ManToolPanel1Layout = new javax.swing.GroupLayout(manToolPanel1);
+        manToolPanel1.setLayout(ManToolPanel1Layout);
         ManToolPanel1Layout.setHorizontalGroup(
             ManToolPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ManToolPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ManToolPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(NewEmpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(SearchEmpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(newEmpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchEmpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         ManToolPanel1Layout.setVerticalGroup(
             ManToolPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ManToolPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(SearchEmpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(searchEmpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NewEmpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(newEmpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        ManStagePanel1.setBackground(new java.awt.Color(204, 204, 204));
+        manStagePanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        AddPanel.setBackground(new java.awt.Color(215, 239, 215));
+        addPanel.setBackground(new java.awt.Color(215, 239, 215));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hire.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hire.png"))); // NOI18N
 
         jLabel8.setText("Create Employee");
 
         jLabel4.setText("Name");
 
-        CreateEmpNameField.addActionListener(new java.awt.event.ActionListener() {
+        createEmpNameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreateEmpNameFieldActionPerformed(evt);
             }
@@ -338,7 +325,7 @@ public class HomeManFin extends javax.swing.JFrame {
 
         jLabel9.setText("Surname");
 
-        CreateEmpAddressField.addActionListener(new java.awt.event.ActionListener() {
+        createEmpAddressField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreateEmpAddressFieldActionPerformed(evt);
             }
@@ -352,15 +339,15 @@ public class HomeManFin extends javax.swing.JFrame {
 
         jLabel13.setText("Address");
 
-        CreateEmployeeButton.setText("Create");
-        CreateEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
+        createEmployeeButton.setText("Create");
+        createEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreateEmployeeButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout AddPanelLayout = new javax.swing.GroupLayout(AddPanel);
-        AddPanel.setLayout(AddPanelLayout);
+        javax.swing.GroupLayout AddPanelLayout = new javax.swing.GroupLayout(addPanel);
+        addPanel.setLayout(AddPanelLayout);
         AddPanelLayout.setHorizontalGroup(
             AddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddPanelLayout.createSequentialGroup()
@@ -370,25 +357,25 @@ public class HomeManFin extends javax.swing.JFrame {
                         .addGroup(AddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel11)
                             .addComponent(jLabel4)
-                            .addComponent(CreateEmpNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
-                            .addComponent(CreateEmpSurnameField)
+                            .addComponent(createEmpNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+                            .addComponent(createEmpSurnameField)
                             .addComponent(jLabel9)
                             .addComponent(jLabel12)
-                            .addComponent(CreateEmpNumberField)
+                            .addComponent(createEmpNumberField)
                             .addComponent(jLabel13)
-                            .addComponent(CreateEmpAddressField)
-                            .addComponent(CreateEmpPasswordField))
+                            .addComponent(createEmpAddressField)
+                            .addComponent(createEmpPasswordField))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(AddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddPanelLayout.createSequentialGroup()
-                                .addComponent(CreateEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(createEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(166, 166, 166))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddPanelLayout.createSequentialGroup()
                                 .addGroup(AddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel10)
-                                    .addComponent(RepeatEmpPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(repeatEmpPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap())))))
             .addGroup(AddPanelLayout.createSequentialGroup()
                 .addGap(190, 190, 190)
@@ -409,92 +396,92 @@ public class HomeManFin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CreateEmpNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createEmpNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CreateEmpSurnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createEmpSurnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CreateEmpAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createEmpAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CreateEmpNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createEmpNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CreateEmpPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createEmpPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RepeatEmpPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(repeatEmpPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(CreateEmployeeButton)
+                .addComponent(createEmployeeButton)
                 .addContainerGap())
         );
 
-        LayerAddEmp.setLayer(AddPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        layerAddEmp.setLayer(addPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout LayerAddEmpLayout = new javax.swing.GroupLayout(LayerAddEmp);
-        LayerAddEmp.setLayout(LayerAddEmpLayout);
+        javax.swing.GroupLayout LayerAddEmpLayout = new javax.swing.GroupLayout(layerAddEmp);
+        layerAddEmp.setLayout(LayerAddEmpLayout);
         LayerAddEmpLayout.setHorizontalGroup(
             LayerAddEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LayerAddEmpLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(AddPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         LayerAddEmpLayout.setVerticalGroup(
             LayerAddEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LayerAddEmpLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(AddPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        EmpCard.setBackground(new java.awt.Color(179, 229, 229));
+        empCard.setBackground(new java.awt.Color(179, 229, 229));
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hire.png"))); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hire.png"))); // NOI18N
 
         jLabel19.setText("Name");
 
-        IDField.setEnabled(false);
-        IDField.addActionListener(new java.awt.event.ActionListener() {
+        iDField.setEnabled(false);
+        iDField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IDFieldActionPerformed(evt);
             }
         });
 
-        EmpSurnameField.setEnabled(false);
+        empSurnameField.setEnabled(false);
 
         jLabel20.setText("Surname");
 
-        EmpAddressField.setEnabled(false);
+        empAddressField.setEnabled(false);
 
-        EmpNumberField.setEnabled(false);
+        empNumberField.setEnabled(false);
 
         jLabel23.setText("Telephone number");
 
         jLabel24.setText("Address");
 
-        EmpCardEditButton.setText("Edit");
-        EmpCardEditButton.addActionListener(new java.awt.event.ActionListener() {
+        empCardEditButton.setText("Edit");
+        empCardEditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EmpCardEditButtonActionPerformed(evt);
             }
         });
 
-        EmpCardSaveButton.setText("Save");
-        EmpCardSaveButton.addActionListener(new java.awt.event.ActionListener() {
+        empCardSaveButton.setText("Save");
+        empCardSaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EmpCardSaveButtonActionPerformed(evt);
             }
         });
 
-        EmpNameField.setEnabled(false);
-        EmpNameField.addActionListener(new java.awt.event.ActionListener() {
+        empNameField.setEnabled(false);
+        empNameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EmpNameFieldActionPerformed(evt);
             }
@@ -502,8 +489,8 @@ public class HomeManFin extends javax.swing.JFrame {
 
         jLabel35.setText("ID");
 
-        javax.swing.GroupLayout EmpCardLayout = new javax.swing.GroupLayout(EmpCard);
-        EmpCard.setLayout(EmpCardLayout);
+        javax.swing.GroupLayout EmpCardLayout = new javax.swing.GroupLayout(empCard);
+        empCard.setLayout(EmpCardLayout);
         EmpCardLayout.setHorizontalGroup(
             EmpCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EmpCardLayout.createSequentialGroup()
@@ -514,21 +501,21 @@ public class HomeManFin extends javax.swing.JFrame {
                         .addComponent(jLabel17)
                         .addGap(240, 240, 240))
                     .addGroup(EmpCardLayout.createSequentialGroup()
-                        .addComponent(EmpCardEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(empCardEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
-                        .addComponent(EmpCardSaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(empCardSaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(EmpCardLayout.createSequentialGroup()
                         .addGroup(EmpCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(EmpNameField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(empNameField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(IDField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
-                            .addComponent(EmpSurnameField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(iDField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+                            .addComponent(empSurnameField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EmpNumberField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(empNumberField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EmpAddressField, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(empAddressField, javax.swing.GroupLayout.Alignment.LEADING))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(EmpCardLayout.createSequentialGroup()
                         .addComponent(jLabel35)
@@ -541,49 +528,49 @@ public class HomeManFin extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(jLabel35)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(iDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(EmpNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(empNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(EmpSurnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(empSurnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(EmpAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(empAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(EmpNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(empNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addGroup(EmpCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EmpCardEditButton)
-                    .addComponent(EmpCardSaveButton))
+                    .addComponent(empCardEditButton)
+                    .addComponent(empCardSaveButton))
                 .addContainerGap())
         );
 
-        EmpAddressField.getAccessibleContext().setAccessibleName("");
-        EmpNumberField.getAccessibleContext().setAccessibleName("");
+        empAddressField.getAccessibleContext().setAccessibleName("");
+        empNumberField.getAccessibleContext().setAccessibleName("");
 
-        LayerEmpCard.setLayer(EmpCard, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        layerEmpCard.setLayer(empCard, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout LayerEmpCardLayout = new javax.swing.GroupLayout(LayerEmpCard);
-        LayerEmpCard.setLayout(LayerEmpCardLayout);
+        javax.swing.GroupLayout LayerEmpCardLayout = new javax.swing.GroupLayout(layerEmpCard);
+        layerEmpCard.setLayout(LayerEmpCardLayout);
         LayerEmpCardLayout.setHorizontalGroup(
             LayerEmpCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LayerEmpCardLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(EmpCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(empCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         LayerEmpCardLayout.setVerticalGroup(
             LayerEmpCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LayerEmpCardLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(EmpCard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(empCard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -591,8 +578,8 @@ public class HomeManFin extends javax.swing.JFrame {
 
         jLabel21.setText("Delete Employee");
 
-        DeleteEmployeeButton.setText("Delete");
-        DeleteEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
+        deleteEmployeeButton.setText("Delete");
+        deleteEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeleteEmployeeButtonActionPerformed(evt);
             }
@@ -613,7 +600,7 @@ public class HomeManFin extends javax.swing.JFrame {
                             .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
-                        .addComponent(DeleteEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(deleteEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -624,14 +611,14 @@ public class HomeManFin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
-                .addComponent(DeleteEmployeeButton)
+                .addComponent(deleteEmployeeButton)
                 .addContainerGap())
         );
 
-        LayerDeleteEmp.setLayer(jPanel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        layerDeleteEmp.setLayer(jPanel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout LayerDeleteEmpLayout = new javax.swing.GroupLayout(LayerDeleteEmp);
-        LayerDeleteEmp.setLayout(LayerDeleteEmpLayout);
+        javax.swing.GroupLayout LayerDeleteEmpLayout = new javax.swing.GroupLayout(layerDeleteEmp);
+        layerDeleteEmp.setLayout(LayerDeleteEmpLayout);
         LayerDeleteEmpLayout.setHorizontalGroup(
             LayerDeleteEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LayerDeleteEmpLayout.createSequentialGroup()
@@ -645,58 +632,58 @@ public class HomeManFin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout ManStagePanel1Layout = new javax.swing.GroupLayout(ManStagePanel1);
-        ManStagePanel1.setLayout(ManStagePanel1Layout);
+        javax.swing.GroupLayout ManStagePanel1Layout = new javax.swing.GroupLayout(manStagePanel1);
+        manStagePanel1.setLayout(ManStagePanel1Layout);
         ManStagePanel1Layout.setHorizontalGroup(
             ManStagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ManStagePanel1Layout.createSequentialGroup()
                 .addGroup(ManStagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LayerAddEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LayerEmpCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(layerAddEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(layerEmpCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LayerDeleteEmp)
+                .addComponent(layerDeleteEmp)
                 .addContainerGap())
         );
         ManStagePanel1Layout.setVerticalGroup(
             ManStagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(LayerAddEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(LayerEmpCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(layerAddEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(layerEmpCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(ManStagePanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(LayerDeleteEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(layerDeleteEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout ManEmpLayout = new javax.swing.GroupLayout(ManEmp);
-        ManEmp.setLayout(ManEmpLayout);
+        javax.swing.GroupLayout ManEmpLayout = new javax.swing.GroupLayout(manEmp);
+        manEmp.setLayout(ManEmpLayout);
         ManEmpLayout.setHorizontalGroup(
             ManEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ManEmpLayout.createSequentialGroup()
-                .addComponent(ManToolPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manToolPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ManStagePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(manStagePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         ManEmpLayout.setVerticalGroup(
             ManEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ManEmpLayout.createSequentialGroup()
                 .addGroup(ManEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ManToolPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ManStagePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(manToolPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manStagePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        ManTab.addTab("Manage Employee", ManEmp);
+        manTab.addTab("Manage Employee", manEmp);
 
-        SalRev.setBackground(new java.awt.Color(204, 204, 204));
+        salRev.setBackground(new java.awt.Color(204, 204, 204));
 
-        ManToolPanel2.setMaximumSize(new java.awt.Dimension(616, 594));
+        manToolPanel2.setMaximumSize(new java.awt.Dimension(616, 594));
 
         jPanel22.setBackground(new java.awt.Color(204, 204, 204));
         jPanel22.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/revenue.png"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/revenue.png"))); // NOI18N
 
-        SearchEmpSalesField.setToolTipText("Insert ID number or name");
+        searchEmpSalesField.setToolTipText("Insert ID number or name");
 
         SearchEmpSalesButton.setText("Search Employee");
         SearchEmpSalesButton.addActionListener(new java.awt.event.ActionListener() {
@@ -705,7 +692,7 @@ public class HomeManFin extends javax.swing.JFrame {
             }
         });
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/manageemployee.png"))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/manageemployee.png"))); // NOI18N
 
         jLabel1.setText("Employee Sales");
 
@@ -719,7 +706,7 @@ public class HomeManFin extends javax.swing.JFrame {
                         .addGap(104, 104, 104)
                         .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(SearchEmpSalesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(SearchEmpSalesField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(searchEmpSalesField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel22Layout.createSequentialGroup()
                         .addGap(144, 144, 144)
                         .addComponent(jLabel14)
@@ -740,7 +727,7 @@ public class HomeManFin extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SearchEmpSalesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(searchEmpSalesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SearchEmpSalesButton)
                 .addContainerGap(61, Short.MAX_VALUE))
@@ -750,7 +737,7 @@ public class HomeManFin extends javax.swing.JFrame {
         jPanel9.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel9.setMaximumSize(new java.awt.Dimension(619, 284));
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/revenue.png"))); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/revenue.png"))); // NOI18N
 
         TotalSalesButton.setText("Show");
         TotalSalesButton.addActionListener(new java.awt.event.ActionListener() {
@@ -791,8 +778,8 @@ public class HomeManFin extends javax.swing.JFrame {
                 .addContainerGap(85, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout ManToolPanel2Layout = new javax.swing.GroupLayout(ManToolPanel2);
-        ManToolPanel2.setLayout(ManToolPanel2Layout);
+        javax.swing.GroupLayout ManToolPanel2Layout = new javax.swing.GroupLayout(manToolPanel2);
+        manToolPanel2.setLayout(ManToolPanel2Layout);
         ManToolPanel2Layout.setHorizontalGroup(
             ManToolPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ManToolPanel2Layout.createSequentialGroup()
@@ -812,28 +799,28 @@ public class HomeManFin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        ManStagePanel2.setBackground(new java.awt.Color(204, 204, 204));
+        manStagePanel2.setBackground(new java.awt.Color(204, 204, 204));
 
-        LayerEmpRev.setBackground(new java.awt.Color(204, 204, 204));
+        layerEmpRev.setBackground(new java.awt.Color(204, 204, 204));
 
-        AddPanel2.setBackground(new java.awt.Color(238, 229, 187));
+        addPanel2.setBackground(new java.awt.Color(238, 229, 187));
 
-        jScrollPane2.setViewportView(EmpSalesTextField);
+        jScrollPane2.setViewportView(empSalesTextField);
 
-        jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/revenue.png"))); // NOI18N
+        jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/revenue.png"))); // NOI18N
 
-        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Edit.png"))); // NOI18N
+        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Edit.png"))); // NOI18N
 
         jLabel22.setText("Name");
 
-        EmpNameSalesField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        empNameSalesField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        EmpIDSalesField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        empIDSalesField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jLabel25.setText("ID");
 
-        javax.swing.GroupLayout AddPanel2Layout = new javax.swing.GroupLayout(AddPanel2);
-        AddPanel2.setLayout(AddPanel2Layout);
+        javax.swing.GroupLayout AddPanel2Layout = new javax.swing.GroupLayout(addPanel2);
+        addPanel2.setLayout(AddPanel2Layout);
         AddPanel2Layout.setHorizontalGroup(
             AddPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddPanel2Layout.createSequentialGroup()
@@ -850,12 +837,12 @@ public class HomeManFin extends javax.swing.JFrame {
                                 .addGroup(AddPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel22)
                                     .addComponent(jLabel25)
-                                    .addComponent(EmpIDSalesField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(empIDSalesField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(AddPanel2Layout.createSequentialGroup()
                                         .addGap(210, 210, 210)
                                         .addComponent(jLabel34)))
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(EmpNameSalesField, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(empNameSalesField, javax.swing.GroupLayout.Alignment.LEADING))
                         .addContainerGap())))
         );
         AddPanel2Layout.setVerticalGroup(
@@ -866,11 +853,11 @@ public class HomeManFin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel22)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(EmpNameSalesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(empNameSalesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(EmpIDSalesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(empIDSalesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                 .addComponent(jLabel39)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -878,32 +865,32 @@ public class HomeManFin extends javax.swing.JFrame {
                 .addGap(70, 70, 70))
         );
 
-        LayerEmpRev.setLayer(AddPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        layerEmpRev.setLayer(addPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout LayerEmpRevLayout = new javax.swing.GroupLayout(LayerEmpRev);
-        LayerEmpRev.setLayout(LayerEmpRevLayout);
+        javax.swing.GroupLayout LayerEmpRevLayout = new javax.swing.GroupLayout(layerEmpRev);
+        layerEmpRev.setLayout(LayerEmpRevLayout);
         LayerEmpRevLayout.setHorizontalGroup(
             LayerEmpRevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LayerEmpRevLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(AddPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         LayerEmpRevLayout.setVerticalGroup(
             LayerEmpRevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LayerEmpRevLayout.createSequentialGroup()
-                .addComponent(AddPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 80, Short.MAX_VALUE))
         );
 
-        AddPanel4.setBackground(new java.awt.Color(51, 255, 51));
+        addPanel4.setBackground(new java.awt.Color(51, 255, 51));
 
         jScrollPane3.setViewportView(jTextPane3);
 
-        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/revenue.png"))); // NOI18N
+        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/revenue.png"))); // NOI18N
 
-        javax.swing.GroupLayout AddPanel4Layout = new javax.swing.GroupLayout(AddPanel4);
-        AddPanel4.setLayout(AddPanel4Layout);
+        javax.swing.GroupLayout AddPanel4Layout = new javax.swing.GroupLayout(addPanel4);
+        addPanel4.setLayout(AddPanel4Layout);
         AddPanel4Layout.setHorizontalGroup(
             AddPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddPanel4Layout.createSequentialGroup()
@@ -926,74 +913,74 @@ public class HomeManFin extends javax.swing.JFrame {
                 .addContainerGap(232, Short.MAX_VALUE))
         );
 
-        LayerGenRev.setLayer(AddPanel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        layerGenRev.setLayer(addPanel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout LayerGenRevLayout = new javax.swing.GroupLayout(LayerGenRev);
-        LayerGenRev.setLayout(LayerGenRevLayout);
+        javax.swing.GroupLayout LayerGenRevLayout = new javax.swing.GroupLayout(layerGenRev);
+        layerGenRev.setLayout(LayerGenRevLayout);
         LayerGenRevLayout.setHorizontalGroup(
             LayerGenRevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 494, Short.MAX_VALUE)
             .addGroup(LayerGenRevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LayerGenRevLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AddPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(addPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         LayerGenRevLayout.setVerticalGroup(
             LayerGenRevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 570, Short.MAX_VALUE)
             .addGroup(LayerGenRevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(LayerGenRevLayout.createSequentialGroup()
-                    .addComponent(AddPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 91, Short.MAX_VALUE)))
         );
 
-        javax.swing.GroupLayout ManStagePanel2Layout = new javax.swing.GroupLayout(ManStagePanel2);
-        ManStagePanel2.setLayout(ManStagePanel2Layout);
+        javax.swing.GroupLayout ManStagePanel2Layout = new javax.swing.GroupLayout(manStagePanel2);
+        manStagePanel2.setLayout(ManStagePanel2Layout);
         ManStagePanel2Layout.setHorizontalGroup(
             ManStagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(LayerEmpRev, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(LayerGenRev, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(layerEmpRev, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(layerGenRev, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         ManStagePanel2Layout.setVerticalGroup(
             ManStagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ManStagePanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LayerEmpRev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(layerEmpRev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LayerGenRev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(layerGenRev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55))
         );
 
-        javax.swing.GroupLayout SalRevLayout = new javax.swing.GroupLayout(SalRev);
-        SalRev.setLayout(SalRevLayout);
+        javax.swing.GroupLayout SalRevLayout = new javax.swing.GroupLayout(salRev);
+        salRev.setLayout(SalRevLayout);
         SalRevLayout.setHorizontalGroup(
             SalRevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SalRevLayout.createSequentialGroup()
-                .addComponent(ManToolPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manToolPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ManStagePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manStagePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(551, 551, 551))
         );
         SalRevLayout.setVerticalGroup(
             SalRevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SalRevLayout.createSequentialGroup()
                 .addGroup(SalRevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ManToolPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ManStagePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(manToolPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manStagePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        ManTab.addTab("Sales & Revenue", SalRev);
+        manTab.addTab("Sales & Revenue", salRev);
 
-        PerPro.setBackground(new java.awt.Color(204, 204, 204));
+        perPro.setBackground(new java.awt.Color(204, 204, 204));
 
-        ManToolPanel3.setMaximumSize(new java.awt.Dimension(616, 594));
+        manToolPanel3.setMaximumSize(new java.awt.Dimension(616, 594));
 
         jPanel13.setBackground(new java.awt.Color(204, 204, 204));
         jPanel13.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel13.setMaximumSize(new java.awt.Dimension(619, 284));
 
-        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Edit.png"))); // NOI18N
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Edit.png"))); // NOI18N
 
         EditPerProfileButton.setText("Edit Profile");
         EditPerProfileButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1025,8 +1012,8 @@ public class HomeManFin extends javax.swing.JFrame {
                 .addContainerGap(306, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout ManToolPanel3Layout = new javax.swing.GroupLayout(ManToolPanel3);
-        ManToolPanel3.setLayout(ManToolPanel3Layout);
+        javax.swing.GroupLayout ManToolPanel3Layout = new javax.swing.GroupLayout(manToolPanel3);
+        manToolPanel3.setLayout(ManToolPanel3Layout);
         ManToolPanel3Layout.setHorizontalGroup(
             ManToolPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ManToolPanel3Layout.createSequentialGroup()
@@ -1042,11 +1029,11 @@ public class HomeManFin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        ManStagePanel3.setBackground(new java.awt.Color(204, 204, 204));
+        manStagePanel3.setBackground(new java.awt.Color(204, 204, 204));
 
-        AddPanel3.setBackground(new java.awt.Color(179, 229, 229));
+        addPanel3.setBackground(new java.awt.Color(179, 229, 229));
 
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Edit.png"))); // NOI18N
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Edit.png"))); // NOI18N
 
         jLabel28.setText("Manager");
 
@@ -1062,10 +1049,10 @@ public class HomeManFin extends javax.swing.JFrame {
 
         jLabel53.setText("Address");
 
-        SaveManButton.setText("Save");
+        saveManButton.setText("Save");
 
-        javax.swing.GroupLayout AddPanel3Layout = new javax.swing.GroupLayout(AddPanel3);
-        AddPanel3.setLayout(AddPanel3Layout);
+        javax.swing.GroupLayout AddPanel3Layout = new javax.swing.GroupLayout(addPanel3);
+        addPanel3.setLayout(AddPanel3Layout);
         AddPanel3Layout.setHorizontalGroup(
             AddPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddPanel3Layout.createSequentialGroup()
@@ -1076,18 +1063,18 @@ public class HomeManFin extends javax.swing.JFrame {
                             .addComponent(jLabel32)
                             .addComponent(jLabel31)
                             .addComponent(jLabel29)
-                            .addComponent(ManNameField)
-                            .addComponent(ManSurnameField)
+                            .addComponent(manNameField)
+                            .addComponent(manSurnameField)
                             .addComponent(jLabel30)
                             .addComponent(jLabel33)
-                            .addComponent(ManNumberField)
+                            .addComponent(manNumberField)
                             .addComponent(jLabel53)
-                            .addComponent(ManAddressField)
-                            .addComponent(ManNewPasswordField)
-                            .addComponent(ManNewRepPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(manAddressField)
+                            .addComponent(manNewPasswordField)
+                            .addComponent(manNewRepPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(AddPanel3Layout.createSequentialGroup()
                         .addGap(160, 160, 160)
-                        .addComponent(SaveManButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(saveManButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(AddPanel3Layout.createSequentialGroup()
                         .addGap(210, 210, 210)
                         .addGroup(AddPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1105,91 +1092,91 @@ public class HomeManFin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel29)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ManNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel30)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ManSurnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manSurnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel53)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ManAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jLabel33)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ManNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(jLabel32)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ManNewPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manNewPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel31)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ManNewRepPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manNewRepPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(SaveManButton)
+                .addComponent(saveManButton)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout ManStagePanel3Layout = new javax.swing.GroupLayout(ManStagePanel3);
-        ManStagePanel3.setLayout(ManStagePanel3Layout);
+        javax.swing.GroupLayout ManStagePanel3Layout = new javax.swing.GroupLayout(manStagePanel3);
+        manStagePanel3.setLayout(ManStagePanel3Layout);
         ManStagePanel3Layout.setHorizontalGroup(
             ManStagePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ManStagePanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(AddPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(768, Short.MAX_VALUE))
         );
         ManStagePanel3Layout.setVerticalGroup(
             ManStagePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ManStagePanel3Layout.createSequentialGroup()
-                .addComponent(AddPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 212, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout PerProLayout = new javax.swing.GroupLayout(PerPro);
-        PerPro.setLayout(PerProLayout);
+        javax.swing.GroupLayout PerProLayout = new javax.swing.GroupLayout(perPro);
+        perPro.setLayout(PerProLayout);
         PerProLayout.setHorizontalGroup(
             PerProLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PerProLayout.createSequentialGroup()
-                .addComponent(ManToolPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manToolPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ManStagePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manStagePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PerProLayout.setVerticalGroup(
             PerProLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PerProLayout.createSequentialGroup()
                 .addGroup(PerProLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ManToolPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manToolPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PerProLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(ManStagePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(manStagePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
-        ManTab.addTab("Personal Profile", PerPro);
+        manTab.addTab("Personal Profile", perPro);
 
-        javax.swing.GroupLayout BodyPanelLayout = new javax.swing.GroupLayout(BodyPanel);
-        BodyPanel.setLayout(BodyPanelLayout);
+        javax.swing.GroupLayout BodyPanelLayout = new javax.swing.GroupLayout(bodyPanel);
+        bodyPanel.setLayout(BodyPanelLayout);
         BodyPanelLayout.setHorizontalGroup(
             BodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BodyPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ManTab, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(manTab, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
         BodyPanelLayout.setVerticalGroup(
             BodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BodyPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ManTab, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manTab, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        FooterPanel.setBackground(new java.awt.Color(204, 204, 204));
+        footerPanel.setBackground(new java.awt.Color(204, 204, 204));
 
-        javax.swing.GroupLayout FooterPanelLayout = new javax.swing.GroupLayout(FooterPanel);
-        FooterPanel.setLayout(FooterPanelLayout);
+        javax.swing.GroupLayout FooterPanelLayout = new javax.swing.GroupLayout(footerPanel);
+        footerPanel.setLayout(FooterPanelLayout);
         FooterPanelLayout.setHorizontalGroup(
             FooterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1268, Short.MAX_VALUE)
@@ -1206,22 +1193,22 @@ public class HomeManFin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(HeaderPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(headerPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(FooterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(footerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(HeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BodyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bodyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(FooterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(footerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
         );
 
@@ -1230,9 +1217,9 @@ public class HomeManFin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SearchEmpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchEmpButtonActionPerformed
-       LayerAddEmp.setVisible(false);
-       LayerEmpCard.setVisible(true);
-       LayerDeleteEmp.setVisible(true);
+       layerAddEmp.setVisible(false);
+       layerEmpCard.setVisible(true);
+       layerDeleteEmp.setVisible(true);
     }//GEN-LAST:event_SearchEmpButtonActionPerformed
 
     private void NewEmpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewEmpButtonActionPerformed
@@ -1244,12 +1231,12 @@ public class HomeManFin extends javax.swing.JFrame {
     }//GEN-LAST:event_EditPerProfileButtonActionPerformed
 
     private void SearchEmpSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchEmpSalesButtonActionPerformed
-           LayerGenRev.setVisible(false);
-           LayerEmpRev.setVisible(true);    }//GEN-LAST:event_SearchEmpSalesButtonActionPerformed
+           layerGenRev.setVisible(false);
+           layerEmpRev.setVisible(true);    }//GEN-LAST:event_SearchEmpSalesButtonActionPerformed
 
     private void TotalSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TotalSalesButtonActionPerformed
-       LayerGenRev.setVisible(true);
-        LayerEmpRev.setVisible(false);
+    	layerGenRev.setVisible(true);
+        layerEmpRev.setVisible(false);
     }//GEN-LAST:event_TotalSalesButtonActionPerformed
 
     private void CreateEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateEmployeeButtonActionPerformed
@@ -1257,29 +1244,29 @@ public class HomeManFin extends javax.swing.JFrame {
     }//GEN-LAST:event_CreateEmployeeButtonActionPerformed
 
     private void EmpCardEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpCardEditButtonActionPerformed
-        EmpCardSaveButton.setVisible(true);
-         EmpAddressField.setEnabled(true);
-        EmpNumberField.setEnabled(true); 
+        empCardSaveButton.setVisible(true);
+        empAddressField.setEnabled(true);
+        empNumberField.setEnabled(true); 
        
     }//GEN-LAST:event_EmpCardEditButtonActionPerformed
 
     private void NewEmpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewEmpButtonMouseClicked
-       LayerAddEmp.setVisible(true);
-       LayerEmpCard.setVisible(false);
-       LayerDeleteEmp.setVisible(false);
+       layerAddEmp.setVisible(true);
+       layerEmpCard.setVisible(false);
+       layerDeleteEmp.setVisible(false);
             
     }//GEN-LAST:event_NewEmpButtonMouseClicked
 
     private void EmpCardSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpCardSaveButtonActionPerformed
     
-        if (EmpAddressField.getText().equals("") & EmpAddressField.getText().equals("")) {
+        if (empAddressField.getText().equals("") & empAddressField.getText().equals("")) {
 
-          EmpAddressField.setBackground(Color.red);
-          EmpNumberField.setBackground(Color.red);
+          empAddressField.setBackground(Color.red);
+          empNumberField.setBackground(Color.red);
         }
         else {
-          EmpAddressField.setEnabled(false);
-           EmpNumberField.setEnabled(false);
+        	empAddressField.setEnabled(false);
+            empNumberField.setEnabled(false);
                 }
     }//GEN-LAST:event_EmpCardSaveButtonActionPerformed
 
@@ -1327,13 +1314,13 @@ public class HomeManFin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LogManFinal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogManFin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LogManFinal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogManFin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LogManFinal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogManFin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LogManFinal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogManFin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -1349,61 +1336,61 @@ public class HomeManFin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel AddPanel;
-    private javax.swing.JPanel AddPanel2;
-    private javax.swing.JPanel AddPanel3;
-    private javax.swing.JPanel AddPanel4;
-    private javax.swing.JPanel BodyPanel;
-    private javax.swing.JTextField CreateEmpAddressField;
-    private javax.swing.JTextField CreateEmpNameField;
-    private javax.swing.JTextField CreateEmpNumberField;
-    private javax.swing.JTextField CreateEmpPasswordField;
-    private javax.swing.JTextField CreateEmpSurnameField;
-    private javax.swing.JButton CreateEmployeeButton;
-    private javax.swing.JButton DeleteEmployeeButton;
-    private javax.swing.JTextField EmpAddressField;
-    private javax.swing.JPanel EmpCard;
-    private javax.swing.JButton EmpCardEditButton;
-    private javax.swing.JButton EmpCardSaveButton;
-    private javax.swing.JTextField EmpIDSalesField;
-    private javax.swing.JTextField EmpNameField;
-    private javax.swing.JTextField EmpNameSalesField;
-    private javax.swing.JTextField EmpNumberField;
-    private javax.swing.JTextPane EmpSalesTextField;
-    private javax.swing.JTextField EmpSurnameField;
-    private javax.swing.JButton ExitButton24;
-    private javax.swing.JPanel FooterPanel;
-    private javax.swing.JPanel HeaderPanel;
-    private javax.swing.JTextField IDField;
-    private javax.swing.JLayeredPane LayerAddEmp;
-    private javax.swing.JLayeredPane LayerDeleteEmp;
-    private javax.swing.JLayeredPane LayerEmpCard;
-    private javax.swing.JLayeredPane LayerEmpRev;
-    private javax.swing.JLayeredPane LayerGenRev;
-    private javax.swing.JTextField ManAddressField;
-    private javax.swing.JPanel ManEmp;
-    private javax.swing.JTextField ManNameField;
-    private javax.swing.JTextField ManNewPasswordField;
-    private javax.swing.JTextField ManNewRepPasswordField;
-    private javax.swing.JTextField ManNumberField;
-    private javax.swing.JPanel ManStagePanel1;
-    private javax.swing.JPanel ManStagePanel2;
-    private javax.swing.JPanel ManStagePanel3;
-    private javax.swing.JTextField ManSurnameField;
-    private javax.swing.JTabbedPane ManTab;
-    private javax.swing.JPanel ManToolPanel1;
-    private javax.swing.JPanel ManToolPanel2;
-    private javax.swing.JPanel ManToolPanel3;
-    private javax.swing.JPanel NewEmpPanel;
-    private javax.swing.JPanel PerPro;
-    private javax.swing.JTextField RepeatEmpPassword;
-    private javax.swing.JPanel SalRev;
-    private javax.swing.JButton SaveManButton;
-    private javax.swing.JTextField SearchEmpField;
-    private javax.swing.JPanel SearchEmpPanel;
-    private javax.swing.JTextField SearchEmpSalesField;
-    private javax.swing.JLabel Title;
-    private javax.swing.JLabel Title1;
+    private javax.swing.JPanel addPanel;
+    private javax.swing.JPanel addPanel2;
+    private javax.swing.JPanel addPanel3;
+    private javax.swing.JPanel addPanel4;
+    private javax.swing.JPanel bodyPanel;
+    protected javax.swing.JTextField createEmpNameField;
+    protected javax.swing.JTextField createEmpSurnameField;
+    protected javax.swing.JTextField createEmpAddressField;
+    protected javax.swing.JTextField createEmpNumberField;
+    protected javax.swing.JTextField createEmpPasswordField;
+    protected javax.swing.JTextField repeatEmpPassword;
+    protected javax.swing.JButton createEmployeeButton;
+    protected javax.swing.JButton deleteEmployeeButton;
+    protected javax.swing.JTextField empAddressField;
+    private javax.swing.JPanel empCard;
+    private javax.swing.JButton empCardEditButton;
+    private javax.swing.JButton empCardSaveButton;
+    private javax.swing.JTextField empIDSalesField;
+    private javax.swing.JTextField empNameField;
+    private javax.swing.JTextField empNameSalesField;
+    private javax.swing.JTextField empNumberField;
+    private javax.swing.JTextPane empSalesTextField;
+    private javax.swing.JTextField empSurnameField;
+    private javax.swing.JButton exitButton24;
+    private javax.swing.JPanel footerPanel;
+    private javax.swing.JPanel headerPanel;
+    private javax.swing.JTextField iDField;
+    private javax.swing.JLayeredPane layerAddEmp;
+    private javax.swing.JLayeredPane layerDeleteEmp;
+    private javax.swing.JLayeredPane layerEmpCard;
+    private javax.swing.JLayeredPane layerEmpRev;
+    private javax.swing.JLayeredPane layerGenRev;
+    private javax.swing.JTextField manAddressField;
+    private javax.swing.JPanel manEmp;
+    private javax.swing.JTextField manNameField;
+    private javax.swing.JTextField manNewPasswordField;
+    private javax.swing.JTextField manNewRepPasswordField;
+    private javax.swing.JTextField manNumberField;
+    private javax.swing.JPanel manStagePanel1;
+    private javax.swing.JPanel manStagePanel2;
+    private javax.swing.JPanel manStagePanel3;
+    private javax.swing.JTextField manSurnameField;
+    private javax.swing.JTabbedPane manTab;
+    private javax.swing.JPanel manToolPanel1;
+    private javax.swing.JPanel manToolPanel2;
+    private javax.swing.JPanel manToolPanel3;
+    private javax.swing.JPanel newEmpPanel;
+    private javax.swing.JPanel perPro;
+    private javax.swing.JPanel salRev;
+    private javax.swing.JButton saveManButton;
+    private javax.swing.JTextField searchEmpField;
+    private javax.swing.JPanel searchEmpPanel;
+    private javax.swing.JTextField searchEmpSalesField;
+    private javax.swing.JLabel title;
+    private javax.swing.JLabel title1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1453,4 +1440,12 @@ public class HomeManFin extends javax.swing.JFrame {
     private void paint(JPanel StagePanel) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    private void update() {
+
+    }
+    
+	public void update(Observable o, Object arg) {
+		update();
+	}
 }

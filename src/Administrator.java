@@ -1,9 +1,10 @@
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Administrator extends Person {
-
-    private static final long serialVersionUID = -956244062256737851L;
 
     private HomeManFin homeManager = new HomeManFin();
     private Employee employee;
@@ -71,22 +72,22 @@ public class Administrator extends Person {
      * @param name
      */
     private String firstnameInputEmployee() {
-        firstname = homeManager.CreateNameField.getText();
+        firstname = homeManager.createEmpNameField.getText();
         return firstname;
     }
 
     private String lastnameInputEmployee() {
-        lastname = homeManager.jLabel9.getText();
+        lastname = homeManager.createEmpSurnameField.getText();
         return lastname;
     }
 
     private String addressInputEmployee() {
-        address = homeManager.jLabel13.getText();
+        address = homeManager.createEmpAddressField.getText();
         return address;
     }
 
     private String telephoneInputEmployee() {
-        telephone = homeManager.jLabel12.getText();
+        telephone = homeManager.createEmpNumberField.getText();
         return telephone;
     }
 

@@ -1,26 +1,18 @@
 
-
-
-
-import java.awt.Dimension;
-import java.awt.Toolkit;
-
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  *
  * @author daniele
  */
-public class LogManFin extends javax.swing.JFrame {
+public class LogManFin extends javax.swing.JFrame implements Observer {
 
- 
-
-    /**
+	private static final long serialVersionUID = 8895950366216860075L;
+	
+	private static Administrator administrator;
+	
+	/**
      * Creates new form NewJFrame
      */
     public LogManFin() {
@@ -38,16 +30,16 @@ public class LogManFin extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel3 = new javax.swing.JPanel();
-        Title1 = new javax.swing.JLabel();
-        Title = new javax.swing.JLabel();
+        title1 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        SwitchButton = new javax.swing.JButton();
+        switchButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        UsernameField = new javax.swing.JTextField();
-        PasswordField = new javax.swing.JTextField();
-        LoginButton = new javax.swing.JButton();
+        usernameField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JTextField();
+        loginButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -59,34 +51,34 @@ public class LogManFin extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
-        Title1.setBackground(new java.awt.Color(229, 110, 110));
-        Title1.setFont(new java.awt.Font("STKaiti", 0, 24)); // NOI18N
-        Title1.setForeground(new java.awt.Color(229, 110, 100));
-        Title1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title1.setText("Manager");
+        title1.setBackground(new java.awt.Color(229, 110, 110));
+        title1.setFont(new java.awt.Font("STKaiti", 0, 24)); // NOI18N
+        title1.setForeground(new java.awt.Color(229, 110, 100));
+        title1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title1.setText("Manager");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 108, 6, 0);
-        jPanel3.add(Title1, gridBagConstraints);
+        jPanel3.add(title1, gridBagConstraints);
 
-        Title.setFont(new java.awt.Font("STKaiti", 0, 48)); // NOI18N
-        Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title.setText("Mormors Kager");
-        jPanel3.add(Title, new java.awt.GridBagConstraints());
+        title.setFont(new java.awt.Font("STKaiti", 0, 48)); // NOI18N
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("Mormors Kager");
+        jPanel3.add(title, new java.awt.GridBagConstraints());
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        SwitchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swap.png"))); // NOI18N
-        SwitchButton.setToolTipText("");
-        SwitchButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        switchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/swap.png"))); // NOI18N
+        switchButton.setToolTipText("");
+        switchButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SwitchButtonMouseClicked(evt);
             }
         });
-        SwitchButton.addActionListener(new java.awt.event.ActionListener() {
+        switchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SwitchButtonActionPerformed(evt);
             }
@@ -97,29 +89,29 @@ public class LogManFin extends javax.swing.JFrame {
 
         jLabel2.setText("Username");
 
-        UsernameField.setToolTipText("Write Username here");
-        UsernameField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        UsernameField.setPreferredSize(new java.awt.Dimension(73, 28));
-        UsernameField.addMouseListener(new java.awt.event.MouseAdapter() {
+        usernameField.setToolTipText("Write Username here");
+        usernameField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        usernameField.setPreferredSize(new java.awt.Dimension(73, 28));
+        usernameField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 UsernameFieldMouseEntered(evt);
             }
         });
-        UsernameField.addActionListener(new java.awt.event.ActionListener() {
+        usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UsernameFieldActionPerformed(evt);
             }
         });
 
-        PasswordField.setToolTipText("Write Password here");
-        PasswordField.addActionListener(new java.awt.event.ActionListener() {
+        passwordField.setToolTipText("Write Password here");
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PasswordFieldActionPerformed(evt);
             }
         });
 
-        LoginButton.setText("Login");
-        LoginButton.addActionListener(new java.awt.event.ActionListener() {
+        loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginButtonActionPerformed(evt);
             }
@@ -141,9 +133,9 @@ public class LogManFin extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addComponent(jLabel3))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -152,17 +144,17 @@ public class LogManFin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addGap(5, 5, 5)
-                .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(LoginButton)
+                .addComponent(loginButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/finalpack/cake.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cake.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -179,7 +171,7 @@ public class LogManFin extends javax.swing.JFrame {
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(1207, 1207, 1207)
-                            .addComponent(SwitchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(switchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -192,7 +184,7 @@ public class LogManFin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(6, 6, 6)
-                .addComponent(SwitchButton)
+                .addComponent(switchButton)
                 .addGap(10, 10, 10))
         );
 
@@ -218,37 +210,39 @@ public class LogManFin extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+    }
    
-    private void UsernameFieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsernameFieldMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UsernameFieldMouseEntered
-
-    private void UsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameFieldActionPerformed
-
-    }//GEN-LAST:event_UsernameFieldActionPerformed
-
-    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PasswordFieldActionPerformed
-
-    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-        // TODO add your handlingode here:
-    }//GEN-LAST:event_LoginButtonActionPerformed
-
-    private void SwitchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SwitchButtonActionPerformed
-        // TODO add your handling code here:
-       
-         LogManFinal a= new LogManFinal();
-        a.setVisible(true);
-        a.setDefaultCloseOperation(LogManFinal.DISPOSE_ON_CLOSE);
-        this.dispose();
+    private void UsernameFieldMouseEntered(java.awt.event.MouseEvent evt) {
         
-    }//GEN-LAST:event_SwitchButtonActionPerformed
+    }
+
+    private void UsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {
+
+    }
+
+    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+
+    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	administrator.adminLogin();
+    	
+    	if(administrator.getLoggedIn()) {
+    		HomeManFin a = new HomeManFin();
+            a.setVisible(true);
+            a.setDefaultCloseOperation(HomeManFin.DISPOSE_ON_CLOSE);
+            this.dispose();
+    	}
+    }
+
+    private void SwitchButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        LogEmpFin a = new LogEmpFin();
+        a.setVisible(true);
+        a.setDefaultCloseOperation(LogEmpFin.DISPOSE_ON_CLOSE);
+        this.dispose();
+    }
 
     private void SwitchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SwitchButtonMouseClicked
-       
-      
      
         // TODO add your handling code here:
     }//GEN-LAST:event_SwitchButtonMouseClicked
@@ -257,11 +251,8 @@ public class LogManFin extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        Administrator administrator = new Administrator();
+    	
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -270,13 +261,13 @@ public class LogManFin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LogManFinal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogManFin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LogManFinal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogManFin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LogManFinal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogManFin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LogManFinal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogManFin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -285,19 +276,17 @@ public class LogManFin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LogManFin().setVisible(true);
-                  
             }
             
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LoginButton;
-    private javax.swing.JTextField PasswordField;
-    private javax.swing.JButton SwitchButton;
-    private javax.swing.JLabel Title;
-    private javax.swing.JLabel Title1;
-    public static javax.swing.JTextField UsernameField;
+    protected javax.swing.JButton loginButton;
+    protected javax.swing.JTextField usernameField;
+    protected javax.swing.JTextField passwordField;
+    private javax.swing.JButton switchButton;
+    private javax.swing.JLabel title;
+    private javax.swing.JLabel title1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -305,5 +294,13 @@ public class LogManFin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    // End of variables declaration//GEN-END:variables
+
+    private void update() {
+
+    }
+    
+	@Override
+	public void update(Observable o, Object arg) {
+		update();
+	}
 }
