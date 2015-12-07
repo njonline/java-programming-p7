@@ -5,8 +5,8 @@ import java.util.*;
 
 public abstract class Person extends Observable {
 
-    private LogEmpFin loginEmployee;
-    private LogManFin loginManager;
+    private LogEmpFin loginEmployee = new LogEmpFin();
+    private LogManFin loginManager = new LogManFin();
     private HomeManFin managerHome;
 
     protected String firstname;
@@ -17,7 +17,7 @@ public abstract class Person extends Observable {
     protected int id = 0;
 
     protected String username;
-    protected int password;
+    protected String password;
 
     private boolean loggedIn;
 
@@ -40,8 +40,8 @@ public abstract class Person extends Observable {
 
         this.setUsername(scan.nextLine().toLowerCase());
 
-        int pass1 = Integer.parseInt(managerHome.createEmpPasswordField.getText());
-        int pass2 = Integer.parseInt(managerHome.repeatEmpPassword.getText());
+        String pass1 = managerHome.createEmpPasswordField.getText();
+        String pass2 = managerHome.repeatEmpPassword.getText();
 
         if (pass1 == pass2) {
             this.setPassword(pass1);
@@ -60,12 +60,12 @@ public abstract class Person extends Observable {
 
         if (employee != null) {
             String usernameInput;
-            int passwordInput;
+            String passwordInput;
 
             usernameInput = loginEmployee.usernameField.getText();
-            passwordInput = Integer.parseInt(loginEmployee.passwordField.getText());
+            passwordInput = loginEmployee.passwordField.getText();
 
-            if (usernameInput.equals(employee.getUsername()) && passwordInput == employee.getPassword()) {
+            if (usernameInput.equals(employee.getUsername()) && passwordInput.equals(employee.getPassword())) {
                 System.out.println("Succesfully logged in.");
                 loggedIn = true;
                 this.inform();
@@ -85,12 +85,12 @@ public abstract class Person extends Observable {
 
         if (administrator != null) {
             String usernameInput;
-            int passwordInput;
+            String passwordInput;
 
             usernameInput = loginManager.usernameField.getText();
-            passwordInput = Integer.parseInt(loginManager.passwordField.getText());
+            passwordInput = loginManager.passwordField.getText();
 
-            if (usernameInput.equals(administrator.getUsername()) && passwordInput == administrator.getPassword()) {
+            if (usernameInput.equals(administrator.getUsername()) && passwordInput.equals(administrator.getPassword())) {
                 System.out.println("Succesfully logged in.");
                 loggedIn = true;
                 this.inform();
@@ -147,7 +147,7 @@ public abstract class Person extends Observable {
         this.username = username;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -183,7 +183,7 @@ public abstract class Person extends Observable {
         return username;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 

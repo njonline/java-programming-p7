@@ -16,7 +16,7 @@ public class Administrator extends Person {
         super();
 
         this.setUsername("admin");
-        this.setPassword(1234);
+        this.setPassword("admin");
         admindatabase.addAdmin(this);
 
         System.out.println("Succesfully created Administrator.");

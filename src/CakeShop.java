@@ -6,7 +6,7 @@ public class CakeShop {
         EmployeeDB db = new EmployeeDB();
         Employee emp = new Employee();
         emp.setUsername("ilkcan");
-        emp.setPassword(1234);
+        emp.setPassword("1234");
         db.addEmployee(emp);
 
         Employee foundEmp = db.searchFor("ilkcan");
