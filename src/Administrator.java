@@ -1,80 +1,98 @@
+
 import java.io.*;
-import java.util.Scanner;
 
 public class Administrator extends Person {
-	
-	private Employee employee;
 
-	public Administrator() {
-		super();
-	}
-	
-	public void createAdmin() {
-		this.credentials();
-		
-		admindatabase.addAdmin(this);
-		
-		System.out.println("Succesfully created Administrator.");
-	}
-	
-	/**
-	 * Create an employee.
-	 * Ask for employee name and set new ID.
-	 * Set revenue and number of sales to 0.
-	 * Run method for creating username and password.
-	 * Add to employee db.
-	 * @return 
-	 */
-	public Employee createEmployee() {
-		employee = new Employee();
-		employee.setFirstname(firstnameInputEmployee());
-		employee.setLastname(lastnameInputEmployee());
-		//employee.setAddress(addressInputEmployee());
-		//employee.setTelephone(telephoneInputEmployee());
-		employee.setId(newEmployeeId());
-		employee.setRevenue(0);
-		employee.setNumOfSales(0);
-		
-		employee.credentials();
-		
-		employeedatabase.addEmployee(employee);
-		
-		System.out.println("Employee succesfully created.");
-		
-		return employee;
-	}
-	
-	/**
-	 * Sets the entered name to the name of the employee.
-	 * @param name
-	 */
-	private String firstnameInputEmployee() {
-		System.out.println("Employee firstname: ");
-		firstname = scanner.nextLine();
-		return firstname;
-	}
-	
-	private String lastnameInputEmployee() {
-		System.out.println("Employee lastname: ");
-		lastname = scanner.nextLine();
-		return lastname;
-	}
-	
-	private String addressInputEmployee() {
-		System.out.println("Employee address: ");
-		address = scanner.nextLine();
-		return address;
-	}
-	
-	private int telephoneInputEmployee() {
-		System.out.println("Employee telephone number: ");
-		telephone = scanner.nextInt();
-		return telephone;
-	}
+    private static final long serialVersionUID = -956244062256737851L;
 
-	protected int newEmployeeId() {
-		this.id = employeedatabase.getNumOfEmployees() + 1;
-		return id;
-	}
-	
+    private HomeManFin homeManager = new HomeManFin();
+    private Employee employee;
+
+    private File file = new File("employees.txt");
+    private BufferedWriter writer;
+
+    public Administrator() {
+        super();
+
+        this.setUsername("admin");
+        this.setPassword(1234);
+        admindatabase.addAdmin(this);
+
+        System.out.println("Succesfully created Administrator.");
+        System.out.println("Username: " + this.getUsername() + ". Password: " + this.getPassword());
+        this.inform();
+    }
+
+    /**
+     * Create an employee. Ask for employee name and set new ID. Set revenue and
+     * number of sales to 0. Run method for creating username and password. Add
+     * to employee db.
+     *
+     * @return
+     */
+    public Employee createEmployee() {
+        employee = new Employee();
+        employee.setFirstname(firstnameInputEmployee());
+        employee.setLastname(lastnameInputEmployee());
+        employee.setAddress(addressInputEmployee());
+        employee.setTelephone(telephoneInputEmployee());
+        employee.setId(newEmployeeId());
+        employee.setRevenue(0);
+        employee.setNumOfSales(0);
+
+        employee.credentials();
+        employeedatabase.addEmployee(employee);
+
+        try {
+            writer = new BufferedWriter(new FileWriter(file, true));
+            writer.write(employee.getFirstname() + ",");
+            writer.write(employee.getLastname() + ",");
+            writer.write(employee.getAddress() + ",");
+            writer.write(employee.getTelephone() + ",");
+            writer.write(employee.getId() + ",");
+            writer.write(employee.getRevenue() + ",");
+            writer.write(employee.getNumOfSales() + ",");
+            writer.write("\n");
+
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Employee succesfully created.");
+
+        this.inform();
+        return employee;
+    }
+
+    /**
+     * Sets the entered name to the name of the employee.
+     *
+     * @param name
+     */
+    private String firstnameInputEmployee() {
+        firstname = homeManager.CreateNameField.getText();
+        return firstname;
+    }
+
+    private String lastnameInputEmployee() {
+        lastname = homeManager.jLabel9.getText();
+        return lastname;
+    }
+
+    private String addressInputEmployee() {
+        address = homeManager.jLabel13.getText();
+        return address;
+    }
+
+    private String telephoneInputEmployee() {
+        telephone = homeManager.jLabel12.getText();
+        return telephone;
+    }
+
+    protected int newEmployeeId() {
+        this.id = employeedatabase.getNumOfEmployees() + 1;
+        return id;
+    }
+
 }
