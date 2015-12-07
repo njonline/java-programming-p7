@@ -27,8 +27,11 @@ public class HomeManFin extends javax.swing.JFrame implements Observer {
         LayerFire.setVisible(false);
         LayerGenRev.setVisible(false);
         LayerEmpRev.setVisible(false);
+       
+        
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1247,7 +1250,18 @@ public class HomeManFin extends javax.swing.JFrame implements Observer {
             System.exit(0);
         }
     }//GEN-LAST:event_ExitButton24ActionPerformed
+<<<<<<< Updated upstream
 
+=======
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {                                   
+
+    	   int exit=JOptionPane.showConfirmDialog(null, "ARE YOU SURE YOU WANT TO EXIT?");
+    	        if(exit==0){
+    	            System.exit(0);}
+    	     
+    	    
+    	    }  
+>>>>>>> Stashed changes
     /**
      * @param args the command line arguments
      */
@@ -1277,7 +1291,12 @@ public class HomeManFin extends javax.swing.JFrame implements Observer {
         }
         //</editor-fold>
         //</editor-fold>
+<<<<<<< Updated upstream
 
+=======
+        
+        
+>>>>>>> Stashed changes
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
