@@ -23,6 +23,7 @@ public class Order {
         this.id = newOrderId();
         this.value = 0;
         this.date = new Date();
+        System.out.println("Order created.");
     }
 
     /**

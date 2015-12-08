@@ -11,7 +11,7 @@ public abstract class Product {
     Scanner scanner = new Scanner(System.in);
 
     /**
-     * Creates a new cupcake. Sets the flavor and price.
+     * Creates a new product. Sets the flavor and price.
      *
      * @param flavor
      * @param price

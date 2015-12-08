@@ -1,6 +1,7 @@
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -8,15 +9,19 @@ import javax.swing.JPanel;
  *
  * @author daniele
  */
-public class HomeEmpFin extends javax.swing.JFrame {
+public class HomeEmpFin extends javax.swing.JFrame implements Observer {
+	
+	private Order ordr;
+	private static CupcakeDB db;
+	private String[] itemList = db.cupcake.toArray(new String[]{});
 
     /**
      * Creates new form NewJFrame
      */
     public HomeEmpFin() {
         initComponents();
-         layerNewOrder.setVisible(true);
-         layerPastOrder.setVisible(false);
+        layerNewOrder.setVisible(true);
+        layerPastOrder.setVisible(false);
     }
 
     private void initComponents() {
@@ -46,7 +51,7 @@ public class HomeEmpFin extends javax.swing.JFrame {
         orderPanel = new javax.swing.JPanel();
         orderScrollPanel = new javax.swing.JScrollPane();
         orderTable = new javax.swing.JTable();
-        itemOrderComboBox = new javax.swing.JComboBox<>();
+        itemOrderComboBox = new javax.swing.JComboBox<String>(itemList);
         itemOrderSpinner = new javax.swing.JSpinner();
         addItemOrderButton = new javax.swing.JButton();
         totalOrderField = new javax.swing.JTextField();
@@ -586,7 +591,7 @@ public class HomeEmpFin extends javax.swing.JFrame {
             orderTable.getColumnModel().getColumn(3).setHeaderValue("Price");
         }
 
-        itemOrderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "THIS LIST SHOULD CHANGE", "DYNAMICALLY", "IF USER ADD AN ITEM", "Blueberry Muffin", "Chocolate Muffin", "Coco Muffin", "Strawberry Muffin", " " }));
+        itemOrderComboBox.setModel(new javax.swing.DefaultComboBoxModel<String>(itemList));
         itemOrderComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemOrderComboBoxActionPerformed(evt);
@@ -594,6 +599,11 @@ public class HomeEmpFin extends javax.swing.JFrame {
         });
 
         addItemOrderButton.setText("Add");
+        addItemOrderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addItemOrderButtonActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Total");
 
@@ -1343,12 +1353,16 @@ public class HomeEmpFin extends javax.swing.JFrame {
     }
 
     private void newOrderButtonMouseClicked(java.awt.event.MouseEvent evt) {
-        
+        ordr = new Order();
     }
 
     private void newOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
         layerNewOrder.setVisible(true);
         layerPastOrder.setVisible(false);
+    }
+    
+    private void addItemOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	
     }
 
     private void itemOrderComboBoxActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1415,6 +1429,10 @@ public class HomeEmpFin extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+    	
+    	db = new CupcakeDB();
+    	db.addCakesToComboBox();
+    	db.addCakesToOrderTable();
        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1505,7 +1523,7 @@ public class HomeEmpFin extends javax.swing.JFrame {
     private javax.swing.JPanel orderPastPanel;
     private javax.swing.JScrollPane orderScrollPanel;
     private javax.swing.JScrollPane orderScrollPanel1;
-    private javax.swing.JTable orderTable;
+    protected javax.swing.JTable orderTable;
     private javax.swing.JPanel pastOrderPanel;
     private javax.swing.JPanel perPro;
     private javax.swing.JButton removeItemOrderButton;
@@ -1521,4 +1539,12 @@ public class HomeEmpFin extends javax.swing.JFrame {
     private void paint(JPanel StagePanel) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+    
+    private void update() {
+
+    }
+    
+	public void update(Observable o, Object arg) {
+		update();
+	}
 }
