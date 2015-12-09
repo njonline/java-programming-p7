@@ -7,6 +7,7 @@ public abstract class Product {
     protected String flavor;
     protected double price;
     protected int quantity;
+    protected int id;
 
     Scanner scanner = new Scanner(System.in);
 
@@ -43,12 +44,13 @@ public abstract class Product {
         return quantity;
     }
 
-    public void changePrice(double price) {
-        this.setPrice(price);
+    public int newProductId() {
+    	this.id = id++;
+    	return id;
     }
-
-    public void changeFlavor(String flavor) {
-        this.setFlavor(flavor);
+    
+    public void setProductId(int id) {
+    	this.id = id;
     }
 
     public void setName(String name) {
@@ -65,6 +67,10 @@ public abstract class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+    
+    public int getProductId() {
+    	return id;
     }
 
     public String getName() {

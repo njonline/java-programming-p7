@@ -1,3 +1,4 @@
+import java.io.File;
 
 public class CakeShop {
 
@@ -5,8 +6,7 @@ public class CakeShop {
     	
     	CupcakeDB db = new CupcakeDB();
         Cupcake cupcake = new Cupcake();
-        db.addCakesToComboBox();
-        db.addCakesToOrderTable();
+        File file = new File("cupcakes.txt");
     }
 
 }

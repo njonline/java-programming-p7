@@ -1,20 +1,43 @@
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class Cupcake extends Product {
 
-    CupcakeDB cupcakedatabase = new CupcakeDB();
+    private CupcakeDB cupcakedatabase = new CupcakeDB();
     private File file = new File("cupcakes.txt");
     private BufferedWriter writer;
 
     public Cupcake() {
         super();
     }
+    
+    public void addCupcake() {
+    	try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+        	String text;
+        	while((text = br.readLine()) != null) {
+   
+        		Cupcake cupcake = new Cupcake();
+        		String[] ca = text.split(",");
+        		cupcake.setProductId(Integer.parseInt(ca[0]));
+        		cupcake.setName(ca[1]);
+        		cupcake.setFlavor(ca[2]);
+        		cupcake.setQuantity(Integer.parseInt(ca[3]));
+        		cupcake.setPrice(Double.parseDouble(ca[4]));
+        		System.out.println(cupcake);
+        		cupcakedatabase.addCupcake(cupcake);
+        	} br.close();
+        } catch(IOException e) {
+        	e.printStackTrace();
+        }
+    }
 
     public void createProduct() {
+    	this.setProductId(newProductId());
         this.setName(productNameInput());
         this.setFlavor(productFlavorInput());
         this.setPrice(productPriceInput());
@@ -22,6 +45,7 @@ public class Cupcake extends Product {
         
         try {
             writer = new BufferedWriter(new FileWriter(file, true));
+            writer.write(this.getProductId() + ",");
             writer.write(this.getName() + ",");
             writer.write(this.getFlavor() + ",");
             writer.write(this.getPrice() + ",");
@@ -29,7 +53,7 @@ public class Cupcake extends Product {
             writer.write("\n");
 
             writer.close();
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
 
