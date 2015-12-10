@@ -19,6 +19,8 @@ public abstract class Product {
      * @param name
      */
     public abstract void createProduct();
+    
+    public abstract void addProductOnStartup();
 
     protected String productNameInput() {
         System.out.println("Product name: ");
@@ -72,6 +74,10 @@ public abstract class Product {
     public int getProductId() {
     	return id;
     }
+    
+    public String getProductIdToString() {
+    	return Integer.toString(id);
+    }
 
     public String getName() {
         return name;
@@ -83,6 +89,10 @@ public abstract class Product {
 
     public double getPrice() {
         return price;
+    }
+    
+    public String getPriceToString() {
+    	return Double.toString(price);
     }
 
     public int getQuantity() {

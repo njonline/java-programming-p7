@@ -1,6 +1,8 @@
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -18,8 +20,8 @@ public class Administrator extends Person {
         this.setPassword("admin");
         admindatabase.addAdmin(this);
 
-        System.out.println("Succesfully created Administrator.");
-        System.out.println("Username: " + this.getUsername() + ". Password: " + this.getPassword());
+        //System.out.println("Succesfully created Administrator.");
+        //System.out.println("Username: " + this.getUsername() + ". Password: " + this.getPassword());
         this.inform();
     }
 
@@ -51,7 +53,9 @@ public class Administrator extends Person {
             writer.write(employee.getTelephone() + ",");
             writer.write(employee.getId() + ",");
             writer.write(employee.getRevenue() + ",");
-            writer.write(employee.getNumOfSales() + "");
+            writer.write(employee.getNumOfSales() + ",");
+            writer.write(employee.getPassword() + ",");
+            writer.write(employee.getUsername() + "");
             writer.write("\n");
 
             writer.close();
@@ -63,6 +67,28 @@ public class Administrator extends Person {
 
         this.inform();
         return employee;
+    }
+    
+    public void adminLogin() throws IllegalArgumentException {
+        Administrator administrator = lookAtAdmin(0);
+
+        if (administrator != null) {
+
+            String usernameInput = LogManFin.getUsername();
+            String passwordInput = LogManFin.getPassword();
+
+            if (usernameInput.equals(administrator.getUsername()) && passwordInput.equals(administrator.getPassword())) {
+                System.out.println("Succesfully logged in.");
+                loggedIn = true;
+                this.inform();
+            } else {
+                System.out.println("Username or password incorrect");
+                loggedIn = false;
+                this.inform();
+            }
+        } else {
+            throw new IllegalArgumentException("Admin does not exist");
+        }
     }
 
     /**
@@ -93,6 +119,29 @@ public class Administrator extends Person {
     protected int newEmployeeId() {
         this.id = employeedatabase.getNumOfEmployees() + 1;
         return id;
+    }
+    
+    public void addEmployeeOnStartup() {
+    	try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+        	String text;
+        	while((text = br.readLine()) != null) {
+        		Employee employee = new Employee();
+        		String[] ea = text.split(",");
+        		employee.setFirstname(ea[0]);
+        		employee.setLastname(ea[1]);
+        		employee.setAddress(ea[2]);
+        		employee.setTelephone(ea[3]);
+        		employee.setId(Integer.parseInt(ea[4]));
+        		employee.setRevenue(Double.parseDouble(ea[5]));
+        		employee.setNumOfSales(Integer.parseInt(ea[6]));
+        		employee.setPassword(ea[7]);
+        		employee.setUsername(ea[8]);
+        		System.out.println(employee);
+        		employeedatabase.addEmployee(employee);
+        	} br.close();
+        } catch(IOException e) {
+        	e.printStackTrace();
+        }
     }
 
 }

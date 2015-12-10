@@ -219,9 +219,9 @@ public class LogManFin extends javax.swing.JFrame implements Observer {
      	
      	if(administrator.getLoggedIn()) {
      		HomeManFin a = new HomeManFin();
-             a.setVisible(true);
-             a.setDefaultCloseOperation(HomeManFin.DISPOSE_ON_CLOSE);
-             this.dispose();
+            a.setVisible(true);
+            a.setDefaultCloseOperation(HomeManFin.DISPOSE_ON_CLOSE);
+            this.dispose();
      	}
     }
 

@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class Cupcake extends Product {
 
-    private CupcakeDB cupcakedatabase = new CupcakeDB();
+    private static CupcakeDB cupcakedatabase = new CupcakeDB();
     private File file = new File("cupcakes.txt");
     private BufferedWriter writer;
 
@@ -16,11 +16,10 @@ public class Cupcake extends Product {
         super();
     }
     
-    public void addCupcake() {
+    public void addProductOnStartup() {
     	try(BufferedReader br = new BufferedReader(new FileReader(file))) {
         	String text;
         	while((text = br.readLine()) != null) {
-   
         		Cupcake cupcake = new Cupcake();
         		String[] ca = text.split(",");
         		cupcake.setProductId(Integer.parseInt(ca[0]));
@@ -28,7 +27,6 @@ public class Cupcake extends Product {
         		cupcake.setFlavor(ca[2]);
         		cupcake.setQuantity(Integer.parseInt(ca[3]));
         		cupcake.setPrice(Double.parseDouble(ca[4]));
-        		System.out.println(cupcake);
         		cupcakedatabase.addCupcake(cupcake);
         	} br.close();
         } catch(IOException e) {
@@ -58,6 +56,10 @@ public class Cupcake extends Product {
         }
 
         cupcakedatabase.addCupcake(this);
+    }
+    
+    public static Cupcake findCupcake(String name) {
+    	return cupcakedatabase.searchFor(name);
     }
 
     @Override

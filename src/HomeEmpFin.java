@@ -14,7 +14,8 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
 
 	private static final long serialVersionUID = 1L;
 	private Order ordr;
-	private static CupcakeDB db;
+	private static CupcakeDB db ;
+	private static Cupcake cupcake;
 	private String[] itemList = db.cupcake.toArray(new String[]{});
 
     /**
@@ -54,7 +55,8 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
         orderScrollPanel = new javax.swing.JScrollPane();
         orderTable = new javax.swing.JTable();
         itemOrderComboBox = new javax.swing.JComboBox<String>(itemList);
-        itemOrderSpinner = new javax.swing.JSpinner();
+        spinnerModel = new javax.swing.SpinnerNumberModel(1, 1, 9, 1);
+        itemOrderSpinner = new javax.swing.JSpinner(spinnerModel);
         addItemOrderButton = new javax.swing.JButton();
         totalOrderField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -1072,15 +1074,8 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     }
     
     private void addItemOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	db.addToOrder(itemOrderComboBox, orderTable);
-    	
-    	double total = 0;
-    	int row = orderTable.getRowCount();
-    	
-    	for(int i = 0; i < row; i++) {
-    		total += Double.parseDouble(orderTable.getValueAt(i, 3).toString());
-    	}
-    	totalOrderField.setText(new DecimalFormat("##.##").format(total));
+    	db.addToOrder(itemOrderComboBox, orderTable, itemOrderSpinner);
+    	updateOrderTotal();
     }
     
     private void totalOrderFieldActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1096,7 +1091,7 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     }
 
     private void completeOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        
+    	ordr.closeOrder("Nicklas");
     }
 
     private void itemChangeNameButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1140,11 +1135,22 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     }
 
     private void removeItemOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        db.removeFromOrder(orderTable);
+        updateOrderTotal();
     }
 
     private void searchItemInvButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         
+    }
+    
+    private void updateOrderTotal() {
+    	double total = 0;
+    	int row = orderTable.getRowCount();
+    	
+    	for(int i = 0; i < row; i++) {
+    		total += ( Double.parseDouble(orderTable.getValueAt(i, 2).toString()) * Double.parseDouble(orderTable.getValueAt(i, 3).toString()) );
+    	}
+    	totalOrderField.setText(new DecimalFormat("##.##").format(total));
     }
    
     /**
@@ -1154,6 +1160,8 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     	
     	db = new CupcakeDB();
     	db.addCakesToComboBox();
+    	cupcake = new Cupcake();
+    	cupcake.addProductOnStartup();
        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1215,6 +1223,7 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     private javax.swing.JPanel itemInventory;
     private javax.swing.JTextField itemNameInvField;
     private javax.swing.JComboBox<String> itemOrderComboBox;
+    private javax.swing.SpinnerModel spinnerModel;
     private javax.swing.JSpinner itemOrderSpinner;
     private javax.swing.JTextField itemPriceInvField;
     private javax.swing.JTextField itemQtyInvField;
@@ -1244,7 +1253,7 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     private javax.swing.JPanel orderPastPanel;
     private javax.swing.JScrollPane orderScrollPanel;
     private javax.swing.JScrollPane orderScrollPanel1;
-    protected javax.swing.JTable orderTable;
+    private javax.swing.JTable orderTable;
     private javax.swing.JPanel pastOrderPanel;
     private javax.swing.JPanel perPro;
     private javax.swing.JButton removeItemOrderButton;

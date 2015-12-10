@@ -1,8 +1,6 @@
 
 import java.util.*;
 
-@SuppressWarnings("resource")
-
 public abstract class Person extends Observable {
 
     protected String firstname;
@@ -15,7 +13,7 @@ public abstract class Person extends Observable {
     protected String username;
     protected String password;
 
-    private boolean loggedIn;
+    protected boolean loggedIn;
 
     protected static EmployeeDB employeedatabase = new EmployeeDB();
     protected static AdminDB admindatabase = new AdminDB();
@@ -38,67 +36,11 @@ public abstract class Person extends Observable {
         String pass1 = HomeManFin.getEmployeePassword();
         String pass2 = HomeManFin.getEmployeePasswordConfirmed();
 
-        if (pass1 == pass2) {
+        if (pass1.equals(pass2)) {
             this.setPassword(pass1);
         } else {
             System.out.println("Passwords do not match.");
         }
-    }
-
-    /**
-     * Allows the employees and admin to login. Asks for username and password -
-     * and logs the user in, if they match the password and username given when
-     * employee was created.
-     */
-    public void login(String username) throws IllegalArgumentException {
-        Employee employee = findEmployee(username);
-
-        if (employee != null) {
-            String usernameInput;
-            String passwordInput;
-
-            usernameInput = LogEmpFin.usernameField.getText();
-            passwordInput = LogEmpFin.passwordField.getText();
-
-            if (usernameInput.equals(employee.getUsername()) && passwordInput.equals(employee.getPassword())) {
-                System.out.println("Succesfully logged in.");
-                loggedIn = true;
-                this.inform();
-            } else {
-                System.out.println("Username or password incorrect");
-                loggedIn = false;
-                this.inform();
-            }
-        } else {
-            throw new IllegalArgumentException("Employee ID does not exist");
-        }
-
-    }
-
-    public void adminLogin() throws IllegalArgumentException {
-        Administrator administrator = lookAtAdmin(0);
-
-        if (administrator != null) {
-
-            String usernameInput = LogManFin.getUsername();
-            String passwordInput = LogManFin.getPassword();
-
-            if (usernameInput.equals(administrator.getUsername()) && passwordInput.equals(administrator.getPassword())) {
-                System.out.println("Succesfully logged in.");
-                loggedIn = true;
-                this.inform();
-            } else {
-                System.out.println("Username or password incorrect");
-                loggedIn = false;
-                this.inform();
-            }
-        } else {
-            throw new IllegalArgumentException("Admin does not exist");
-        }
-    }
-
-    public static Employee findEmployee(String username) {
-        return employeedatabase.searchFor(username);
     }
 
     public static Administrator findAdmin(String username) {

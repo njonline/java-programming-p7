@@ -3,6 +3,8 @@ import java.util.ArrayDeque;
 import java.util.Date;
 import java.util.Scanner;
 
+import javax.swing.JSpinner;
+
 public class Order {
 
     private int id;
@@ -23,7 +25,6 @@ public class Order {
         this.id = newOrderId();
         this.value = 0;
         this.date = new Date();
-        System.out.println("Order created.");
     }
 
     /**
@@ -35,9 +36,8 @@ public class Order {
      * @throws IllegalArgumentException if the amount to be added is less than
      * equal to 0.
      */
-    public void addItems(Product product) throws IllegalArgumentException {
-        System.out.println("Enter number of cupcakes to add to the order: ");
-        int qty = scanner.nextInt();
+    public void addItems(Product product, JSpinner spinner) throws IllegalArgumentException {
+        int qty = (int) spinner.getValue();
 
         if (qty > 0) {
             if (qty <= product.getQuantity()) {
@@ -88,7 +88,7 @@ public class Order {
      * @throws IllegalArgumentException if the employee is not logged in.
      */
     public void closeOrder(String username) throws IllegalArgumentException {
-        Employee employee = Person.findEmployee(username);
+        Employee employee = Employee.findEmployee(username);
 
         if (employee.getLoggedIn()) {
             employee.setRevenue(getOrderValue());

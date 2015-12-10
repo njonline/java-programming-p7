@@ -12,27 +12,28 @@ import java.util.Date;
 import java.util.Vector;
 
 import javax.swing.JComboBox;
+import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class CupcakeDB {
 	
 	protected ArrayList<String> cupcake = new ArrayList<String>();
-	private HomeEmpFin homeEmp;
+	private Order order = new Order();
 	private File file = new File("cupcakes.txt");
 
-    private static ArrayList<Product> cupcakes;
+    private static ArrayList<Cupcake> cupcakes;
 
     public CupcakeDB() {
-        cupcakes = new ArrayList<Product>();
+        cupcakes = new ArrayList<Cupcake>();
     }
 
-    public void addCupcake(Product product) {
-        cupcakes.add(product);
+    public void addCupcake(Cupcake cupcake) {
+        cupcakes.add(cupcake);
     }
 
-    public void removeCupcake(Product product) {
-        cupcakes.remove(product);
+    public void removeCupcake(Cupcake cupcake) {
+        cupcakes.remove(cupcake);
     }
 
     public int getNumOfCupcakes() {
@@ -51,22 +52,11 @@ public class CupcakeDB {
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
-    	System.out.println(cupcake);
     }
     
-    protected void addToOrder(JComboBox box, JTable table) {
-    	
-    	/**
-    	 * Get selected item
-    	 * Find info on item in text file
-		 * Add info to text file
-		 * Deduct from total in stock
-		 * Rewrite to text file
-    	 */
-    	
-    	DefaultTableModel model = (DefaultTableModel) table.getModel();
+    protected void addToOrder(JComboBox<String> box, JTable table, JSpinner spinner) {
+     	DefaultTableModel model = (DefaultTableModel) table.getModel();
     	Vector<String> data;
-    	String text;
     	String current = box.getSelectedItem().toString();
     	
     	Date date = Calendar.getInstance().getTime();
@@ -74,76 +64,46 @@ public class CupcakeDB {
     	String reportDate = df.format(date);
     	
     	if(current.equals("Blueberry")) {
-    		try(BufferedReader br = new BufferedReader(new FileReader(file))) {
-    			text = br.readLine();
-    			data = new Vector();
-    			String[] ca = text.split(",");
-    			data.addAll(Arrays.asList(ca[0], ca[1], "1", ca[4], reportDate));
-    			model.addRow(data);
-    			br.close();
-    		} catch(IOException e) {
-    			e.printStackTrace();
-    		}
-    	} else if(current.equals("Chocolate")) {
-    		int counter = 0;
-    		try(BufferedReader br = new BufferedReader(new FileReader(file))) {
-    			
-    			while((text = br.readLine()) != null) {
-    				counter++;
-    				if(counter == 1) {
-        				text = br.readLine();
-            			data = new Vector();
-            			String[] ca = text.split(",");
-            			data.addAll(Arrays.asList(ca[0], ca[1], "1", ca[4], reportDate));
-            			model.addRow(data);
-        			}
-    			}
-    			br.close();
-    		} catch(IOException e) {
-    			e.printStackTrace();
-    		}
+    		Cupcake cupcake = searchFor("Blueberry");
+    		data = new Vector<String>();
+    		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getPriceToString(), reportDate));
+    		model.addRow(data);
+    		order.addItems(cupcake, spinner);
+    	}else if(current.equals("Chocolate")) {
+    		Cupcake cupcake = searchFor("Chocolate");
+    		data = new Vector<String>();
+    		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getPriceToString(), reportDate));
+    		model.addRow(data);
+    		order.addItems(cupcake, spinner);
     	} else if(current.equals("Caramel")) {
-    		int counter = 0;
-    		try(BufferedReader br = new BufferedReader(new FileReader(file))) {
-    			
-    			while((text = br.readLine()) != null) {
-    				counter++;
-    				if(counter == 2) {
-        				text = br.readLine();
-            			data = new Vector();
-            			String[] ca = text.split(",");
-            			data.addAll(Arrays.asList(ca[0], ca[1], "1", ca[4], reportDate));
-            			model.addRow(data);
-        			}
-    			}
-    			br.close();
-    		} catch(IOException e) {
-    			e.printStackTrace();
-    		}
-    	table.setModel(model);
+    		Cupcake cupcake = searchFor("Caramel");
+    		data = new Vector<String>();
+    		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getPriceToString(), reportDate));
+    		model.addRow(data);
+    		order.addItems(cupcake, spinner);
     	}
+    	table.setModel(model);
     }
     
-    /*
-    protected void addCakesToOrderTable(JTable table) {
+    protected void removeFromOrder(JTable table) {
     	DefaultTableModel model = (DefaultTableModel) table.getModel();
-    	Vector data;
-    	String text = null;
-    
-    	try(BufferedReader br = new BufferedReader(new FileReader(file))) {
-    		while((text = br.readLine()) != null) {
-    			data = new Vector();
-    			StringTokenizer str = new StringTokenizer(text, ",");
-    			while(str.hasMoreTokens()) {
-    				String next = str.nextToken();
-    				data.add(next);
-    				System.out.println(next); 				
-    			} model.addRow(data);
-    		} br.close();
-    	} catch(IOException e) {
-    		e.printStackTrace();
-    	}
+    	model.removeRow(table.getSelectedRow());
     	table.setModel(model);
     }
-    */
+    
+    public Cupcake lookAt(int index) {
+        return cupcakes.get(index);
+    }
+
+    public Cupcake searchFor(String name) {
+        for (int i = 0; i < getNumOfCupcakes(); i++) {
+            Cupcake cupcake = lookAt(i);
+            String cupcakeName = cupcake.getName();
+
+            if (cupcakeName.equals(name)) {
+                return cupcake;
+            }
+        }
+        return null;
+    }
 }
