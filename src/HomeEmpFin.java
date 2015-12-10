@@ -13,16 +13,25 @@ import javax.swing.JPanel;
 public class HomeEmpFin extends javax.swing.JFrame implements Observer {
 
 	private static final long serialVersionUID = 1L;
+	private Administrator admin;
 	private Order ordr;
-	private static CupcakeDB db ;
-	private static Cupcake cupcake;
-	private String[] itemList = db.cupcake.toArray(new String[]{});
-
+	private CupcakeDB db ;
+	private Cupcake cupcake;
+	private String[] itemList;
     /**
      * Creates new form NewJFrame
      */
     public HomeEmpFin() {
+    	ordr = new Order();
+    	admin = new Administrator();
+    	admin.addEmployeeOnStartup();
+    	db = new CupcakeDB();
+    	db.addCakesToComboBox();
+    	cupcake = new Cupcake();
+    	cupcake.addProductOnStartup();
+    	itemList = db.cupcake.toArray(new String[]{});
         initComponents();
+        db.addCakesToInventory(inventoryTable1);
         layerNewOrder.setVisible(true);
         layerPastOrder.setVisible(false);
     }
@@ -708,7 +717,7 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
 
 			private static final long serialVersionUID = 1L;
 			Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -1087,7 +1096,8 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     }
 
     private void discardOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+    	ordr.cancelOrder(orderTable);
+    	updateOrderTotal();
     }
 
     private void completeOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1157,11 +1167,6 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-    	
-    	db = new CupcakeDB();
-    	db.addCakesToComboBox();
-    	cupcake = new Cupcake();
-    	cupcake.addProductOnStartup();
        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1222,7 +1227,7 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     private javax.swing.JButton itemChangeQtyButton;
     private javax.swing.JPanel itemInventory;
     private javax.swing.JTextField itemNameInvField;
-    private javax.swing.JComboBox<String> itemOrderComboBox;
+    private static javax.swing.JComboBox<String> itemOrderComboBox;
     private javax.swing.SpinnerModel spinnerModel;
     private javax.swing.JSpinner itemOrderSpinner;
     private javax.swing.JTextField itemPriceInvField;

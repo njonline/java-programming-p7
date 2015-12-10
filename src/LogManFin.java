@@ -10,9 +10,10 @@ public class LogManFin extends javax.swing.JFrame implements Observer {
 
 	private static final long serialVersionUID = 8895950366216860075L;
 	
-	private static Administrator administrator;
+	private Administrator administrator;
 
     public LogManFin() {
+    	administrator = new Administrator();
         initComponents();
     }
 
@@ -249,8 +250,7 @@ public class LogManFin extends javax.swing.JFrame implements Observer {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        administrator = new Administrator();
-    	
+            	
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

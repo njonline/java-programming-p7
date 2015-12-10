@@ -69,6 +69,28 @@ public class Administrator extends Person {
         return employee;
     }
     
+    public void addEmployeeOnStartup() {
+    	try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+        	String text;
+        	while((text = br.readLine()) != null) {
+        		Employee employee = new Employee();
+        		String[] ea = text.split(",");
+        		employee.setFirstname(ea[0]);
+        		employee.setLastname(ea[1]);
+        		employee.setAddress(ea[2]);
+        		employee.setTelephone(ea[3]);
+        		employee.setId(Integer.parseInt(ea[4]));
+        		employee.setRevenue(Double.parseDouble(ea[5]));
+        		employee.setNumOfSales(Integer.parseInt(ea[6]));
+        		employee.setPassword(ea[7]);
+        		employee.setUsername(ea[8]);
+        		employeedatabase.addEmployee(employee);
+        	} br.close();
+        } catch(IOException e) {
+        	e.printStackTrace();
+        }
+    }
+    
     public void adminLogin() throws IllegalArgumentException {
         Administrator administrator = lookAtAdmin(0);
 
@@ -119,29 +141,6 @@ public class Administrator extends Person {
     protected int newEmployeeId() {
         this.id = employeedatabase.getNumOfEmployees() + 1;
         return id;
-    }
-    
-    public void addEmployeeOnStartup() {
-    	try(BufferedReader br = new BufferedReader(new FileReader(file))) {
-        	String text;
-        	while((text = br.readLine()) != null) {
-        		Employee employee = new Employee();
-        		String[] ea = text.split(",");
-        		employee.setFirstname(ea[0]);
-        		employee.setLastname(ea[1]);
-        		employee.setAddress(ea[2]);
-        		employee.setTelephone(ea[3]);
-        		employee.setId(Integer.parseInt(ea[4]));
-        		employee.setRevenue(Double.parseDouble(ea[5]));
-        		employee.setNumOfSales(Integer.parseInt(ea[6]));
-        		employee.setPassword(ea[7]);
-        		employee.setUsername(ea[8]);
-        		System.out.println(employee);
-        		employeedatabase.addEmployee(employee);
-        	} br.close();
-        } catch(IOException e) {
-        	e.printStackTrace();
-        }
     }
 
 }

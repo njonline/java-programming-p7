@@ -25,8 +25,8 @@ public class Cupcake extends Product {
         		cupcake.setProductId(Integer.parseInt(ca[0]));
         		cupcake.setName(ca[1]);
         		cupcake.setFlavor(ca[2]);
-        		cupcake.setQuantity(Integer.parseInt(ca[3]));
-        		cupcake.setPrice(Double.parseDouble(ca[4]));
+        		cupcake.setQuantity(Integer.parseInt(ca[4]));
+        		cupcake.setPrice(Double.parseDouble(ca[3]));
         		cupcakedatabase.addCupcake(cupcake);
         	} br.close();
         } catch(IOException e) {

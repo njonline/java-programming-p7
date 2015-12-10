@@ -6,14 +6,14 @@ public class LogEmpFin extends javax.swing.JFrame implements Observer {
 
 	private static final long serialVersionUID = -8519842815833625226L;
 	
-	private static Employee employee = new Employee();
-	private static Administrator admin = new Administrator();
+	private Employee employee = new Employee();
+	private Administrator admin = new Administrator();
 	
     public LogEmpFin() {
+    	admin.addEmployeeOnStartup();
         initComponents();
     }
 
-    @SuppressWarnings("unchecked")
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
@@ -215,10 +215,13 @@ public class LogEmpFin extends javax.swing.JFrame implements Observer {
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {
         employee.employeeLogin();
-        HomeEmpFin a = new HomeEmpFin();
-        a.setVisible(true);
-        a.setDefaultCloseOperation(HomeEmpFin.DISPOSE_ON_CLOSE);
-        this.dispose();
+        
+        if(employee.getLoggedIn()) {
+        	HomeEmpFin a = new HomeEmpFin();
+            a.setVisible(true);
+            a.setDefaultCloseOperation(HomeEmpFin.DISPOSE_ON_CLOSE);
+            this.dispose();
+        }
     }
 
     private void SwitchButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,7 +236,6 @@ public class LogEmpFin extends javax.swing.JFrame implements Observer {
     }
 
     public static void main(String args[]) {
-    	admin.addEmployeeOnStartup();
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

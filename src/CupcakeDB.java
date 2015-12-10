@@ -40,6 +40,22 @@ public class CupcakeDB {
         return cupcakes.size();
     }
     
+    protected void addCakesToInventory(JTable table) {
+    	DefaultTableModel model = (DefaultTableModel) table.getModel();
+    	Vector<String> data;
+    	String text = null;
+    	
+    	try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+    		while((text = br.readLine()) != null) {
+    			data = new Vector<String>();
+    			model.addRow(text.split(","));
+    		}
+    	} catch(IOException e) {
+    		e.printStackTrace();
+    	}
+    	table.setModel(model);
+    }
+    
     protected void addCakesToComboBox() {
     	String text = null;
     	
@@ -87,7 +103,22 @@ public class CupcakeDB {
     
     protected void removeFromOrder(JTable table) {
     	DefaultTableModel model = (DefaultTableModel) table.getModel();
-    	model.removeRow(table.getSelectedRow());
+    	String current = table.getValueAt(table.getSelectedRow(), 1).toString();
+    	int currentValue = Integer.parseInt((String) table.getValueAt(table.getSelectedRow(), 2));
+    	
+    	if(current.equals("Blueberry")) {
+    		Cupcake cupcake = searchFor("Blueberry");
+    		order.removeItems(cupcake, currentValue);
+    		model.removeRow(table.getSelectedRow());
+    	} else if(current.equals("Chocolate")) {
+    		Cupcake cupcake = searchFor("Chocolate");
+    		order.removeItems(cupcake, currentValue);
+    		model.removeRow(table.getSelectedRow());
+    	} else if(current.equals("Caramel")) {
+    		Cupcake cupcake = searchFor("Caramel");
+    		order.removeItems(cupcake, currentValue);
+    		model.removeRow(table.getSelectedRow());
+    	}
     	table.setModel(model);
     }
     

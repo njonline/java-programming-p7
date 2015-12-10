@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.Scanner;
 
 import javax.swing.JSpinner;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class Order {
 
@@ -62,10 +64,9 @@ public class Order {
      * @throws IllegalArgumentException if the amount to be removed is less than
      * or equal to 0.
      */
-    public void removeItems(Product product) throws IllegalArgumentException {
-        System.out.println("Enter number of cupcakes to remove from the order: ");
-        int qty = scanner.nextInt();
-
+    public void removeItems(Product product, int quantity) throws IllegalArgumentException {
+        int qty = quantity;
+        		
         if (qty > 0) {
             if (qty <= getNumOfOrderItems()) {
                 for (int i = 0; i < qty; i++) {
@@ -100,8 +101,13 @@ public class Order {
         }
     }
 
-    public void cancelOrder(Cupcake cupcake) {
+    public void cancelOrder(JTable table) {
+    	DefaultTableModel model = (DefaultTableModel) table.getModel();
         orderItems.removeAll(orderItems);
+        int rowCount = model.getRowCount();
+        for (int i = rowCount - 1; i >= 0; i--) {
+        	model.removeRow(i);
+        }
     }
 
     /**

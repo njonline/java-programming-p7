@@ -12,6 +12,11 @@ public class Employee extends Person {
         return employeedatabase.searchFor(username);
     }
     
+    /*
+    public static Employee findLoggedIn() {
+    	return employee;
+    }*/
+    
     /**
      * Allows the employees and admin to login. Asks for username and password -
      * and logs the user in, if they match the password and username given when
