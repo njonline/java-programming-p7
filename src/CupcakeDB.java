@@ -48,7 +48,9 @@ public class CupcakeDB {
     	try(BufferedReader br = new BufferedReader(new FileReader(file))) {
     		while((text = br.readLine()) != null) {
     			data = new Vector<String>();
-    			model.addRow(text.split(","));
+    			String[] product = text.split(",");
+    			data.addAll(Arrays.asList(product[0], product[1], product[4], product[3]));
+    			model.addRow(data);
     		}
     	} catch(IOException e) {
     		e.printStackTrace();
