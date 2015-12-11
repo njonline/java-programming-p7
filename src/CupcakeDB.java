@@ -44,28 +44,13 @@ public class CupcakeDB {
     	Cupcake cupcake;
     	DefaultTableModel model = (DefaultTableModel) table.getModel();
     	Vector<String> data;
-    	String text = null;
     	
     	for(int i = 0; i < getNumOfCupcakes(); i++) {
     		cupcake = lookAt(i);
     		data = new Vector<String>();
     		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), cupcake.getProductQuantityToString(), cupcake.getPriceToString()));
     		model.addRow(data);
-    	}
-    	
-    	/*
-    	try(BufferedReader br = new BufferedReader(new FileReader(file))) {
-    		while((text = br.readLine()) != null) {
-    			data = new Vector<String>();
-    			String[] product = text.split(",");
-    			data.addAll(Arrays.asList(product[0], product[1], product[4], product[3]));
-    			model.addRow(data);
-    		}
-    	} catch(IOException e) {
-    		e.printStackTrace();
-    	}
-    	*/
-    	
+    	}    	
     	table.setModel(model);
     }
     
