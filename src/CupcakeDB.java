@@ -41,10 +41,19 @@ public class CupcakeDB {
     }
     
     protected void addCakesToInventory(JTable table) {
+    	Cupcake cupcake;
     	DefaultTableModel model = (DefaultTableModel) table.getModel();
     	Vector<String> data;
     	String text = null;
     	
+    	for(int i = 0; i < getNumOfCupcakes(); i++) {
+    		cupcake = lookAt(i);
+    		data = new Vector<String>();
+    		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), cupcake.getProductQuantityToString(), cupcake.getPriceToString()));
+    		model.addRow(data);
+    	}
+    	
+    	/*
     	try(BufferedReader br = new BufferedReader(new FileReader(file))) {
     		while((text = br.readLine()) != null) {
     			data = new Vector<String>();
@@ -55,6 +64,8 @@ public class CupcakeDB {
     	} catch(IOException e) {
     		e.printStackTrace();
     	}
+    	*/
+    	
     	table.setModel(model);
     }
     
