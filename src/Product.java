@@ -91,11 +91,15 @@ public abstract class Product {
         return price;
     }
     
-    public String getPriceToString() {
+    public String getProductPriceToString() {
     	return Double.toString(price);
     }
 
     public int getQuantity() {
         return quantity;
+    }
+    
+    public String getProductQuantityToString() {
+    	return Integer.toString(quantity);
     }
 }

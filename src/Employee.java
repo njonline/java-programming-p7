@@ -1,8 +1,10 @@
+import java.util.ArrayList;
 
 public class Employee extends Person {
 
     private double revenue;
     private int numOfSales;
+    private static ArrayList<Employee> loggedIn = new ArrayList<Employee>();
 
     public Employee() {
         super();
@@ -11,11 +13,6 @@ public class Employee extends Person {
     public static Employee findEmployee(String username) {
         return employeedatabase.searchFor(username);
     }
-    
-    /*
-    public static Employee findLoggedIn() {
-    	return employee;
-    }*/
     
     /**
      * Allows the employees and admin to login. Asks for username and password -
@@ -34,17 +31,25 @@ public class Employee extends Person {
 
             if (usernameInput.equals(employee.getUsername()) && passwordInput.equals(employee.getPassword())) {
                 System.out.println("Succesfully logged in.");
-                loggedIn = true;
+                loggedIn.add(employee);
                 this.inform();
             } else {
                 System.out.println("Username or password incorrect");
-                loggedIn = false;
                 this.inform();
+                loggedIn.remove(employee);
             }
         } else {
             throw new IllegalArgumentException("Employee username does not exist");
         }
 
+    }
+    
+    public static Employee lookAtLoggedIn(int index) {
+    	return loggedIn.get(index);
+    }
+    
+    public static int getNumOfLoggedIn() {
+    	return loggedIn.size();
     }
 
     public void setRevenue(double revenue) {

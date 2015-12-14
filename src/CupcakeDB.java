@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Observable;
 import java.util.Vector;
 
 import javax.swing.JComboBox;
@@ -16,7 +17,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class CupcakeDB {
+public class CupcakeDB extends Observable {
 	
 	protected ArrayList<String> cupcake = new ArrayList<String>();
 	private Order order = new Order();
@@ -41,18 +42,16 @@ public class CupcakeDB {
     }
     
     protected void addCakesToInventory(JTable table) {
+    	Cupcake cupcake;
     	DefaultTableModel model = (DefaultTableModel) table.getModel();
     	Vector<String> data;
-    	String text = null;
     	
-    	try(BufferedReader br = new BufferedReader(new FileReader(file))) {
-    		while((text = br.readLine()) != null) {
-    			data = new Vector<String>();
-    			model.addRow(text.split(","));
-    		}
-    	} catch(IOException e) {
-    		e.printStackTrace();
-    	}
+    	for(int i = 0; i < getNumOfCupcakes(); i++) {
+    		cupcake = lookAt(i);
+    		data = new Vector<String>();
+    		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), cupcake.getProductQuantityToString(), cupcake.getProductPriceToString()));
+    		model.addRow(data);
+    	}    	
     	table.setModel(model);
     }
     
@@ -82,19 +81,19 @@ public class CupcakeDB {
     	if(current.equals("Blueberry")) {
     		Cupcake cupcake = searchFor("Blueberry");
     		data = new Vector<String>();
-    		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getPriceToString(), reportDate));
+    		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getProductPriceToString(), reportDate));
     		model.addRow(data);
     		order.addItems(cupcake, spinner);
     	}else if(current.equals("Chocolate")) {
     		Cupcake cupcake = searchFor("Chocolate");
     		data = new Vector<String>();
-    		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getPriceToString(), reportDate));
+    		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getProductPriceToString(), reportDate));
     		model.addRow(data);
     		order.addItems(cupcake, spinner);
     	} else if(current.equals("Caramel")) {
     		Cupcake cupcake = searchFor("Caramel");
     		data = new Vector<String>();
-    		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getPriceToString(), reportDate));
+    		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getProductPriceToString(), reportDate));
     		model.addRow(data);
     		order.addItems(cupcake, spinner);
     	}
@@ -136,5 +135,13 @@ public class CupcakeDB {
             }
         }
         return null;
+    }
+    
+    protected void inform() {
+        // Mark this Observable object as having been changed 
+        this.setChanged();
+        /* notify all of its observers and then call the clearChanged
+		 * method to indicate that this object has no longer changed */
+        this.notifyObservers();
     }
 }

@@ -13,8 +13,6 @@ public abstract class Person extends Observable {
     protected String username;
     protected String password;
 
-    protected boolean loggedIn;
-
     protected static EmployeeDB employeedatabase = new EmployeeDB();
     protected static AdminDB admindatabase = new AdminDB();
 
@@ -49,13 +47,6 @@ public abstract class Person extends Observable {
 
     public static Administrator lookAtAdmin(int index) {
         return admindatabase.lookAt(index);
-    }
-
-    /**
-     * Logs out user by setting boolean loggedIn to false.
-     */
-    public void logout() {
-        loggedIn = false;
     }
 
     protected void inform() {
@@ -120,9 +111,5 @@ public abstract class Person extends Observable {
 
     public String getPassword() {
         return password;
-    }
-
-    public boolean getLoggedIn() {
-        return loggedIn;
     }
 }

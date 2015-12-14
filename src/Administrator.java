@@ -101,11 +101,9 @@ public class Administrator extends Person {
 
             if (usernameInput.equals(administrator.getUsername()) && passwordInput.equals(administrator.getPassword())) {
                 System.out.println("Succesfully logged in.");
-                loggedIn = true;
                 this.inform();
             } else {
                 System.out.println("Username or password incorrect");
-                loggedIn = false;
                 this.inform();
             }
         } else {

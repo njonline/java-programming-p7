@@ -5,6 +5,7 @@ import java.util.Observer;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -32,6 +33,8 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     	itemList = db.cupcake.toArray(new String[]{});
         initComponents();
         db.addCakesToInventory(inventoryTable1);
+    	updateEmployeeRevenue();
+        displayEmployeeInfo();
         layerNewOrder.setVisible(true);
         layerPastOrder.setVisible(false);
     }
@@ -115,7 +118,7 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
         jLabel34 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        empPerSalesTextfield = new javax.swing.JTextPane();
+        empPerSalesTextfield = new javax.swing.JLabel();
         footerPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -132,13 +135,16 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
 
         headerPanel.setBackground(new java.awt.Color(204, 204, 204));
 
-        title.setFont(new java.awt.Font("STKaiti", 0, 48)); // NOI18N
+        title.setFont(new java.awt.Font("STKaiti", 0, 48));
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("Mormors Kager");
 
-        title1.setFont(new java.awt.Font("STKaiti", 0, 24)); // NOI18N
+        title1.setFont(new java.awt.Font("STKaiti", 0, 24));
         title1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title1.setText("Employee");
+        
+        empPerSalesTextfield.setFont(new java.awt.Font("STKaiti", 0, 24));
+        empPerSalesTextfield.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         exitButton.setToolTipText("");
         exitButton.setMaximumSize(new java.awt.Dimension(56, 49));
@@ -846,6 +852,11 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
         jLabel53.setText("Address");
 
         saveEmpButton.setText("Save");
+        saveEmpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveEmpButtonButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout AddPanel3Layout = new javax.swing.GroupLayout(AddPanel3);
         AddPanel3.setLayout(AddPanel3Layout);
@@ -1072,6 +1083,10 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
         if(exit==0){
             System.exit(0);   }
     }
+    
+    private void saveEmpButtonButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	updateEmployeeInfo();
+    }
 
     private void newOrderButtonMouseClicked(java.awt.event.MouseEvent evt) {
         ordr = new Order();
@@ -1085,6 +1100,11 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     private void addItemOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	db.addToOrder(itemOrderComboBox, orderTable, itemOrderSpinner);
     	updateOrderTotal();
+    }
+    
+    private void removeItemOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        db.removeFromOrder(orderTable);
+        updateOrderTotal();
     }
     
     private void totalOrderFieldActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1101,7 +1121,12 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     }
 
     private void completeOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	ordr.closeOrder("Nicklas");
+    	ordr.closeOrder(orderTable, totalOrderField);
+    	updateOrderTotal();
+    	updateInventoryTable();
+    	updateEmployeeRevenue();
+    	
+    	ordr = new Order();
     }
 
     private void itemChangeNameButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1144,23 +1169,79 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     
     }
 
-    private void removeItemOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        db.removeFromOrder(orderTable);
-        updateOrderTotal();
-    }
-
     private void searchItemInvButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         
     }
     
-    private void updateOrderTotal() {
+    private Double getOrderTotal() {
     	double total = 0;
     	int row = orderTable.getRowCount();
     	
     	for(int i = 0; i < row; i++) {
     		total += ( Double.parseDouble(orderTable.getValueAt(i, 2).toString()) * Double.parseDouble(orderTable.getValueAt(i, 3).toString()) );
     	}
-    	totalOrderField.setText(new DecimalFormat("##.##").format(total));
+    	
+    	total = Math.round(total * 100);
+    	total = total/100;
+    	
+    	return total;
+    }
+    
+    private void updateOrderTotal() {
+    	totalOrderField.setText(Double.toString(getOrderTotal()));
+    }
+    
+    private void updateInventoryTable() {
+    	DefaultTableModel model = (DefaultTableModel) inventoryTable1.getModel();
+        int rowCount = model.getRowCount();
+        for (int i = rowCount - 1; i >= 0; i--) {
+        	model.removeRow(i);
+        }
+    	db.addCakesToInventory(inventoryTable1);
+    	inventoryTable1.setModel(model);
+    }
+    
+    private void updateEmployeeRevenue() {
+    	Employee employee = Employee.lookAtLoggedIn(0);
+    	
+    	if(employee != null) {
+    		empPerSalesTextfield.setText(Double.toString(employee.getRevenue()) + " DKK");
+    	} else {
+    		empPerSalesTextfield.setText("N/A");
+    	}
+    }
+    
+    private void displayEmployeeInfo() {
+    	Employee employee = Employee.lookAtLoggedIn(0);
+    	
+    	if(employee != null) {
+    		empNameField.setText(employee.getFirstname());
+    		empSurnameField.setText(employee.getLastname());
+    		empAddressField.setText(employee.getAddress());
+    		empNumberField.setText(employee.getTelephone());
+    		empNewPasswordField.setText("");
+    		empRepPasswordField.setText("");
+    	}
+    }
+    
+    private void updateEmployeeInfo() throws IllegalArgumentException {
+    	Employee employee = Employee.lookAtLoggedIn(0);
+    	
+    	if(employee != null) {
+    		String pass1 = empNewPasswordField.getText();
+    		String pass2 = empRepPasswordField.getText();
+    		
+    		employee.setFirstname(empNameField.getText());
+    		employee.setLastname(empSurnameField.getText());
+    		employee.setAddress(empAddressField.getText());
+    		employee.setTelephone(empNumberField.getText());
+    		if(pass1.equals(pass2) && pass1 != null && pass2 != null) { 
+    			employee.setPassword(pass1); 
+    		} else {
+    			throw new IllegalArgumentException("Passwords do not match");
+    		}
+    		System.out.println("Employee info updated. Address is: " + employee.getAddress());
+    	}
     }
    
     /**
@@ -1203,17 +1284,17 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     private javax.swing.JFormattedTextField dateSearchField;
     private javax.swing.JButton discardOrderButton;
     private javax.swing.JPanel editEmpProPanel;
-    private javax.swing.JTextField empAddressField;
     private javax.swing.JTextField empNameField;
-    private javax.swing.JTextField empNewPasswordField;
+    private javax.swing.JTextField empSurnameField;
+    private javax.swing.JTextField empAddressField;
     private javax.swing.JTextField empNumberField;
-    private javax.swing.JTabbedPane empPanel;
-    private javax.swing.JTextPane empPerSalesTextfield;
+    private javax.swing.JTextField empNewPasswordField;
     private javax.swing.JTextField empRepPasswordField;
+    private javax.swing.JTabbedPane empPanel;
+    private javax.swing.JLabel empPerSalesTextfield;
     private javax.swing.JPanel empStagePanel1;
     private javax.swing.JPanel empStagePanel2;
     private javax.swing.JPanel empStagePanel3;
-    private javax.swing.JTextField empSurnameField;
     private javax.swing.JPanel empToolPanel1;
     private javax.swing.JPanel empToolPanel2;
     private javax.swing.JPanel empToolPanel3;
@@ -1227,7 +1308,7 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     private javax.swing.JButton itemChangeQtyButton;
     private javax.swing.JPanel itemInventory;
     private javax.swing.JTextField itemNameInvField;
-    private static javax.swing.JComboBox<String> itemOrderComboBox;
+    private javax.swing.JComboBox<String> itemOrderComboBox;
     private javax.swing.SpinnerModel spinnerModel;
     private javax.swing.JSpinner itemOrderSpinner;
     private javax.swing.JTextField itemPriceInvField;

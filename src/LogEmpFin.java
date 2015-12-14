@@ -216,12 +216,10 @@ public class LogEmpFin extends javax.swing.JFrame implements Observer {
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {
         employee.employeeLogin();
         
-        if(employee.getLoggedIn()) {
-        	HomeEmpFin a = new HomeEmpFin();
-            a.setVisible(true);
-            a.setDefaultCloseOperation(HomeEmpFin.DISPOSE_ON_CLOSE);
-            this.dispose();
-        }
+        HomeEmpFin a = new HomeEmpFin();
+        a.setVisible(true);
+        a.setDefaultCloseOperation(HomeEmpFin.DISPOSE_ON_CLOSE);
+        this.dispose();
     }
 
     private void SwitchButtonActionPerformed(java.awt.event.ActionEvent evt) {

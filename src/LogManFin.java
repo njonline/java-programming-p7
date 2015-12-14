@@ -218,12 +218,10 @@ public class LogManFin extends javax.swing.JFrame implements Observer {
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	administrator.adminLogin();
      	
-     	if(administrator.getLoggedIn()) {
-     		HomeManFin a = new HomeManFin();
-            a.setVisible(true);
-            a.setDefaultCloseOperation(HomeManFin.DISPOSE_ON_CLOSE);
-            this.dispose();
-     	}
+     	HomeManFin a = new HomeManFin();
+        a.setVisible(true);
+        a.setDefaultCloseOperation(HomeManFin.DISPOSE_ON_CLOSE);
+        this.dispose();
     }
 
     private void SwitchButtonActionPerformed(java.awt.event.ActionEvent evt) {

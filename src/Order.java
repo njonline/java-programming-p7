@@ -1,32 +1,51 @@
 
-import java.util.ArrayDeque;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
+import java.util.Observable;
 
 import javax.swing.JSpinner;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class Order {
+public class Order extends Observable {
 
     private int id;
-    private int totalNumOfOrders = 0;
+    private int totalNumOfOrders;
     private double value;
     private Date date;
 
     private OrderDB orderdatabase = new OrderDB();
-    private ArrayDeque<Product> orderItems;
-
-    private Scanner scanner = new Scanner(System.in);
+    private ArrayList<Product> orderItems = new ArrayList<Product>();
+    
+    private BufferedWriter writer;
+    private File file = new File("requests.txt");
     
     /**
      * Creates a new order. Assigns an ID. Sets the value of the order to 0.
      */
     public Order() {
-    	orderItems = new ArrayDeque<Product>();
         this.id = newOrderId();
-        this.value = 0;
+        this.setOrderValue(0.0);
         this.date = new Date();
+    }
+    
+    private void saveOrder() {
+    	try{
+    		writer = new BufferedWriter(new FileWriter(file, true));
+    		writer.write(getOrderId() + ",");
+    		writer.write(getOrderValue() + ",");
+    		writer.write(getDateToString() + "");
+    		writer.write("\n");
+    	} catch(IOException e) {
+    		e.printStackTrace();
+    	}
     }
 
     /**
@@ -44,7 +63,7 @@ public class Order {
         if (qty > 0) {
             if (qty <= product.getQuantity()) {
                 for (int i = 0; i < qty; i++) {
-                    setOrderValue(value + product.getPrice());
+                    setOrderValue(getOrderValue() + product.getPrice());
                     orderItems.add(product);
                     product.setQuantity(product.getQuantity() - 1);
                 }
@@ -54,6 +73,8 @@ public class Order {
         } else {
             throw new IllegalArgumentException("The amount has to be positive");
         }
+        this.inform();
+        System.out.println("Order value is now: " + this.getOrderValue());
     }
 
     /**
@@ -70,7 +91,7 @@ public class Order {
         if (qty > 0) {
             if (qty <= getNumOfOrderItems()) {
                 for (int i = 0; i < qty; i++) {
-                    setOrderValue(value - product.getPrice());
+                    setOrderValue(getOrderValue() - product.getPrice());
                     orderItems.remove(product);
                     product.setQuantity(product.getQuantity() + 1);
                 }
@@ -78,6 +99,8 @@ public class Order {
         } else {
             throw new IllegalArgumentException("The number has to be positive.");
         }
+        this.inform();
+        System.out.println("Order value is now: " + this.getOrderValue());
     }
 
     /**
@@ -88,26 +111,45 @@ public class Order {
      * @param employee
      * @throws IllegalArgumentException if the employee is not logged in.
      */
-    public void closeOrder(String username) throws IllegalArgumentException {
-        Employee employee = Employee.findEmployee(username);
+    public void closeOrder(JTable table, JTextField textfield) throws IllegalArgumentException {
+        Employee employee = Employee.lookAtLoggedIn(0);
 
-        if (employee.getLoggedIn()) {
-            employee.setRevenue(getOrderValue());
+        if (employee != null) {
+            employee.setRevenue(employee.getRevenue() + Double.parseDouble(textfield.getText()));
             employee.setNumOfSales(employee.getNumOfSales() + 1);
             orderdatabase.addOrder(this);
-            orderItems.removeAll(orderItems);
+            this.saveOrder();
+            orderItems.clear();
+            
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            int rowCount = model.getRowCount();
+            for (int i = rowCount - 1; i >= 0; i--) {
+            	model.removeRow(i);
+            }
+            table.setModel(model);
         } else {
         	throw new IllegalArgumentException("Employee not logged in.");
         }
+        this.inform();
     }
 
     public void cancelOrder(JTable table) {
     	DefaultTableModel model = (DefaultTableModel) table.getModel();
-        orderItems.removeAll(orderItems);
+        
+        orderItems.clear();
         int rowCount = model.getRowCount();
         for (int i = rowCount - 1; i >= 0; i--) {
         	model.removeRow(i);
         }
+        this.inform();
+    }
+    
+    protected void inform() {
+        // Mark this Observable object as having been changed 
+        this.setChanged();
+        /* notify all of its observers and then call the clearChanged
+		 * method to indicate that this object has no longer changed */
+        this.notifyObservers();
     }
 
     /**
@@ -155,7 +197,8 @@ public class Order {
         return value;
     }
     
-    public Date getDate() {
-    	return date;
+    public String getDateToString() {
+    	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+    	return df.format(date);
     }
 }
