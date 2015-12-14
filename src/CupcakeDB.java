@@ -49,7 +49,11 @@ public class CupcakeDB extends Observable {
     	for(int i = 0; i < getNumOfCupcakes(); i++) {
     		cupcake = lookAt(i);
     		data = new Vector<String>();
+<<<<<<< HEAD
     		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), cupcake.getProductQuantityToString(), cupcake.getProductPriceToString()));
+=======
+    		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), cupcake.getProductQuantityToString(), cupcake.getPriceToString()));
+>>>>>>> d1744071f7c118e59ce28f43dfc0a2e7b3cd760c
     		model.addRow(data);
     	}    	
     	table.setModel(model);

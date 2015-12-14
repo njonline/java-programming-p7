@@ -74,10 +74,6 @@ public abstract class Product {
     public int getProductId() {
     	return id;
     }
-    
-    public String getProductIdToString() {
-    	return Integer.toString(id);
-    }
 
     public String getName() {
         return name;
@@ -93,6 +89,14 @@ public abstract class Product {
     
     public String getProductPriceToString() {
     	return Double.toString(price);
+    }
+    
+    public String getProductIdToString() {
+    	return Integer.toString(id);
+    }
+    
+    public String getProductQuantityToString() {
+    	return Integer.toString(quantity);
     }
 
     public int getQuantity() {
