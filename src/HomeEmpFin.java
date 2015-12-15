@@ -4,10 +4,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author daniele
- */
 public class HomeEmpFin extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -25,9 +21,9 @@ public class HomeEmpFin extends javax.swing.JFrame {
     public HomeEmpFin() throws ParseException {
     	ordr = new Order();
     	orderdb = new OrderDB();
+    	employeedb = new EmployeeDB();
     	admin = new Administrator();
     	admin.addEmployeeOnStartup();
-    	employeedb = new EmployeeDB();
     	cupcakedb = new CupcakeDB();
     	cupcakedb.addCakesToComboBox();
     	cupcake = new Cupcake();
@@ -1132,8 +1128,6 @@ public class HomeEmpFin extends javax.swing.JFrame {
     	updateInventoryTable();
     	updateEmployeeRevenue();
     	orderdb.addRequestsToTable(PastOrderTable);
-    	
-    	ordr = new Order();
     }
 
     private void itemChangeNameButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1173,9 +1167,9 @@ public class HomeEmpFin extends javax.swing.JFrame {
     	int exit=JOptionPane.showConfirmDialog(null, "ARE YOU SURE YOU WANT TO EXIT?");
     	
         if(exit==0){
-        	employeedb.saveEmployees();
         	cupcakedb.saveCupcakes();
         	orderdb.saveRequests();
+        	employeedb.saveEmployees();
             System.exit(0);
         }
     }
@@ -1213,7 +1207,7 @@ public class HomeEmpFin extends javax.swing.JFrame {
     }
     
     private void updateEmployeeRevenue() {
-    	Employee employee = Employee.lookAtLoggedIn(0);
+    	Employee employee = Employee.employeeLogin();
     	
     	if(employee != null) {
     		double total = employee.getRevenue();
@@ -1228,20 +1222,20 @@ public class HomeEmpFin extends javax.swing.JFrame {
     }
     
     private void displayEmployeeInfo() {
-    	Employee employee = Employee.lookAtLoggedIn(0);
+    	Employee employee = Employee.employeeLogin();
     	
     	if(employee != null) {
     		empNameField.setText(employee.getFirstname());
     		empSurnameField.setText(employee.getLastname());
     		empAddressField.setText(employee.getAddress());
     		empNumberField.setText(employee.getTelephone());
-    		empNewPasswordField.setText("");
-    		empRepPasswordField.setText("");
+    		empNewPasswordField.setText(employee.getPassword());
+    		empRepPasswordField.setText(employee.getPassword());
     	}
     }
     
     private void updateEmployeeInfo() throws IllegalArgumentException {
-    	Employee employee = Employee.lookAtLoggedIn(0);
+    	Employee employee = Employee.employeeLogin();
     	
     	if(employee != null) {
     		String pass1 = empNewPasswordField.getText();
@@ -1253,6 +1247,9 @@ public class HomeEmpFin extends javax.swing.JFrame {
     		employee.setTelephone(empNumberField.getText());
     		if(pass1.equals(pass2) && pass1 != null && pass2 != null) { 
     			employee.setPassword(pass1); 
+    		} else if(pass1.equals("") && pass2.equals("")) {
+    			employee.setPassword(employee.getPassword());
+    		
     		} else {
     			throw new IllegalArgumentException("Passwords do not match");
     		}

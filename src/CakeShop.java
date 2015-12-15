@@ -1,4 +1,7 @@
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class CakeShop {
 
@@ -6,14 +9,12 @@ public class CakeShop {
 
         Administrator admin = new Administrator();
         EmployeeDB db = new EmployeeDB();
+        Employee employee;
+        BufferedWriter writer;
+        File file = new File("employees.txt");
         
         
-        admin.addEmployeeOnStartup();
-
-        for (int i = 0; i < db.getNumOfEmployees(); i++) {
-        	Employee employee = db.lookAt(i);
-        	System.out.println(employee.getFirstname() + " " + employee.getRevenue());
-        }
+        admin.createEmployee();
         
     }
 

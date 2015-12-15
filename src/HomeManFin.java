@@ -4,19 +4,17 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- *
- * @author daniele
- */
 public class HomeManFin extends javax.swing.JFrame {
 	
 	private static final long serialVersionUID = -672205673403473842L;
-	private static Administrator administrator;
+	private Administrator admin;
 
 	/**
      * Creates new form NewJFrame
      */
     public HomeManFin() {
+    	admin = new Administrator();
+    	admin.addEmployeeOnStartup();
         initComponents();
         layerAddEmp.setVisible(false);
         layerEmpCard.setVisible(false);
@@ -1233,7 +1231,7 @@ public class HomeManFin extends javax.swing.JFrame {
     }
 
     private void CreateEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        administrator.createEmployee();
+        admin.createEmployee();
     }
 
     private void EmpCardEditButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1248,7 +1246,7 @@ public class HomeManFin extends javax.swing.JFrame {
     	layerDeleteEmp.setVisible(false);
     }
 
-    private void EmpCardSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpCardSaveButtonActionPerformed
+    private void EmpCardSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {
     
         if (empAddressField.getText().equals("") & empAddressField.getText().equals("")) {
         	empAddressField.setBackground(Color.red);
@@ -1261,30 +1259,29 @@ public class HomeManFin extends javax.swing.JFrame {
     }
 
     private void DeleteEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        
     }
 
     private void ExitButton24ActionPerformed(java.awt.event.ActionEvent evt) {
-        //exit method
         int exit=JOptionPane.showConfirmDialog(null, "ARE YOU SURE YOU WANT TO EXIT?");
         if(exit==0){
             System.exit(0);   }
     }
 
     private void IDFieldActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    	
     }
 
     private void EmpNameFieldActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        
     }
 
     private void CreateEmpNameFieldActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        
     }
 
     private void CreateEmpAddressFieldActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        
     }
     
     public static String getEmployeeName() {
@@ -1311,12 +1308,7 @@ public class HomeManFin extends javax.swing.JFrame {
     	return repeatEmpPassword.getText();
     }
    
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-    	
-    	administrator = new Administrator();
     	
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1335,7 +1327,6 @@ public class HomeManFin extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LogManFin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new HomeManFin().setVisible(true);

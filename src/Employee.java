@@ -22,7 +22,7 @@ public class Employee extends Person {
      * and logs the user in, if they match the password and username given when
      * employee was created.
      */
-    public void employeeLogin() throws IllegalArgumentException {
+    public static Employee employeeLogin() throws IllegalArgumentException {
         Employee employee = Employee.findEmployee(LogEmpFin.usernameField.getText());
 
         if (employee != null) {
@@ -33,18 +33,17 @@ public class Employee extends Person {
             passwordInput = LogEmpFin.passwordField.getText();
 
             if (usernameInput.equals(employee.getUsername()) && passwordInput.equals(employee.getPassword())) {
-                System.out.println("Succesfully logged in.");
-                loggedIn.add(employee);
+            	return employee;
             } else {
                 System.out.println("Username or password incorrect");
-                loggedIn.remove(employee);
             }
         } else {
             throw new IllegalArgumentException("Employee username does not exist");
         }
-
+        return null;
     }
     
+    /*
     public void employeeLogout() {
     	Employee employee = lookAtLoggedIn(0);
     	
@@ -52,10 +51,13 @@ public class Employee extends Person {
     		loggedIn.remove(employee);
     	}
     }
+    */
     
+    /*
     public static Employee lookAtLoggedIn(int index) {
     	return loggedIn.get(index);
     }
+    */
     
     public static int getNumOfLoggedIn() {
     	return loggedIn.size();
@@ -72,9 +74,17 @@ public class Employee extends Person {
     public double getRevenue() {
         return revenue;
     }
+    
+    public String getRevenueToString() {
+    	return Double.toString(revenue);
+    }
 
     public int getNumOfSales() {
         return numOfSales;
+    }
+    
+    public String getNumOfSalesToString() {
+    	return Integer.toString(numOfSales);
     }
 
     @Override

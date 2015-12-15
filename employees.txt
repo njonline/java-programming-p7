@@ -1,0 +1,4 @@
+Nicklas,Holm,Lindholm Søpark 22,20111757,1,131.39999999999998,5,1234,Nicklas
+Daniele,Internicola,Lindholmsvej 10,20111757,2,21.9,1,1234,Daniele
+Hristina,Prosenikova,Sankt Petersgade 14,98123456,3,0.0,0,1234,Hristina
+Catalin,Chelariu,Vodskovgade,98997136,4,0.0,0,1234,Catalin

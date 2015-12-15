@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -77,7 +78,6 @@ public class Order {
         } else {
             throw new IllegalArgumentException("The number has to be positive.");
         }
-        System.out.println("Order value is now: " + this.getOrderValue());
     }
 
     /**
@@ -86,17 +86,12 @@ public class Order {
      * items from the order.
      *
      * @param employee
-     * @throws IllegalArgumentException if the employee is not logged in.
      */
     public void closeOrder(JTable table, JTextField textfield) throws IllegalArgumentException {
-        Employee employee = Employee.lookAtLoggedIn(0);
+    	Employee employee = Employee.employeeLogin();
 
-        if (employee != null) {
-            employee.setRevenue(employee.getRevenue() + Double.parseDouble(textfield.getText()));
-            employee.setNumOfSales(employee.getNumOfSales() + 1);
-        } else {
-        	throw new IllegalArgumentException("Employee not logged in.");
-        }
+        employee.setRevenue(employee.getRevenue() + Double.parseDouble(textfield.getText()));
+        employee.setNumOfSales(employee.getNumOfSales() + 1);
         
         this.setOrderValue(Double.parseDouble(textfield.getText()));
         orderdatabase.addOrder(this);            
@@ -118,6 +113,7 @@ public class Order {
         for (int i = rowCount - 1; i >= 0; i--) {
         	model.removeRow(i);
         }
+        table.setModel(model);
     }
 
     private int newOrderId() {

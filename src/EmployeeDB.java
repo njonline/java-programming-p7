@@ -33,8 +33,8 @@ public class EmployeeDB {
                 writer.write(employee.getAddress() + ",");
                 writer.write(employee.getTelephone() + ",");
                 writer.write(employee.getId() + ",");
-                writer.write(employee.getRevenue() + ",");
-                writer.write(employee.getNumOfSales() + ",");
+                writer.write(employee.getRevenueToString() + ",");
+                writer.write(employee.getNumOfSalesToString() + ",");
                 writer.write(employee.getPassword() + ",");
                 writer.write(employee.getUsername() + "");
                 writer.write("\n");
