@@ -1,7 +1,5 @@
 
 import java.awt.Color;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -10,7 +8,7 @@ import javax.swing.JPanel;
  *
  * @author daniele
  */
-public class HomeManFin extends javax.swing.JFrame implements Observer {
+public class HomeManFin extends javax.swing.JFrame {
 	
 	private static final long serialVersionUID = -672205673403473842L;
 	private static Administrator administrator;
@@ -1452,12 +1450,4 @@ public class HomeManFin extends javax.swing.JFrame implements Observer {
     private void paint(JPanel StagePanel) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    private void update() {
-
-    }
-    
-	public void update(Observable o, Object arg) {
-		update();
-	}
 }

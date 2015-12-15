@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-public abstract class Person extends Observable {
+public abstract class Person {
 
     protected String firstname;
     protected String lastname;
@@ -47,14 +47,6 @@ public abstract class Person extends Observable {
 
     public static Administrator lookAtAdmin(int index) {
         return admindatabase.lookAt(index);
-    }
-
-    protected void inform() {
-        // Mark this Observable object as having been changed 
-        this.setChanged();
-        /* notify all of its observers and then call the clearChanged
-		 * method to indicate that this object has no longer changed */
-        this.notifyObservers();
     }
 
     public void setFirstname(String firstname) {

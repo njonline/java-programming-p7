@@ -1,51 +1,31 @@
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Observable;
 
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class Order extends Observable {
+public class Order {
 
     private int id;
-    private int totalNumOfOrders;
+    private int totalNumOfOrders = 0;
     private double value;
     private Date date;
 
     private OrderDB orderdatabase = new OrderDB();
     private ArrayList<Product> orderItems = new ArrayList<Product>();
-    
-    private BufferedWriter writer;
-    private File file = new File("requests.txt");
-    
+       
     /**
      * Creates a new order. Assigns an ID. Sets the value of the order to 0.
      */
     public Order() {
-        this.id = newOrderId();
+        this.setOrderId(newOrderId());
         this.setOrderValue(0.0);
         this.date = new Date();
-    }
-    
-    private void saveOrder() {
-    	try{
-    		writer = new BufferedWriter(new FileWriter(file, true));
-    		writer.write(getOrderId() + ",");
-    		writer.write(getOrderValue() + ",");
-    		writer.write(getDateToString() + "");
-    		writer.write("\n");
-    	} catch(IOException e) {
-    		e.printStackTrace();
-    	}
     }
 
     /**
@@ -63,7 +43,7 @@ public class Order extends Observable {
         if (qty > 0) {
             if (qty <= product.getQuantity()) {
                 for (int i = 0; i < qty; i++) {
-                    setOrderValue(getOrderValue() + product.getPrice());
+                    this.setOrderValue(getOrderValue() + product.getPrice());
                     orderItems.add(product);
                     product.setQuantity(product.getQuantity() - 1);
                 }
@@ -73,8 +53,6 @@ public class Order extends Observable {
         } else {
             throw new IllegalArgumentException("The amount has to be positive");
         }
-        this.inform();
-        System.out.println("Order value is now: " + this.getOrderValue());
     }
 
     /**
@@ -91,7 +69,7 @@ public class Order extends Observable {
         if (qty > 0) {
             if (qty <= getNumOfOrderItems()) {
                 for (int i = 0; i < qty; i++) {
-                    setOrderValue(getOrderValue() - product.getPrice());
+                    this.setOrderValue(getOrderValue() - product.getPrice());
                     orderItems.remove(product);
                     product.setQuantity(product.getQuantity() + 1);
                 }
@@ -99,7 +77,6 @@ public class Order extends Observable {
         } else {
             throw new IllegalArgumentException("The number has to be positive.");
         }
-        this.inform();
         System.out.println("Order value is now: " + this.getOrderValue());
     }
 
@@ -117,20 +94,20 @@ public class Order extends Observable {
         if (employee != null) {
             employee.setRevenue(employee.getRevenue() + Double.parseDouble(textfield.getText()));
             employee.setNumOfSales(employee.getNumOfSales() + 1);
-            orderdatabase.addOrder(this);
-            this.saveOrder();
-            orderItems.clear();
-            
-            DefaultTableModel model = (DefaultTableModel) table.getModel();
-            int rowCount = model.getRowCount();
-            for (int i = rowCount - 1; i >= 0; i--) {
-            	model.removeRow(i);
-            }
-            table.setModel(model);
         } else {
         	throw new IllegalArgumentException("Employee not logged in.");
         }
-        this.inform();
+        
+        this.setOrderValue(Double.parseDouble(textfield.getText()));
+        orderdatabase.addOrder(this);            
+        orderItems.clear();
+        
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        int rowCount = model.getRowCount();
+        for (int i = rowCount - 1; i >= 0; i--) {
+        	model.removeRow(i);
+        }
+        table.setModel(model);
     }
 
     public void cancelOrder(JTable table) {
@@ -141,27 +118,10 @@ public class Order extends Observable {
         for (int i = rowCount - 1; i >= 0; i--) {
         	model.removeRow(i);
         }
-        this.inform();
-    }
-    
-    protected void inform() {
-        // Mark this Observable object as having been changed 
-        this.setChanged();
-        /* notify all of its observers and then call the clearChanged
-		 * method to indicate that this object has no longer changed */
-        this.notifyObservers();
     }
 
-    /**
-     * Create a new ID for the order. We start at 1 instead of zero. We use a
-     * counter instead of the size of the ArrayList, so we do not get confused
-     * when an order is deleted.
-     *
-     * @return
-     */
     private int newOrderId() {
-        totalNumOfOrders++;
-        this.id = getTotalNumOfOrders();
+        this.id = orderdatabase.getNumOfOrders() + 1;
         return id;
     }
 
@@ -188,6 +148,10 @@ public class Order extends Observable {
     public int getOrderId() {
         return id;
     }
+    
+    public String getOrderIdToString() {
+    	return Integer.toString(id);
+    }
 
     public int getTotalNumOfOrders() {
         return totalNumOfOrders;
@@ -195,6 +159,10 @@ public class Order extends Observable {
 
     public double getOrderValue() {
         return value;
+    }
+    
+    public String getOrderValueToString() {
+    	return Double.toString(value);
     }
     
     public String getDateToString() {

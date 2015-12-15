@@ -1,7 +1,4 @@
-
-import java.text.DecimalFormat;
-import java.util.Observable;
-import java.util.Observer;
+import java.text.ParseException;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -11,28 +8,35 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author daniele
  */
-public class HomeEmpFin extends javax.swing.JFrame implements Observer {
+public class HomeEmpFin extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private Administrator admin;
+	private EmployeeDB employeedb;
 	private Order ordr;
-	private CupcakeDB db ;
+	private OrderDB orderdb;
+	private CupcakeDB cupcakedb ;
 	private Cupcake cupcake;
 	private String[] itemList;
     /**
      * Creates new form NewJFrame
+     * @throws ParseException 
      */
-    public HomeEmpFin() {
+    public HomeEmpFin() throws ParseException {
     	ordr = new Order();
+    	orderdb = new OrderDB();
     	admin = new Administrator();
     	admin.addEmployeeOnStartup();
-    	db = new CupcakeDB();
-    	db.addCakesToComboBox();
+    	employeedb = new EmployeeDB();
+    	cupcakedb = new CupcakeDB();
+    	cupcakedb.addCakesToComboBox();
     	cupcake = new Cupcake();
     	cupcake.addProductOnStartup();
-    	itemList = db.cupcake.toArray(new String[]{});
+    	itemList = cupcakedb.cupcake.toArray(new String[]{});
         initComponents();
-        db.addCakesToInventory(inventoryTable1);
+        cupcakedb.addCakesToInventory(inventoryTable1);
+        orderdb.addRequestsOnStartup(PastOrderTable);
+        orderdb.addRequestsToTable(PastOrderTable);
     	updateEmployeeRevenue();
         displayEmployeeInfo();
         layerNewOrder.setVisible(true);
@@ -298,13 +302,13 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
         PastOrderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {},
             new String [] {
-                "ID", "Date"
+                "ID", "Price", "Date"
             }
         ) {
 
 			private static final long serialVersionUID = 1L;
 			Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false
@@ -1081,7 +1085,9 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {
         int exit=JOptionPane.showConfirmDialog(null, "ARE YOU SURE YOU WANT TO EXIT?");
         if(exit==0){
-            System.exit(0);   }
+        	
+            System.exit(0);   
+        }
     }
     
     private void saveEmpButtonButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1098,12 +1104,12 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     }
     
     private void addItemOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	db.addToOrder(itemOrderComboBox, orderTable, itemOrderSpinner);
+    	cupcakedb.addToOrder(itemOrderComboBox, orderTable, itemOrderSpinner);
     	updateOrderTotal();
     }
     
     private void removeItemOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        db.removeFromOrder(orderTable);
+        cupcakedb.removeFromOrder(orderTable);
         updateOrderTotal();
     }
     
@@ -1125,6 +1131,7 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     	updateOrderTotal();
     	updateInventoryTable();
     	updateEmployeeRevenue();
+    	orderdb.addRequestsToTable(PastOrderTable);
     	
     	ordr = new Order();
     }
@@ -1163,10 +1170,14 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {
 
-   int exit=JOptionPane.showConfirmDialog(null, "ARE YOU SURE YOU WANT TO EXIT?");
+    	int exit=JOptionPane.showConfirmDialog(null, "ARE YOU SURE YOU WANT TO EXIT?");
+    	
         if(exit==0){
-            System.exit(0);}
-    
+        	employeedb.saveEmployees();
+        	cupcakedb.saveCupcakes();
+        	orderdb.saveRequests();
+            System.exit(0);
+        }
     }
 
     private void searchItemInvButton1ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1197,7 +1208,7 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
         for (int i = rowCount - 1; i >= 0; i--) {
         	model.removeRow(i);
         }
-    	db.addCakesToInventory(inventoryTable1);
+    	cupcakedb.addCakesToInventory(inventoryTable1);
     	inventoryTable1.setModel(model);
     }
     
@@ -1205,7 +1216,12 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     	Employee employee = Employee.lookAtLoggedIn(0);
     	
     	if(employee != null) {
-    		empPerSalesTextfield.setText(Double.toString(employee.getRevenue()) + " DKK");
+    		double total = employee.getRevenue();
+        	total = Math.round(total * 100);
+        	total = total/100;
+        	String newTotal = Double.toString(total);
+    		
+    		empPerSalesTextfield.setText(newTotal + " DKK");
     	} else {
     		empPerSalesTextfield.setText("N/A");
     	}
@@ -1268,7 +1284,12 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomeEmpFin().setVisible(true);
+                try {
+					new HomeEmpFin().setVisible(true);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
                   
             }
             
@@ -1355,12 +1376,4 @@ public class HomeEmpFin extends javax.swing.JFrame implements Observer {
     private void paint(JPanel StagePanel) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
-    private void update() {
-
-    }
-    
-	public void update(Observable o, Object arg) {
-		update();
-	}
 }

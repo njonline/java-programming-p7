@@ -1,8 +1,6 @@
+import java.text.ParseException;
 
-import java.util.Observable;
-import java.util.Observer;
-
-public class LogEmpFin extends javax.swing.JFrame implements Observer {
+public class LogEmpFin extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = -8519842815833625226L;
 	
@@ -101,7 +99,11 @@ public class LogEmpFin extends javax.swing.JFrame implements Observer {
         loginButton.setText("Login");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginButtonActionPerformed(evt);
+                try {
+					LoginButtonActionPerformed(evt);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
             }
         });
 
@@ -213,7 +215,7 @@ public class LogEmpFin extends javax.swing.JFrame implements Observer {
         
     }
 
-    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) throws ParseException {
         employee.employeeLogin();
         
         HomeEmpFin a = new HomeEmpFin();
@@ -274,13 +276,4 @@ public class LogEmpFin extends javax.swing.JFrame implements Observer {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    
-    private void update() {
-
-    }
-    
-	@Override
-	public void update(Observable o, Object arg) {
-		update();
-	}
 }

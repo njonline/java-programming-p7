@@ -1,3 +1,6 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Employee extends Person {
@@ -32,16 +35,22 @@ public class Employee extends Person {
             if (usernameInput.equals(employee.getUsername()) && passwordInput.equals(employee.getPassword())) {
                 System.out.println("Succesfully logged in.");
                 loggedIn.add(employee);
-                this.inform();
             } else {
                 System.out.println("Username or password incorrect");
-                this.inform();
                 loggedIn.remove(employee);
             }
         } else {
             throw new IllegalArgumentException("Employee username does not exist");
         }
 
+    }
+    
+    public void employeeLogout() {
+    	Employee employee = lookAtLoggedIn(0);
+    	
+    	if(employee != null) {
+    		loggedIn.remove(employee);
+    	}
     }
     
     public static Employee lookAtLoggedIn(int index) {

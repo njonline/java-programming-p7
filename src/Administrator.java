@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Administrator extends Person {
 	
@@ -19,10 +20,6 @@ public class Administrator extends Person {
         this.setUsername("admin");
         this.setPassword("admin");
         admindatabase.addAdmin(this);
-
-        //System.out.println("Succesfully created Administrator.");
-        //System.out.println("Username: " + this.getUsername() + ". Password: " + this.getPassword());
-        this.inform();
     }
 
     /**
@@ -57,15 +54,15 @@ public class Administrator extends Person {
             writer.write(employee.getPassword() + ",");
             writer.write(employee.getUsername() + "");
             writer.write("\n");
-
-            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+        	try {
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
         }
-
-        System.out.println("Employee succesfully created.");
-
-        this.inform();
         return employee;
     }
     
@@ -101,10 +98,8 @@ public class Administrator extends Person {
 
             if (usernameInput.equals(administrator.getUsername()) && passwordInput.equals(administrator.getPassword())) {
                 System.out.println("Succesfully logged in.");
-                this.inform();
             } else {
                 System.out.println("Username or password incorrect");
-                this.inform();
             }
         } else {
             throw new IllegalArgumentException("Admin does not exist");
