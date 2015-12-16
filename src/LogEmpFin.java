@@ -57,7 +57,7 @@ public class LogEmpFin extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        switchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/swap.png"))); // NOI18N
+        switchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/swap.png")));
         switchButton.setToolTipText("");
         
         switchButton.addActionListener(new java.awt.event.ActionListener() {

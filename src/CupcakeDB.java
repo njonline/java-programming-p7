@@ -54,7 +54,6 @@ public class CupcakeDB {
     		cupcake = lookAt(i);
     		data = new Vector<String>();
     		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), cupcake.getProductQuantityToString(), cupcake.getProductPriceToString()));
-    		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), cupcake.getProductQuantityToString(), cupcake.getProductPriceToString()));
     		model.addRow(data);
     	}    	
     	table.setModel(model);
@@ -74,55 +73,31 @@ public class CupcakeDB {
 		}
     }
     
-    protected void addToOrder(JComboBox<String> box, JTable table, JSpinner spinner) {
+    protected void addToRequest(JComboBox<String> box, JTable table, JSpinner spinner) {
      	DefaultTableModel model = (DefaultTableModel) table.getModel();
     	Vector<String> data;
-    	String current = box.getSelectedItem().toString();
+    	Cupcake cupcake = Cupcake.findCupcake(box.getSelectedItem().toString());
     	
     	Date date = Calendar.getInstance().getTime();
     	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     	String reportDate = df.format(date);
     	
-    	if(current.equals("Blueberry")) {
-    		Cupcake cupcake = searchFor("Blueberry");
-    		data = new Vector<String>();
-    		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getProductPriceToString(), reportDate));
-    		model.addRow(data);
-    		request.addItems(cupcake, spinner);
-    	}else if(current.equals("Chocolate")) {
-    		Cupcake cupcake = searchFor("Chocolate");
-    		data = new Vector<String>();
-    		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getProductPriceToString(), reportDate));
-    		model.addRow(data);
-    		request.addItems(cupcake, spinner);
-    	} else if(current.equals("Caramel")) {
-    		Cupcake cupcake = searchFor("Caramel");
-    		data = new Vector<String>();
-    		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getProductPriceToString(), reportDate));
-    		model.addRow(data);
-    		request.addItems(cupcake, spinner);
-    	}
+    	data = new Vector<String>();
+		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getProductPriceToString(), reportDate));
+		model.addRow(data);
+		request.addItems(cupcake, spinner);
+    	
     	table.setModel(model);
     }
     
-    protected void removeFromOrder(JTable table) {
+    protected void removeFromRequest(JTable table) {
     	DefaultTableModel model = (DefaultTableModel) table.getModel();
-    	String current = table.getValueAt(table.getSelectedRow(), 1).toString();
+    	Cupcake cupcake = Cupcake.findCupcake(table.getValueAt(table.getSelectedRow(), 1).toString());
     	int currentValue = Integer.parseInt((String) table.getValueAt(table.getSelectedRow(), 2));
     	
-    	if(current.equals("Blueberry")) {
-    		Cupcake cupcake = searchFor("Blueberry");
-    		request.removeItems(cupcake, currentValue);
-    		model.removeRow(table.getSelectedRow());
-    	} else if(current.equals("Chocolate")) {
-    		Cupcake cupcake = searchFor("Chocolate");
-    		request.removeItems(cupcake, currentValue);
-    		model.removeRow(table.getSelectedRow());
-    	} else if(current.equals("Caramel")) {
-    		Cupcake cupcake = searchFor("Caramel");
-    		request.removeItems(cupcake, currentValue);
-    		model.removeRow(table.getSelectedRow());
-    	}
+    	request.removeItems(cupcake, currentValue);
+    	model.removeRow(table.getSelectedRow());
+    	
     	table.setModel(model);
     }
     

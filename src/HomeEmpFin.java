@@ -171,6 +171,7 @@ public class HomeEmpFin extends javax.swing.JFrame {
         empPerSalesTextfield.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         exitButton.setToolTipText("");
+        exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exit.png")));
         exitButton.setMaximumSize(new java.awt.Dimension(56, 49));
         exitButton.setMinimumSize(new java.awt.Dimension(56, 49));
         exitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -259,11 +260,6 @@ public class HomeEmpFin extends javax.swing.JFrame {
         pastOrderPanel.setMaximumSize(new java.awt.Dimension(619, 284));
 
         viewPastOrderButton.setText("View Past Orders");
-        viewPastOrderButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                viewPastOrderButtonMouseClicked(evt);
-            }
-        });
         viewPastOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewPastOrderButtonActionPerformed(evt);
@@ -1103,15 +1099,12 @@ public class HomeEmpFin extends javax.swing.JFrame {
 		empRepPasswordField.setEnabled(true);
     }
 
-    private void viewPastOrderButtonMouseClicked(java.awt.event.MouseEvent evt) {
-       
-     
-    }
-
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {
         int exit=JOptionPane.showConfirmDialog(null, "ARE YOU SURE YOU WANT TO EXIT?");
         if(exit==0){
-        	
+        	cupcakedb.saveCupcakes();
+        	requestdb.saveRequests();
+        	employeedb.saveEmployees();
             System.exit(0);   
         }
     }
@@ -1131,12 +1124,12 @@ public class HomeEmpFin extends javax.swing.JFrame {
     }
     
     private void addItemOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	cupcakedb.addToOrder(itemOrderComboBox, orderTable, itemOrderSpinner);
+    	cupcakedb.addToRequest(itemOrderComboBox, orderTable, itemOrderSpinner);
     	this.updateOrderTotal();
     }
     
     private void removeItemOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        cupcakedb.removeFromOrder(orderTable);
+        cupcakedb.removeFromRequest(orderTable);
         this.updateOrderTotal();
     }
 
@@ -1178,6 +1171,8 @@ public class HomeEmpFin extends javax.swing.JFrame {
     private void createProductButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	cupcake.createProduct(createProduct);
     	this.clearCreateProductFields();
+    	cupcakedb.saveCupcakes();
+    	this.updateInventoryTable();
     }
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {
