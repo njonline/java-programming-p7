@@ -4,10 +4,10 @@ public class LogEmpFin extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = -8519842815833625226L;
 	
-	private Employee employee = new Employee();
-	private Administrator admin = new Administrator();
+	private Administrator admin;
 	
     public LogEmpFin() {
+    	admin = new Administrator();
     	admin.addEmployeeOnStartup();
         initComponents();
     }
@@ -24,7 +24,7 @@ public class LogEmpFin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         usernameField = new javax.swing.JTextField();
-        passwordField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -59,11 +59,7 @@ public class LogEmpFin extends javax.swing.JFrame {
 
         switchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/swap.png"))); // NOI18N
         switchButton.setToolTipText("");
-        switchButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SwitchButtonMouseClicked(evt);
-            }
-        });
+        
         switchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SwitchButtonActionPerformed(evt);
@@ -78,23 +74,6 @@ public class LogEmpFin extends javax.swing.JFrame {
         usernameField.setToolTipText("Write Username here");
         usernameField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         usernameField.setPreferredSize(new java.awt.Dimension(73, 28));
-        usernameField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                UsernameFieldMouseEntered(evt);
-            }
-        });
-        usernameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsernameFieldActionPerformed(evt);
-            }
-        });
-
-        passwordField.setToolTipText("Write Password here");
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PasswordFieldActionPerformed(evt);
-            }
-        });
 
         loginButton.setText("Login");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -202,26 +181,18 @@ public class LogEmpFin extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }
-   
-    private void UsernameFieldMouseEntered(java.awt.event.MouseEvent evt) {
-        
-    }
-
-    private void UsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {
-
-    }
-
-    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {
-        
-    }
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) throws ParseException {
-        employee.employeeLogin();
-        
-        HomeEmpFin a = new HomeEmpFin();
-        a.setVisible(true);
-        a.setDefaultCloseOperation(HomeEmpFin.DISPOSE_ON_CLOSE);
-        this.dispose();
+    	if(usernameField.equals("") || passwordField.equals("")) {
+    		System.out.println("Please enter password and username.");
+    	} else {
+    		Employee.employeeLogin();
+            
+            HomeEmpFin a = new HomeEmpFin();
+            a.setVisible(true);
+            a.setDefaultCloseOperation(HomeEmpFin.DISPOSE_ON_CLOSE);
+            this.dispose();
+    	}
     }
 
     private void SwitchButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,10 +200,6 @@ public class LogEmpFin extends javax.swing.JFrame {
         a.setVisible(true);
         a.setDefaultCloseOperation(LogManFin.DISPOSE_ON_CLOSE);
         this.dispose();
-    }
-
-    private void SwitchButtonMouseClicked(java.awt.event.MouseEvent evt) {
-    	
     }
 
     public static void main(String args[]) {
@@ -257,7 +224,6 @@ public class LogEmpFin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LogEmpFin().setVisible(true);
-                  
             }
             
         });
@@ -265,7 +231,7 @@ public class LogEmpFin extends javax.swing.JFrame {
 
     protected javax.swing.JButton loginButton;
     protected static javax.swing.JTextField usernameField;
-    protected static javax.swing.JTextField passwordField;
+    protected static javax.swing.JPasswordField passwordField;
     private javax.swing.JButton switchButton;
     private javax.swing.JLabel title;
     private javax.swing.JLabel title1;

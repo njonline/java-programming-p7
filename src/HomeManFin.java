@@ -1,6 +1,4 @@
 
-import java.awt.Color;
-
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -8,14 +6,17 @@ public class HomeManFin extends javax.swing.JFrame {
 	
 	private static final long serialVersionUID = -672205673403473842L;
 	private Administrator admin;
+	private EmployeeDB employeedb;
 
 	/**
      * Creates new form NewJFrame
      */
     public HomeManFin() {
     	admin = new Administrator();
+    	employeedb = new EmployeeDB();
     	admin.addEmployeeOnStartup();
         initComponents();
+        displayAdminInfo();
         layerAddEmp.setVisible(false);
         layerEmpCard.setVisible(false);
         layerDeleteEmp.setVisible(false);
@@ -49,36 +50,43 @@ public class HomeManFin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         createEmpNameField = new javax.swing.JTextField();
         createEmpSurnameField = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         createEmpAddressField = new javax.swing.JTextField();
-        repeatEmpPassword = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        createEmpPasswordField = new javax.swing.JTextField();
         createEmpNumberField = new javax.swing.JTextField();
+        repeatEmpPassword = new javax.swing.JTextField();
+        createEmpPasswordField = new javax.swing.JTextField();
+        createEmployeeButton = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        createEmployeeButton = new javax.swing.JButton();
         layerEmpCard = new javax.swing.JLayeredPane();
         empCard = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         iDField = new javax.swing.JTextField();
-        empSurnameField = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
+        empNameField = new javax.swing.JTextField();
+        empSurnameField = new javax.swing.JTextField();
         empAddressField = new javax.swing.JTextField();
         empNumberField = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        iDField.setEnabled(false);
+        empNameField.setEnabled(false);
+        empSurnameField.setEnabled(false);
+        empAddressField.setEnabled(false);
+        empNumberField.setEnabled(false);
         empCardEditButton = new javax.swing.JButton();
         empCardSaveButton = new javax.swing.JButton();
-        empNameField = new javax.swing.JTextField();
+        deleteEmployeeButton = new javax.swing.JButton();
+        empNameSalesField = new javax.swing.JTextField();
+        empIDSalesField = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         layerDeleteEmp = new javax.swing.JLayeredPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        deleteEmployeeButton = new javax.swing.JButton();
         salRev = new javax.swing.JPanel();
         manToolPanel2 = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
@@ -95,17 +103,15 @@ public class HomeManFin extends javax.swing.JFrame {
         layerEmpRev = new javax.swing.JLayeredPane();
         addPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        empSalesTextField = new javax.swing.JTextPane();
+        empSalesTextField = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        empNameSalesField = new javax.swing.JTextField();
-        empIDSalesField = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         layerGenRev = new javax.swing.JLayeredPane();
         addPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPane3 = new javax.swing.JTextPane();
+        totalRevenue = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         perPro = new javax.swing.JPanel();
         manToolPanel3 = new javax.swing.JPanel();
@@ -118,13 +124,19 @@ public class HomeManFin extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         manNameField = new javax.swing.JTextField();
+        manNameField.setEnabled(false);
         manSurnameField = new javax.swing.JTextField();
-        jLabel30 = new javax.swing.JLabel();
+        manSurnameField.setEnabled(false);
         manAddressField = new javax.swing.JTextField();
-        manNewRepPasswordField = new javax.swing.JTextField();
-        jLabel31 = new javax.swing.JLabel();
-        manNewPasswordField = new javax.swing.JTextField();
+        manAddressField.setEnabled(false);
         manNumberField = new javax.swing.JTextField();
+        manNumberField.setEnabled(false);
+        jLabel30 = new javax.swing.JLabel();
+        manNewPasswordField = new javax.swing.JTextField();
+        manNewPasswordField.setEnabled(false);
+        manNewRepPasswordField = new javax.swing.JTextField();
+        manNewRepPasswordField.setEnabled(false);
+        jLabel31 = new javax.swing.JLabel();       
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
@@ -147,6 +159,12 @@ public class HomeManFin extends javax.swing.JFrame {
         title1.setFont(new java.awt.Font("STKaiti", 0, 24)); // NOI18N
         title1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title1.setText("Manager");
+        
+        empSalesTextField.setFont(new java.awt.Font("STKaiti", 0, 24));
+        empSalesTextField.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        
+        totalRevenue.setFont(new java.awt.Font("STKaiti", 0, 24));
+        totalRevenue.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         exitButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exit.png"))); // NOI18N
         exitButton24.setToolTipText("");
@@ -308,19 +326,7 @@ public class HomeManFin extends javax.swing.JFrame {
 
         jLabel4.setText("Name");
 
-        createEmpNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreateEmpNameFieldActionPerformed(evt);
-            }
-        });
-
         jLabel9.setText("Surname");
-
-        createEmpAddressField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreateEmpAddressFieldActionPerformed(evt);
-            }
-        });
 
         jLabel10.setText("Repeat Password");
 
@@ -438,20 +444,7 @@ public class HomeManFin extends javax.swing.JFrame {
 
         jLabel19.setText("Name");
 
-        iDField.setEnabled(false);
-        iDField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IDFieldActionPerformed(evt);
-            }
-        });
-
-        empSurnameField.setEnabled(false);
-
         jLabel20.setText("Surname");
-
-        empAddressField.setEnabled(false);
-
-        empNumberField.setEnabled(false);
 
         jLabel23.setText("Telephone number");
 
@@ -472,11 +465,6 @@ public class HomeManFin extends javax.swing.JFrame {
         });
 
         empNameField.setEnabled(false);
-        empNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmpNameFieldActionPerformed(evt);
-            }
-        });
 
         jLabel35.setText("ID");
 
@@ -876,7 +864,7 @@ public class HomeManFin extends javax.swing.JFrame {
 
         addPanel4.setBackground(new java.awt.Color(51, 255, 51));
 
-        jScrollPane3.setViewportView(jTextPane3);
+        jScrollPane3.setViewportView(totalRevenue);
 
         jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/revenue.png"))); // NOI18N
 
@@ -1041,6 +1029,11 @@ public class HomeManFin extends javax.swing.JFrame {
         jLabel53.setText("Address");
 
         saveManButton.setText("Save");
+        saveManButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveManButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout AddPanel3Layout = new javax.swing.GroupLayout(addPanel3);
         addPanel3.setLayout(AddPanel3Layout);
@@ -1207,10 +1200,16 @@ public class HomeManFin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-    private void SearchEmpButtonActionPerformed(java.awt.event.ActionEvent evt) {
-       layerAddEmp.setVisible(false);
-       layerEmpCard.setVisible(true);
-       layerDeleteEmp.setVisible(true);
+    private void SearchEmpButtonActionPerformed(java.awt.event.ActionEvent evt) throws IllegalArgumentException {       
+       if(searchEmpField.getText().equals("")) {
+    	   throw new IllegalArgumentException("Enter username");
+       } else {
+    	   layerAddEmp.setVisible(false);
+           layerEmpCard.setVisible(true);
+           layerDeleteEmp.setVisible(true);
+    	   this.displayEmployeeInfoSearch();
+       }
+       
     }
     
     private void NewEmpButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1222,20 +1221,35 @@ public class HomeManFin extends javax.swing.JFrame {
     }
 
     private void SearchEmpSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	layerGenRev.setVisible(false);
-        layerEmpRev.setVisible(true);    }
+    	if(searchEmpSalesField.getText().equals("")) {
+     	   throw new IllegalArgumentException("Enter username");
+        } else {
+        	layerGenRev.setVisible(false);
+            layerEmpRev.setVisible(true);
+            this.displayEmployeeInfoSales();
+        }
+    }
 
     private void TotalSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	layerGenRev.setVisible(true);
         layerEmpRev.setVisible(false);
+        this.displayTotalSales();
     }
 
     private void CreateEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        admin.createEmployee();
+        admin.createEmployee(layerEmpCard);        
+        this.clearCreateEmpFields();
+        this.returnToHome();
+    }
+    
+    private void SaveManButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	
     }
 
     private void EmpCardEditButtonActionPerformed(java.awt.event.ActionEvent evt) {
         empCardSaveButton.setVisible(true);
+        empNameField.setEnabled(true);
+        empSurnameField.setEnabled(true);
         empAddressField.setEnabled(true);
         empNumberField.setEnabled(true); 
     }
@@ -1247,19 +1261,19 @@ public class HomeManFin extends javax.swing.JFrame {
     }
 
     private void EmpCardSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    
-        if (empAddressField.getText().equals("") & empAddressField.getText().equals("")) {
-        	empAddressField.setBackground(Color.red);
-        	empNumberField.setBackground(Color.red);
-        }
-        else {
-        	empAddressField.setEnabled(false);
-            empNumberField.setEnabled(false);
-        }
+    	this.editEmployeeInfo();
+    	employeedb.saveEmployees();
+    	empNameField.setEnabled(false);
+    	empSurnameField.setEnabled(false);
+        empAddressField.setEnabled(false);
+        empNumberField.setEnabled(false);
     }
 
     private void DeleteEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        this.deleteEmployee();
+        employeedb.saveEmployees();
+        this.returnToHome();
+        searchEmpField.setText("");
     }
 
     private void ExitButton24ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1267,21 +1281,87 @@ public class HomeManFin extends javax.swing.JFrame {
         if(exit==0){
             System.exit(0);   }
     }
-
-    private void IDFieldActionPerformed(java.awt.event.ActionEvent evt) {
+    
+    private void clearCreateEmpFields() {
+    	createEmpNameField.setText("");
+        createEmpSurnameField.setText("");
+        createEmpAddressField.setText("");
+        createEmpNumberField.setText("");
+        createEmpPasswordField.setText("");
+        repeatEmpPassword.setText("");
+    }
+    
+    private void returnToHome() {
+    	layerAddEmp.setVisible(false);
+        layerEmpCard.setVisible(false);
+        layerDeleteEmp.setVisible(false);
+        layerGenRev.setVisible(false);
+        layerEmpRev.setVisible(false);
+        empCardSaveButton.setVisible(false);
+    }
+    
+    private void displayAdminInfo() {    	
+    	manNameField.setText(admin.getFirstname());
+    	manSurnameField.setText(admin.getLastname());
+    	manAddressField.setText(admin.getAddress());
+    	manNumberField.setText(admin.getTelephone());
+    	manNewPasswordField.setText(admin.getPassword());
+    	manNewRepPasswordField.setText(admin.getPassword());
+    }
+    
+    private void displayEmployeeInfoSearch() {
+    	Employee employee = admin.search(searchEmpField.getText());
     	
+    	iDField.setText(Integer.toString(employee.getId()));
+    	empNameField.setText(employee.getFirstname());
+    	empSurnameField.setText(employee.getLastname());
+    	empAddressField.setText(employee.getAddress());
+    	empNumberField.setText(employee.getTelephone());
     }
-
-    private void EmpNameFieldActionPerformed(java.awt.event.ActionEvent evt) {
-        
+    
+    private void editEmployeeInfo() {
+    	Employee employee = admin.search(searchEmpField.getText());
+    	
+    	employee.setFirstname(empNameField.getText());
+    	employee.setLastname(empSurnameField.getText());
+    	employee.setAddress(empAddressField.getText());
+    	employee.setTelephone(empNumberField.getText());
+    	
+        JOptionPane.showMessageDialog(layerEmpCard, "Succesfully saved.");
     }
-
-    private void CreateEmpNameFieldActionPerformed(java.awt.event.ActionEvent evt) {
-        
+    
+    private void displayEmployeeInfoSales() {
+    	Employee employee = admin.search(searchEmpSalesField.getText());
+    	
+    	double total = employee.getRevenue();
+    	total = Math.round(total * 100);
+    	total = total/100;
+    	String newTotal = Double.toString(total);
+    	
+    	empIDSalesField.setText(Integer.toString(employee.getId()));
+    	empNameSalesField.setText(employee.getFirstname() + " " + employee.getLastname());
+    	empSalesTextField.setText(newTotal + " DKK");
     }
-
-    private void CreateEmpAddressFieldActionPerformed(java.awt.event.ActionEvent evt) {
-        
+    
+    private void displayTotalSales() {
+    	Double total = 0.0;
+    	
+    	for(int i = 0; i < employeedb.getNumOfEmployees(); i++) {
+    		Employee employee = employeedb.lookAt(i);
+    		total += employee.getRevenue();
+    	}
+    	
+    	total = (double) Math.round(total * 100);
+    	total = total/100;
+    	String newTotal = Double.toString(total);
+    	
+    	totalRevenue.setText(newTotal + " DKK");
+    }
+    
+    private void deleteEmployee() {
+    	Employee employee = admin.search(searchEmpField.getText());
+    	employeedb.removeEmployee(employee);
+        JOptionPane.showMessageDialog(layerEmpCard, "Employee deleted.");
     }
     
     public static String getEmployeeName() {
@@ -1336,7 +1416,6 @@ public class HomeManFin extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addPanel;
     private javax.swing.JPanel addPanel2;
     private javax.swing.JPanel addPanel3;
@@ -1348,18 +1427,18 @@ public class HomeManFin extends javax.swing.JFrame {
     private static javax.swing.JTextField createEmpNumberField;
     private static javax.swing.JTextField createEmpPasswordField;
     private static javax.swing.JTextField repeatEmpPassword;
-    private static javax.swing.JButton createEmployeeButton;
-    private static javax.swing.JButton deleteEmployeeButton;
-    private static javax.swing.JTextField empAddressField;
+    private javax.swing.JButton createEmployeeButton;
+    private javax.swing.JButton deleteEmployeeButton;
     private javax.swing.JPanel empCard;
     private javax.swing.JButton empCardEditButton;
     private javax.swing.JButton empCardSaveButton;
     private javax.swing.JTextField empIDSalesField;
     private javax.swing.JTextField empNameField;
-    private javax.swing.JTextField empNameSalesField;
-    private javax.swing.JTextField empNumberField;
-    private javax.swing.JTextPane empSalesTextField;
     private javax.swing.JTextField empSurnameField;
+    private javax.swing.JTextField empAddressField;
+    private javax.swing.JTextField empNumberField;
+    private javax.swing.JTextField empNameSalesField;
+    private javax.swing.JLabel empSalesTextField;
     private javax.swing.JButton exitButton24;
     private javax.swing.JPanel footerPanel;
     private javax.swing.JPanel headerPanel;
@@ -1435,10 +1514,9 @@ public class HomeManFin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextPane jTextPane3;
-    // End of variables declaration//GEN-END:variables
+    private javax.swing.JLabel totalRevenue;
 
     private void paint(JPanel StagePanel) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

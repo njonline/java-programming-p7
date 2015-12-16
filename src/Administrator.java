@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
+
+import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 
 public class Administrator extends Person {
 	
@@ -16,7 +18,11 @@ public class Administrator extends Person {
 
     public Administrator() {
         super();
-
+        
+        this.setFirstname("Peter");
+        this.setLastname("Petersen");
+        this.setAddress("Vesterbro 22");
+        this.setTelephone("22334455");
         this.setUsername("admin");
         this.setPassword("admin");
         admindatabase.addAdmin(this);
@@ -29,7 +35,7 @@ public class Administrator extends Person {
      *
      * @return
      */
-    public Employee createEmployee() {
+    public Employee createEmployee(JLayeredPane pane) {
         employee = new Employee();
         employee.setFirstname(firstnameInputEmployee());
         employee.setLastname(surnameInputEmployee());
@@ -63,6 +69,7 @@ public class Administrator extends Person {
 				e.printStackTrace();
 			}
         }
+        JOptionPane.showMessageDialog(pane, "Employee succesfully created.");
         return employee;
     }
     
@@ -134,6 +141,10 @@ public class Administrator extends Person {
     protected int newEmployeeId() {
         this.id = employeedatabase.getNumOfEmployees() + 1;
         return id;
+    }
+    
+    public Employee search(String username) {
+    	return employeedatabase.searchFor(username);
     }
 
 }

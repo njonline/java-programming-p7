@@ -6,6 +6,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 public class Cupcake extends Product {
 
     private static CupcakeDB cupcakedatabase = new CupcakeDB();
@@ -34,7 +37,7 @@ public class Cupcake extends Product {
         }
     }
 
-    public void createProduct() {
+    public void createProduct(JPanel panel) {
     	this.setProductId(newProductId());
         this.setName(productNameInput());
         this.setFlavor(productFlavorInput());
@@ -54,13 +57,18 @@ public class Cupcake extends Product {
         } catch(IOException e) {
             e.printStackTrace();
         }
-
+        JOptionPane.showMessageDialog(panel, "Product succesfully created.");
         cupcakedatabase.addCupcake(this);
     }
     
     public static Cupcake findCupcake(String name) {
     	return cupcakedatabase.searchFor(name);
     }
+    
+	protected int newProductId() {
+		this.id = cupcakedatabase.getNumOfCupcakes() + 1;
+		return id;
+	}
 
     @Override
     public String toString() {

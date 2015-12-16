@@ -7,7 +7,6 @@ public class Employee extends Person {
 
     private double revenue;
     private int numOfSales;
-    private static ArrayList<Employee> loggedIn = new ArrayList<Employee>();
 
     public Employee() {
         super();
@@ -41,26 +40,6 @@ public class Employee extends Person {
             throw new IllegalArgumentException("Employee username does not exist");
         }
         return null;
-    }
-    
-    /*
-    public void employeeLogout() {
-    	Employee employee = lookAtLoggedIn(0);
-    	
-    	if(employee != null) {
-    		loggedIn.remove(employee);
-    	}
-    }
-    */
-    
-    /*
-    public static Employee lookAtLoggedIn(int index) {
-    	return loggedIn.get(index);
-    }
-    */
-    
-    public static int getNumOfLoggedIn() {
-    	return loggedIn.size();
     }
 
     public void setRevenue(double revenue) {

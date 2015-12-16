@@ -17,28 +17,28 @@ import java.util.Vector;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class OrderDB {
+public class RequestDB {
 
-    private static ArrayList<Order> orders = new ArrayList<Order>();
+    private static ArrayList<Request> requests = new ArrayList<Request>();
     
     BufferedWriter writer;
     File file = new File("requests.txt");
     
-    public OrderDB() {
+    public RequestDB() {
 
     }
 
-    public void addOrder(Order order) {
-        orders.add(order);
+    public void addRequest(Request request) {
+        requests.add(request);
     }
 
-    public void removeOrder(Order order) {
-        orders.remove(order);
+    public void removeRequest(Request request) {
+        requests.remove(request);
     }
 
-    public int getNumOfOrders() {
-        if (orders.size() > 0) {
-            return orders.size();
+    public int getNumOfRequests() {
+        if (requests.size() > 0) {
+            return requests.size();
         } else {
             return 0;
         }
@@ -50,12 +50,12 @@ public class OrderDB {
     	try(BufferedReader br = new BufferedReader(new FileReader(file))) {
     		String text;
     		while((text = br.readLine()) != null) {
-    			Order order = new Order();
+    			Request request = new Request();
     			String[] oa = text.split(",");
-    			order.setOrderId(Integer.parseInt(oa[0]));
-    			order.setOrderValue(Double.parseDouble(oa[1]));
-    			order.setDate((Date) df.parse(oa[2]));
-    			this.addOrder(order);
+    			request.setRequestId(Integer.parseInt(oa[0]));
+    			request.setRequestValue(Double.parseDouble(oa[1]));
+    			request.setDate((Date) df.parse(oa[2]));
+    			this.addRequest(request);
     		}
     	} catch(IOException e) {
     		e.printStackTrace();
@@ -64,7 +64,7 @@ public class OrderDB {
     }
     
     protected void addRequestsToTable(JTable table) {
-    	Order order;
+    	Request request;
     	DefaultTableModel model = (DefaultTableModel) table.getModel();
     	Vector<String> data;
     	
@@ -73,10 +73,10 @@ public class OrderDB {
         	model.removeRow(i);
         }
     	
-    	for(int i = 0; i < getNumOfOrders(); i++) {
-    		order = lookAt(i);
+    	for(int i = 0; i < getNumOfRequests(); i++) {
+    		request = lookAt(i);
     		data = new Vector<String>();
-    		data.addAll(Arrays.asList(order.getOrderIdToString(), order.getOrderValueToString(), order.getDateToString()));
+    		data.addAll(Arrays.asList(request.getRequestIdToString(), request.getRequestValueToString() + " DKK", request.getDateToString()));
     		model.addRow(data);
     	}
     	table.setModel(model);
@@ -84,15 +84,15 @@ public class OrderDB {
     
     protected void saveRequests() {
     	this.clearFile();
-    	Order order;
+    	Request request;
     	
-    	for (int i = 0; i < getNumOfOrders(); i++) {
-    		order = lookAt(i);
+    	for (int i = 0; i < getNumOfRequests(); i++) {
+    		request = lookAt(i);
     		try {
         		writer = new BufferedWriter(new FileWriter(file, true));
-        		writer.write(order.getOrderId() + ",");
-        		writer.write(order.getOrderValueToString() + ",");
-        		writer.write(order.getDateToString() + "");
+        		writer.write(request.getRequestId() + ",");
+        		writer.write(request.getRequestValueToString() + ",");
+        		writer.write(request.getDateToString() + "");
         		writer.write("\n");
         	} catch(IOException e) {
         		e.printStackTrace();
@@ -118,7 +118,7 @@ public class OrderDB {
 		}
     }
     
-    public Order lookAt(int index) {
-    	return orders.get(index);
+    public Request lookAt(int index) {
+    	return requests.get(index);
     }
 }

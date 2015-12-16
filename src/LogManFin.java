@@ -83,23 +83,8 @@ public class LogManFin extends javax.swing.JFrame implements Observer {
         usernameField.setToolTipText("Write Username here");
         usernameField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         usernameField.setPreferredSize(new java.awt.Dimension(73, 28));
-        usernameField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                UsernameFieldMouseEntered(evt);
-            }
-        });
-        usernameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsernameFieldActionPerformed(evt);
-            }
-        });
 
         passwordField.setToolTipText("Write Password here");
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PasswordFieldActionPerformed(evt);
-            }
-        });
 
         loginButton.setText("Login");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -202,18 +187,6 @@ public class LogManFin extends javax.swing.JFrame implements Observer {
         pack();
         setLocationRelativeTo(null);
     }
-   
-    private void UsernameFieldMouseEntered(java.awt.event.MouseEvent evt) {
-        
-    }
-
-    private void UsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {
-
-    }
-
-    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {
-        
-    }
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	administrator.adminLogin();
@@ -243,10 +216,6 @@ public class LogManFin extends javax.swing.JFrame implements Observer {
     	return passwordField.getText();
     }
 
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
             	
         try {

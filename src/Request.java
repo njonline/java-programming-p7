@@ -10,22 +10,22 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class Order {
+public class Request {
 
     private int id;
-    private int totalNumOfOrders = 0;
+    private int totalNumOfRequests = 0;
     private double value;
     private Date date;
 
-    private OrderDB orderdatabase = new OrderDB();
-    private ArrayList<Product> orderItems = new ArrayList<Product>();
+    private RequestDB requestdatabase = new RequestDB();
+    private ArrayList<Product> requestItems = new ArrayList<Product>();
        
     /**
      * Creates a new order. Assigns an ID. Sets the value of the order to 0.
      */
-    public Order() {
-        this.setOrderId(newOrderId());
-        this.setOrderValue(0.0);
+    public Request() {
+        this.setRequestId(newRequestId());
+        this.setRequestValue(0.0);
         this.date = new Date();
     }
 
@@ -44,8 +44,8 @@ public class Order {
         if (qty > 0) {
             if (qty <= product.getQuantity()) {
                 for (int i = 0; i < qty; i++) {
-                    this.setOrderValue(getOrderValue() + product.getPrice());
-                    orderItems.add(product);
+                    this.setRequestValue(getRequestValue() + product.getPrice());
+                    requestItems.add(product);
                     product.setQuantity(product.getQuantity() - 1);
                 }
             } else {
@@ -68,10 +68,10 @@ public class Order {
         int qty = quantity;
         		
         if (qty > 0) {
-            if (qty <= getNumOfOrderItems()) {
+            if (qty <= getNumOfRequestItems()) {
                 for (int i = 0; i < qty; i++) {
-                    this.setOrderValue(getOrderValue() - product.getPrice());
-                    orderItems.remove(product);
+                    this.setRequestValue(getRequestValue() - product.getPrice());
+                    requestItems.remove(product);
                     product.setQuantity(product.getQuantity() + 1);
                 }
             }
@@ -87,15 +87,15 @@ public class Order {
      *
      * @param employee
      */
-    public void closeOrder(JTable table, JTextField textfield) throws IllegalArgumentException {
+    public void closeRequest(JTable table, JTextField textfield) throws IllegalArgumentException {
     	Employee employee = Employee.employeeLogin();
 
         employee.setRevenue(employee.getRevenue() + Double.parseDouble(textfield.getText()));
         employee.setNumOfSales(employee.getNumOfSales() + 1);
         
-        this.setOrderValue(Double.parseDouble(textfield.getText()));
-        orderdatabase.addOrder(this);            
-        orderItems.clear();
+        this.setRequestValue(Double.parseDouble(textfield.getText()));
+        requestdatabase.addRequest(this);            
+        requestItems.clear();
         
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         int rowCount = model.getRowCount();
@@ -105,31 +105,36 @@ public class Order {
         table.setModel(model);
     }
 
-    public void cancelOrder(JTable table) {
+    public void cancelRequest(JTable table, int col1, int col2) {
     	DefaultTableModel model = (DefaultTableModel) table.getModel();
+    	int rowCount = model.getRowCount();
+    	
+    	for (int i = 0; i < rowCount; i++) {
+        	Cupcake cupcake = Cupcake.findCupcake(model.getValueAt(i, col1).toString());
+        	cupcake.setQuantity(cupcake.getQuantity() + Integer.parseInt(model.getValueAt(i, col2).toString()));
+    	}
+        requestItems.clear();
         
-        orderItems.clear();
-        int rowCount = model.getRowCount();
         for (int i = rowCount - 1; i >= 0; i--) {
         	model.removeRow(i);
         }
         table.setModel(model);
     }
 
-    private int newOrderId() {
-        this.id = orderdatabase.getNumOfOrders() + 1;
+    private int newRequestId() {
+        this.id = requestdatabase.getNumOfRequests() + 1;
         return id;
     }
 
-    public void setOrderId(int id) {
+    public void setRequestId(int id) {
         this.id = id;
     }
 
-    public void setTotalNumOfOrders(int totalNumOfOrders) {
-        this.totalNumOfOrders = totalNumOfOrders;
+    public void setTotalNumOfRequests(int totalNumOfRequests) {
+        this.totalNumOfRequests = totalNumOfRequests;
     }
 
-    public void setOrderValue(double value) {
+    public void setRequestValue(double value) {
         this.value = value;
     }
     
@@ -137,27 +142,27 @@ public class Order {
     	this.date = date;
     }
 
-    public int getNumOfOrderItems() {
-        return orderItems.size();
+    public int getNumOfRequestItems() {
+        return requestItems.size();
     }
 
-    public int getOrderId() {
+    public int getRequestId() {
         return id;
     }
     
-    public String getOrderIdToString() {
+    public String getRequestIdToString() {
     	return Integer.toString(id);
     }
 
-    public int getTotalNumOfOrders() {
-        return totalNumOfOrders;
+    public int getTotalNumOfRequests() {
+        return totalNumOfRequests;
     }
 
-    public double getOrderValue() {
+    public double getRequestValue() {
         return value;
     }
     
-    public String getOrderValueToString() {
+    public String getRequestValueToString() {
     	return Double.toString(value);
     }
     

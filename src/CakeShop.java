@@ -13,9 +13,6 @@ public class CakeShop {
         BufferedWriter writer;
         File file = new File("employees.txt");
         
-        
-        admin.createEmployee();
-        
     }
 
 }

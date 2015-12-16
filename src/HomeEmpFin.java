@@ -1,5 +1,9 @@
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.LayoutManager;
 import java.text.ParseException;
 
+import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -9,18 +13,19 @@ public class HomeEmpFin extends javax.swing.JFrame {
 	private static final long serialVersionUID = 1L;
 	private Administrator admin;
 	private EmployeeDB employeedb;
-	private Order ordr;
-	private OrderDB orderdb;
+	private Request request;
+	private RequestDB requestdb;
 	private CupcakeDB cupcakedb ;
 	private Cupcake cupcake;
 	private String[] itemList;
+	
     /**
      * Creates new form NewJFrame
      * @throws ParseException 
      */
     public HomeEmpFin() throws ParseException {
-    	ordr = new Order();
-    	orderdb = new OrderDB();
+    	request = new Request();
+    	requestdb = new RequestDB();
     	employeedb = new EmployeeDB();
     	admin = new Administrator();
     	admin.addEmployeeOnStartup();
@@ -31,8 +36,8 @@ public class HomeEmpFin extends javax.swing.JFrame {
     	itemList = cupcakedb.cupcake.toArray(new String[]{});
         initComponents();
         cupcakedb.addCakesToInventory(inventoryTable1);
-        orderdb.addRequestsOnStartup(PastOrderTable);
-        orderdb.addRequestsToTable(PastOrderTable);
+        requestdb.addRequestsOnStartup(PastOrderTable);
+        requestdb.addRequestsToTable(PastOrderTable);
     	updateEmployeeRevenue();
         displayEmployeeInfo();
         layerNewOrder.setVisible(true);
@@ -78,15 +83,18 @@ public class HomeEmpFin extends javax.swing.JFrame {
         inventory = new javax.swing.JPanel();
         empToolPanel2 = new javax.swing.JPanel();
         itemInventory = new javax.swing.JPanel();
-        itemChangeNameButton = new javax.swing.JButton();
+        searchItemInvField = new javax.swing.JTextField();
+        searchItemInvButton = new javax.swing.JButton();
         itemNameInvField = new javax.swing.JTextField();
+        itemNameInvField.setEnabled(false);
+        itemPriceInvField = new javax.swing.JTextField();
+        itemPriceInvField.setEnabled(false);
+        itemQtyInvField = new javax.swing.JTextField();
+        itemQtyInvField.setEnabled(false);
+        itemChangeNameButton = new javax.swing.JButton();
         itemChangeQtyButton = new javax.swing.JButton();
         changePriceInvButton = new javax.swing.JButton();
         saveInvButton = new javax.swing.JButton();
-        searchItemInvField = new javax.swing.JTextField();
-        itemPriceInvField = new javax.swing.JTextField();
-        itemQtyInvField = new javax.swing.JTextField();
-        searchItemInvButton = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         empStagePanel2 = new javax.swing.JPanel();
@@ -103,13 +111,19 @@ public class HomeEmpFin extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         empNameField = new javax.swing.JTextField();
+        empNameField.setEnabled(false);
         empSurnameField = new javax.swing.JTextField();
+        empSurnameField.setEnabled(false);
         jLabel30 = new javax.swing.JLabel();
         empAddressField = new javax.swing.JTextField();
+        empAddressField.setEnabled(false);
         empRepPasswordField = new javax.swing.JTextField();
+        empRepPasswordField.setEnabled(false);
         jLabel31 = new javax.swing.JLabel();
         empNewPasswordField = new javax.swing.JTextField();
+        empNewPasswordField.setEnabled(false);
         empNumberField = new javax.swing.JTextField();
+        empNumberField.setEnabled(false);
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
@@ -120,6 +134,16 @@ public class HomeEmpFin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         empPerSalesTextfield = new javax.swing.JLabel();
         footerPanel = new javax.swing.JPanel();
+        createProduct = new javax.swing.JPanel();
+        productName = new javax.swing.JTextField();
+        productFlavor = new javax.swing.JTextField();
+        productPrice = new javax.swing.JTextField();
+        productQuantity = new javax.swing.JTextField();
+        productNameLabel = new javax.swing.JLabel();
+        productFlavorLabel= new javax.swing.JLabel();
+        productPriceLabel = new javax.swing.JLabel();
+        productQuantityLabel = new javax.swing.JLabel();
+        createProductButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -323,11 +347,6 @@ public class HomeEmpFin extends javax.swing.JFrame {
         orderScrollPanel1.setViewportView(PastOrderTable);
 
         searchItemInvButton1.setText("Search Date");
-        searchItemInvButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchItemInvButton1ActionPerformed(evt);
-            }
-        });
 
         dateSearchField.setText("DD/MM/YYYY");
 
@@ -413,12 +432,7 @@ public class HomeEmpFin extends javax.swing.JFrame {
         }
 
         itemOrderComboBox.setModel(new javax.swing.DefaultComboBoxModel<String>(itemList));
-        itemOrderComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemOrderComboBoxActionPerformed(evt);
-            }
-        });
-
+        
         addItemOrderButton.setText("Add");
         addItemOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -427,11 +441,6 @@ public class HomeEmpFin extends javax.swing.JFrame {
         });
 
         jLabel3.setText("Total");
-        totalOrderField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                totalOrderFieldActionPerformed(evt);
-            }
-        });
 
         discardOrderButton.setText("Discard order");
         discardOrderButton.addActionListener(new java.awt.event.ActionListener() {
@@ -581,12 +590,6 @@ public class HomeEmpFin extends javax.swing.JFrame {
             }
         });
 
-        itemNameInvField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemNameInvFieldActionPerformed(evt);
-            }
-        });
-
         itemChangeQtyButton.setText("Change Quantity");
         itemChangeQtyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -595,29 +598,16 @@ public class HomeEmpFin extends javax.swing.JFrame {
         });
 
         changePriceInvButton.setText("Change Price");
+        changePriceInvButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemChangePriceButtonActionPerformed(evt);
+            }
+        });
 
         saveInvButton.setText("Save Changes");
         saveInvButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveInvButtonActionPerformed(evt);
-            }
-        });
-
-        searchItemInvField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchItemInvFieldActionPerformed(evt);
-            }
-        });
-
-        itemPriceInvField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemPriceInvFieldActionPerformed(evt);
-            }
-        });
-
-        itemQtyInvField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemQtyInvFieldActionPerformed(evt);
             }
         });
 
@@ -1004,6 +994,41 @@ public class HomeEmpFin extends javax.swing.JFrame {
         );
 
         empPanel.addTab("Personal Profile", perPro);
+        
+        perPro.setBackground(new java.awt.Color(204, 204, 204));
+        
+        createProduct.setLayout((LayoutManager) new BoxLayout(createProduct, BoxLayout.Y_AXIS));
+        
+        productNameLabel.setText("Product name");
+        productFlavorLabel.setText("Product Flavor");
+        productPriceLabel.setText("Product price");
+        productQuantityLabel.setText("Product Qty. in Stock");
+        
+        productName.setMaximumSize(new Dimension(400, 30));
+        createProduct.add(productNameLabel);
+        createProduct.add(productName);
+        
+        productFlavor.setMaximumSize(new Dimension(400, 30));
+        createProduct.add(productFlavorLabel);
+        createProduct.add(productFlavor);
+        
+        productPrice.setMaximumSize(new Dimension(400, 30));
+        createProduct.add(productPriceLabel);
+        createProduct.add(productPrice);
+        
+        productQuantity.setMaximumSize(new Dimension(400, 30));
+        createProduct.add(productQuantityLabel);
+        createProduct.add(productQuantity);
+        
+        createProductButton.setText("Create new product");
+        createProductButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createProductButtonActionPerformed(evt);
+            }
+        });
+        createProduct.add(createProductButton);
+        
+        empPanel.addTab("Create Product", createProduct);
 
         javax.swing.GroupLayout bodyPanelLayout = new javax.swing.GroupLayout(bodyPanel);
         bodyPanel.setLayout(bodyPanelLayout);
@@ -1070,7 +1095,12 @@ public class HomeEmpFin extends javax.swing.JFrame {
     }
 
     private void EditEmpPerProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        
+    	empNameField.setEnabled(true);
+		empSurnameField.setEnabled(true);
+		empAddressField.setEnabled(true);
+		empNumberField.setEnabled(true);
+		empNewPasswordField.setEnabled(true);
+		empRepPasswordField.setEnabled(true);
     }
 
     private void viewPastOrderButtonMouseClicked(java.awt.event.MouseEvent evt) {
@@ -1087,11 +1117,12 @@ public class HomeEmpFin extends javax.swing.JFrame {
     }
     
     private void saveEmpButtonButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	updateEmployeeInfo();
+    	this.updateEmployeeInfo();
+    	employeedb.saveEmployees();
     }
 
     private void newOrderButtonMouseClicked(java.awt.event.MouseEvent evt) {
-        ordr = new Order();
+        request = new Request();
     }
 
     private void newOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1101,65 +1132,52 @@ public class HomeEmpFin extends javax.swing.JFrame {
     
     private void addItemOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	cupcakedb.addToOrder(itemOrderComboBox, orderTable, itemOrderSpinner);
-    	updateOrderTotal();
+    	this.updateOrderTotal();
     }
     
     private void removeItemOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
         cupcakedb.removeFromOrder(orderTable);
-        updateOrderTotal();
-    }
-    
-    private void totalOrderFieldActionPerformed(java.awt.event.ActionEvent evt) {
-    	
-    }
-
-    private void itemOrderComboBoxActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        this.updateOrderTotal();
     }
 
     private void discardOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	ordr.cancelOrder(orderTable);
-    	updateOrderTotal();
+    	request.cancelRequest(orderTable, 1, 2);
+    	this.updateOrderTotal();
     }
 
     private void completeOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	ordr.closeOrder(orderTable, totalOrderField);
-    	updateOrderTotal();
-    	updateInventoryTable();
-    	updateEmployeeRevenue();
-    	orderdb.addRequestsToTable(PastOrderTable);
+    	request.closeRequest(orderTable, totalOrderField);
+    	this.updateOrderTotal();
+    	this.updateInventoryTable();
+    	this.updateEmployeeRevenue();
+    	requestdb.addRequestsToTable(PastOrderTable);
+    	request = new Request();
     }
 
     private void itemChangeNameButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        itemNameInvField.setEnabled(true);
     }
-
-    private void itemNameInvFieldActionPerformed(java.awt.event.ActionEvent evt) {
-
+    
+    private void itemChangePriceButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	itemPriceInvField.setEnabled(true);
     }
 
     private void itemChangeQtyButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        itemQtyInvField.setEnabled(true);
     }
 
     private void saveInvButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
-    }
-
-    private void searchItemInvFieldActionPerformed(java.awt.event.ActionEvent evt) {
-        
-    }
-
-    private void itemPriceInvFieldActionPerformed(java.awt.event.ActionEvent evt) {
-        
-    }
-
-    private void itemQtyInvFieldActionPerformed(java.awt.event.ActionEvent evt) {
-        
+    	this.updateProductAttributes();
+    	this.updateInventoryTable();
     }
 
     private void searchItemInvButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        
+    	this.displayProductAttributes();
+    }
+    
+    private void createProductButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	cupcake.createProduct(createProduct);
+    	this.clearCreateProductFields();
     }
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {
@@ -1168,14 +1186,37 @@ public class HomeEmpFin extends javax.swing.JFrame {
     	
         if(exit==0){
         	cupcakedb.saveCupcakes();
-        	orderdb.saveRequests();
+        	requestdb.saveRequests();
         	employeedb.saveEmployees();
             System.exit(0);
         }
     }
-
-    private void searchItemInvButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        
+    
+    private void displayProductAttributes() {
+    	Cupcake cupcake = cupcakedb.searchFor(searchItemInvField.getText());
+    	
+    	itemNameInvField.setText(cupcake.getName());
+    	itemPriceInvField.setText(cupcake.getProductPriceToString());
+    	itemQtyInvField.setText(cupcake.getProductQuantityToString());
+    }
+    
+    private void updateProductAttributes() {
+    	Cupcake cupcake = cupcakedb.searchFor(searchItemInvField.getText());
+    	
+    	cupcake.setName(itemNameInvField.getText());
+    	cupcake.setPrice(Double.parseDouble(itemPriceInvField.getText()));
+    	cupcake.setQuantity(Integer.parseInt(itemQtyInvField.getText()));
+    	
+    	cupcakedb.saveCupcakes();
+    	
+    	searchItemInvField.setText("");
+    	itemNameInvField.setText("");
+    	itemNameInvField.setEnabled(false);
+    	itemPriceInvField.setText("");
+    	itemPriceInvField.setEnabled(false);
+    	itemQtyInvField.setText("");
+    	itemQtyInvField.setEnabled(false);
+    	JOptionPane.showMessageDialog(inventory, "Succesfully saved.");    	
     }
     
     private Double getOrderTotal() {
@@ -1249,17 +1290,28 @@ public class HomeEmpFin extends javax.swing.JFrame {
     			employee.setPassword(pass1); 
     		} else if(pass1.equals("") && pass2.equals("")) {
     			employee.setPassword(employee.getPassword());
-    		
     		} else {
     			throw new IllegalArgumentException("Passwords do not match");
     		}
-    		System.out.println("Employee info updated. Address is: " + employee.getAddress());
     	}
+    	
+    	empNameField.setEnabled(false);
+    	empSurnameField.setEnabled(false);
+    	empAddressField.setEnabled(false);
+    	empNumberField.setEnabled(false);
+    	empNumberField.setEnabled(false);
+    	empNewPasswordField.setEnabled(false);
+    	empRepPasswordField.setEnabled(false);
+    	JOptionPane.showMessageDialog(empPanel, "Succesfully saved.");
     }
-   
-    /**
-     * @param args the command line arguments
-     */
+    
+    private void clearCreateProductFields() {
+    	productName.setText("");
+    	productFlavor.setText("");
+    	productPrice.setText("");
+    	productQuantity.setText("");
+    }
+
     public static void main(String args[]) {
        
         try {
@@ -1287,9 +1339,7 @@ public class HomeEmpFin extends javax.swing.JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-                  
             }
-            
         });
     }
 
@@ -1360,6 +1410,16 @@ public class HomeEmpFin extends javax.swing.JFrame {
     private javax.swing.JTable orderTable;
     private javax.swing.JPanel pastOrderPanel;
     private javax.swing.JPanel perPro;
+    private javax.swing.JPanel createProduct;
+    public static javax.swing.JTextField productName;
+    public static javax.swing.JTextField productFlavor;
+    public static javax.swing.JTextField productPrice;
+    public static javax.swing.JTextField productQuantity;
+    private javax.swing.JLabel productNameLabel;
+    private javax.swing.JLabel productFlavorLabel;
+    private javax.swing.JLabel productPriceLabel;
+    private javax.swing.JLabel productQuantityLabel;
+    private javax.swing.JButton createProductButton;
     private javax.swing.JButton removeItemOrderButton;
     private javax.swing.JButton saveEmpButton;
     private javax.swing.JButton saveInvButton;

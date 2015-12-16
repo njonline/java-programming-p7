@@ -1,5 +1,5 @@
 
-import java.util.Scanner;
+import javax.swing.JPanel;
 
 public abstract class Product {
 
@@ -9,8 +9,6 @@ public abstract class Product {
     protected int quantity;
     protected int id;
 
-    Scanner scanner = new Scanner(System.in);
-
     /**
      * Creates a new product. Sets the flavor and price.
      *
@@ -18,38 +16,31 @@ public abstract class Product {
      * @param price
      * @param name
      */
-    public abstract void createProduct();
+    public abstract void createProduct(JPanel panel);
     
     public abstract void addProductOnStartup();
 
     protected String productNameInput() {
-        System.out.println("Product name: ");
-        name = scanner.nextLine();
+        name = HomeEmpFin.productName.getText();
         return name;
     }
 
     protected String productFlavorInput() {
-        System.out.println("Product flavor: ");
-        flavor = scanner.nextLine();
+        flavor = HomeEmpFin.productFlavor.getText();
         return flavor;
     }
 
     protected double productPriceInput() {
-        System.out.println("Product price: ");
-        price = scanner.nextDouble();
+        price = Double.parseDouble(HomeEmpFin.productPrice.getText());
         return price;
     }
 
     protected int productQuantityInput() {
-        System.out.println("Product qty in stock: ");
-        quantity = scanner.nextInt();
+        quantity = Integer.parseInt(HomeEmpFin.productQuantity.getText());
         return quantity;
     }
 
-    public int newProductId() {
-    	this.id = id++;
-    	return id;
-    }
+    protected abstract int newProductId();
     
     public void setProductId(int id) {
     	this.id = id;

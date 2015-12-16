@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class CupcakeDB {
 	
 	protected ArrayList<String> cupcake = new ArrayList<String>();
-	private Order order = new Order();
+	private Request request = new Request();
 	
 	private BufferedWriter writer;
 	private File file = new File("cupcakes.txt");
@@ -88,19 +88,19 @@ public class CupcakeDB {
     		data = new Vector<String>();
     		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getProductPriceToString(), reportDate));
     		model.addRow(data);
-    		order.addItems(cupcake, spinner);
+    		request.addItems(cupcake, spinner);
     	}else if(current.equals("Chocolate")) {
     		Cupcake cupcake = searchFor("Chocolate");
     		data = new Vector<String>();
     		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getProductPriceToString(), reportDate));
     		model.addRow(data);
-    		order.addItems(cupcake, spinner);
+    		request.addItems(cupcake, spinner);
     	} else if(current.equals("Caramel")) {
     		Cupcake cupcake = searchFor("Caramel");
     		data = new Vector<String>();
     		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getProductPriceToString(), reportDate));
     		model.addRow(data);
-    		order.addItems(cupcake, spinner);
+    		request.addItems(cupcake, spinner);
     	}
     	table.setModel(model);
     }
@@ -112,15 +112,15 @@ public class CupcakeDB {
     	
     	if(current.equals("Blueberry")) {
     		Cupcake cupcake = searchFor("Blueberry");
-    		order.removeItems(cupcake, currentValue);
+    		request.removeItems(cupcake, currentValue);
     		model.removeRow(table.getSelectedRow());
     	} else if(current.equals("Chocolate")) {
     		Cupcake cupcake = searchFor("Chocolate");
-    		order.removeItems(cupcake, currentValue);
+    		request.removeItems(cupcake, currentValue);
     		model.removeRow(table.getSelectedRow());
     	} else if(current.equals("Caramel")) {
     		Cupcake cupcake = searchFor("Caramel");
-    		order.removeItems(cupcake, currentValue);
+    		request.removeItems(cupcake, currentValue);
     		model.removeRow(table.getSelectedRow());
     	}
     	table.setModel(model);
