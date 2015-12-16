@@ -1,4 +1,4 @@
-Nicklas Holm,J�rgensen,Lindholm S�park 22 2.5,20111757,1,642.3,21,1234,Nicklas
+Nicklas Holm,J�rgensen,Lindholm S�park 22 2.5,20111757,1,708.0,24,1234,Nicklas
 Daniele,Internicola,Aalborgvej 12,98176655,2,0.0,0,1234,Daniele
 Hristina,Prosenikova,Lindholmsvej 21,22334455,3,0.0,0,1234,Hristina
 Catalin,Chelariu,Vodskovvej 1,99776655,4,0.0,0,1234,Catalin

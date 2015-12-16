@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.Vector;
 
 import javax.swing.JComboBox;
+import javax.swing.JLayeredPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -73,7 +74,7 @@ public class CupcakeDB {
 		}
     }
     
-    protected void addToRequest(JComboBox<String> box, JTable table, JSpinner spinner) {
+    protected void addToRequest(JComboBox<String> box, JTable table, JSpinner spinner, JLayeredPane pane) {
      	DefaultTableModel model = (DefaultTableModel) table.getModel();
     	Vector<String> data;
     	Cupcake cupcake = Cupcake.findCupcake(box.getSelectedItem().toString());
@@ -85,7 +86,7 @@ public class CupcakeDB {
     	data = new Vector<String>();
 		data.addAll(Arrays.asList(cupcake.getProductIdToString(), cupcake.getName(), spinner.getValue().toString(), cupcake.getProductPriceToString(), reportDate));
 		model.addRow(data);
-		request.addItems(cupcake, spinner);
+		request.addItems(cupcake, spinner, pane, table);
     	
     	table.setModel(model);
     }

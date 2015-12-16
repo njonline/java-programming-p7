@@ -1124,7 +1124,7 @@ public class HomeEmpFin extends javax.swing.JFrame {
     }
     
     private void addItemOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	cupcakedb.addToRequest(itemOrderComboBox, orderTable, itemOrderSpinner);
+    	cupcakedb.addToRequest(itemOrderComboBox, orderTable, itemOrderSpinner, layerNewOrder);
     	this.updateOrderTotal();
     }
     

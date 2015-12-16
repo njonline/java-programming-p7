@@ -4,7 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -38,7 +39,7 @@ public class Request {
      * @throws IllegalArgumentException if the amount to be added is less than
      * equal to 0.
      */
-    public void addItems(Product product, JSpinner spinner) throws IllegalArgumentException {
+    public void addItems(Product product, JSpinner spinner, JLayeredPane pane, JTable table) throws IllegalArgumentException {
         int qty = (int) spinner.getValue();
 
         if (qty > 0) {
@@ -49,6 +50,13 @@ public class Request {
                     product.setQuantity(product.getQuantity() - 1);
                 }
             } else {
+            	DefaultTableModel model = (DefaultTableModel) table.getModel();
+                int rowCount = model.getRowCount();
+                for (int i = rowCount - 1; i >= 0; i--) {
+                	model.removeRow(i);
+                }
+                table.setModel(model);
+            	JOptionPane.showMessageDialog(pane, "There is not enough in stock.");
                 throw new IllegalArgumentException("There is not enough in stock");
             }
         } else {
