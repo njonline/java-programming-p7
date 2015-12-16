@@ -1,6 +1,4 @@
 
-import java.util.*;
-
 public abstract class Person {
 
     protected String firstname;
@@ -15,8 +13,6 @@ public abstract class Person {
 
     protected static EmployeeDB employeedatabase = new EmployeeDB();
     protected static AdminDB admindatabase = new AdminDB();
-
-    protected Scanner scanner = new Scanner(System.in);
 
     public Person() {
 

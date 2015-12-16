@@ -69,9 +69,4 @@ public class Cupcake extends Product {
 		this.id = cupcakedatabase.getNumOfCupcakes() + 1;
 		return id;
 	}
-
-    @Override
-    public String toString() {
-        return ("Product name: " + this.getName() + ". Product flavor: " + this.getFlavor() + ". Product price: " + this.getPrice() + ". Product quantity: " + this.getQuantity());
-    }
 }

@@ -14,7 +14,6 @@ import javax.swing.table.DefaultTableModel;
 public class Request {
 
     private int id;
-    private int totalNumOfRequests = 0;
     private double value;
     private Date date;
 
@@ -138,10 +137,6 @@ public class Request {
         this.id = id;
     }
 
-    public void setTotalNumOfRequests(int totalNumOfRequests) {
-        this.totalNumOfRequests = totalNumOfRequests;
-    }
-
     public void setRequestValue(double value) {
         this.value = value;
     }
@@ -160,10 +155,6 @@ public class Request {
     
     public String getRequestIdToString() {
     	return Integer.toString(id);
-    }
-
-    public int getTotalNumOfRequests() {
-        return totalNumOfRequests;
     }
 
     public double getRequestValue() {

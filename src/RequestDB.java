@@ -21,8 +21,8 @@ public class RequestDB {
 
     private static ArrayList<Request> requests = new ArrayList<Request>();
     
-    BufferedWriter writer;
-    File file = new File("requests.txt");
+    private BufferedWriter writer;
+    private File file = new File("requests.txt");
     
     public RequestDB() {
 

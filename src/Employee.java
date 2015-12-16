@@ -1,7 +1,3 @@
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 
 public class Employee extends Person {
 
@@ -64,10 +60,5 @@ public class Employee extends Person {
     
     public String getNumOfSalesToString() {
     	return Integer.toString(numOfSales);
-    }
-
-    @Override
-    public String toString() {
-        return ("Employee name: " + this.getFirstname() + " " + this.getLastname() + ". Employee ID: " + this.getId() + ". Employee revenue: " + this.getRevenue() + ". Employee no. sales: " + this.getNumOfSales() + ". Employee username: " + this.getUsername() + ". Employee password: " + this.getPassword());
     }
 }
