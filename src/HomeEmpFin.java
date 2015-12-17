@@ -1,4 +1,3 @@
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.LayoutManager;
 import java.text.ParseException;
@@ -8,6 +7,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Main GUI for the employee after login.
+ * @author Group 5
+ *
+ */
 public class HomeEmpFin extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -44,6 +48,9 @@ public class HomeEmpFin extends javax.swing.JFrame {
         layerPastOrder.setVisible(false);
     }
 
+    /**
+     * Init GUI components
+     */
     private void initComponents() {
 
         headerPanel = new javax.swing.JPanel();
@@ -1125,22 +1132,22 @@ public class HomeEmpFin extends javax.swing.JFrame {
     
     private void addItemOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	cupcakedb.addToRequest(itemOrderComboBox, orderTable, itemOrderSpinner, layerNewOrder);
-    	this.updateOrderTotal();
+    	this.updateRequestTotal();
     }
     
     private void removeItemOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
         cupcakedb.removeFromRequest(orderTable);
-        this.updateOrderTotal();
+        this.updateRequestTotal();
     }
 
     private void discardOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	request.cancelRequest(orderTable, 1, 2);
-    	this.updateOrderTotal();
+    	this.updateRequestTotal();
     }
 
     private void completeOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	request.closeRequest(orderTable, totalOrderField);
-    	this.updateOrderTotal();
+    	this.updateRequestTotal();
     	this.updateInventoryTable();
     	this.updateEmployeeRevenue();
     	requestdb.addRequestsToTable(PastOrderTable);
@@ -1187,6 +1194,9 @@ public class HomeEmpFin extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Display product attributes when search is performed.
+     */
     private void displayProductAttributes() {
     	Cupcake cupcake = cupcakedb.searchFor(searchItemInvField.getText());
     	
@@ -1195,14 +1205,19 @@ public class HomeEmpFin extends javax.swing.JFrame {
     	itemQtyInvField.setText(cupcake.getProductQuantityToString());
     }
     
+    /**
+     * Update the product attributes with the text entered in textfields.
+     * Run saveCupcakes() method to overwrite textfile.
+     * Display confirmation dialog.
+     */
     private void updateProductAttributes() {
-    	Cupcake cupcake = cupcakedb.searchFor(searchItemInvField.getText());
+    	Cupcake cupcake = cupcakedb.searchFor(searchItemInvField.getText()); //find cupcake by text entered in field
     	
     	cupcake.setName(itemNameInvField.getText());
     	cupcake.setPrice(Double.parseDouble(itemPriceInvField.getText()));
     	cupcake.setQuantity(Integer.parseInt(itemQtyInvField.getText()));
     	
-    	cupcakedb.saveCupcakes();
+    	cupcakedb.saveCupcakes(); //save and overwrite textfile
     	
     	searchItemInvField.setText("");
     	itemNameInvField.setText("");
@@ -1211,56 +1226,73 @@ public class HomeEmpFin extends javax.swing.JFrame {
     	itemPriceInvField.setEnabled(false);
     	itemQtyInvField.setText("");
     	itemQtyInvField.setEnabled(false);
-    	JOptionPane.showMessageDialog(inventory, "Succesfully saved.");    	
+    	JOptionPane.showMessageDialog(inventory, "Succesfully saved."); //confirmation dialog
     }
     
-    private Double getOrderTotal() {
+    /**
+     * Multiply product price with request quantity.
+     * Return the price in a nice format.
+     * @return
+     */
+    private Double getRequestTotal() {
     	double total = 0;
-    	int row = orderTable.getRowCount();
+    	int row = orderTable.getRowCount(); //get the number of rows i table
     	
-    	for(int i = 0; i < row; i++) {
-    		total += ( Double.parseDouble(orderTable.getValueAt(i, 2).toString()) * Double.parseDouble(orderTable.getValueAt(i, 3).toString()) );
+    	for(int i = 0; i < row; i++) { //loop through rows
+    		total += ( Double.parseDouble(orderTable.getValueAt(i, 2).toString()) * Double.parseDouble(orderTable.getValueAt(i, 3).toString()) ); //find quantity and price in table
     	}
     	
     	total = Math.round(total * 100);
     	total = total/100;
     	
-    	return total;
+    	return total; //return with 2 decimals
     }
     
-    private void updateOrderTotal() {
-    	totalOrderField.setText(Double.toString(getOrderTotal()));
+    /**
+     * Update request total
+     */
+    private void updateRequestTotal() {
+    	totalOrderField.setText(Double.toString(getRequestTotal())); //set text to new total
     }
     
+    /**
+     * Displays products from textfile in the table.
+     */
     private void updateInventoryTable() {
-    	DefaultTableModel model = (DefaultTableModel) inventoryTable1.getModel();
-        int rowCount = model.getRowCount();
-        for (int i = rowCount - 1; i >= 0; i--) {
-        	model.removeRow(i);
+    	DefaultTableModel model = (DefaultTableModel) inventoryTable1.getModel(); //get table model
+        int rowCount = model.getRowCount(); //get row count
+        for (int i = rowCount - 1; i >= 0; i--) { //loop through rows
+        	model.removeRow(i); //remove rows
         }
-    	cupcakedb.addCakesToInventory(inventoryTable1);
-    	inventoryTable1.setModel(model);
+    	cupcakedb.addCakesToInventory(inventoryTable1); //repopulate table
+    	inventoryTable1.setModel(model); //set new model
     }
     
+    /**
+     * Updates the employees personal revenue.
+     */
     private void updateEmployeeRevenue() {
-    	Employee employee = Employee.employeeLogin();
+    	Employee employee = Employee.employeeLogin(); //get logged in employee.
     	
-    	if(employee != null) {
+    	if(employee != null) { //if he/she exists
     		double total = employee.getRevenue();
         	total = Math.round(total * 100);
-        	total = total/100;
+        	total = total/100; //returns total in nice format
         	String newTotal = Double.toString(total);
     		
-    		empPerSalesTextfield.setText(newTotal + " DKK");
+    		empPerSalesTextfield.setText(newTotal + " DKK"); //set text of field with new total
     	} else {
     		empPerSalesTextfield.setText("N/A");
     	}
     }
     
+    /**
+     * Display employee info in the text fields under personal profile.
+     */
     private void displayEmployeeInfo() {
-    	Employee employee = Employee.employeeLogin();
+    	Employee employee = Employee.employeeLogin(); //get logged in employee
     	
-    	if(employee != null) {
+    	if(employee != null) { //if he/she exists
     		empNameField.setText(employee.getFirstname());
     		empSurnameField.setText(employee.getLastname());
     		empAddressField.setText(employee.getAddress());
@@ -1270,10 +1302,15 @@ public class HomeEmpFin extends javax.swing.JFrame {
     	}
     }
     
+    /**
+     * Update employee info after changing and saving.
+     * Throws exception if the password entered does not match.
+     * @throws IllegalArgumentException
+     */
     private void updateEmployeeInfo() throws IllegalArgumentException {
-    	Employee employee = Employee.employeeLogin();
+    	Employee employee = Employee.employeeLogin(); //get logged in employee
     	
-    	if(employee != null) {
+    	if(employee != null) { //if he/she exists
     		String pass1 = empNewPasswordField.getText();
     		String pass2 = empRepPasswordField.getText();
     		
@@ -1290,6 +1327,10 @@ public class HomeEmpFin extends javax.swing.JFrame {
     		}
     	}
     	
+    	/**
+    	 * Disable textfields after saving.
+    	 * Indicates that a change has taken place.
+    	 */
     	empNameField.setEnabled(false);
     	empSurnameField.setEnabled(false);
     	empAddressField.setEnabled(false);
@@ -1297,9 +1338,12 @@ public class HomeEmpFin extends javax.swing.JFrame {
     	empNumberField.setEnabled(false);
     	empNewPasswordField.setEnabled(false);
     	empRepPasswordField.setEnabled(false);
-    	JOptionPane.showMessageDialog(empPanel, "Succesfully saved.");
+    	JOptionPane.showMessageDialog(empPanel, "Succesfully saved."); //Confirmation that everything has been saved.
     }
     
+    /**
+     * Clears the text in search fields after saving new product attributes.
+     */
     private void clearCreateProductFields() {
     	productName.setText("");
     	productFlavor.setText("");

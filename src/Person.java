@@ -1,3 +1,10 @@
+/**
+ * This abstract class hold information concerning employees, admins and possibly customers in the future.
+ * This class is mostly creating getters and setters for attributes.
+ * And creating the necessary data structures.
+ * @author Group 5
+ *
+ */
 
 public abstract class Person {
 
@@ -11,27 +18,26 @@ public abstract class Person {
     protected String username;
     protected String password;
 
-    protected static EmployeeDB employeedatabase = new EmployeeDB();
-    protected static AdminDB admindatabase = new AdminDB();
+    protected static EmployeeDB employeedatabase = new EmployeeDB(); //new data structure for employees
+    protected static AdminDB admindatabase = new AdminDB(); //new data structure for admins
 
     public Person() {
 
     }
 
     /**
-     * Method for creating username and password. Username is converted to all
-     * lowercase, so no mistype will prevent login. Password is entered twice,
-     * and if the two match - the password will be set.
+     * Method for creating username and password. Username is set to the name of the employee.
+     * Password is entered twice, and if the two match - the password will be set.
      */
     protected void credentials() {
 
-        this.setUsername(HomeManFin.getEmployeeName());
+        this.setUsername(HomeManFin.getEmployeeName()); //get name of employee
 
         String pass1 = HomeManFin.getEmployeePassword();
         String pass2 = HomeManFin.getEmployeePasswordConfirmed();
 
         if (pass1.equals(pass2)) {
-            this.setPassword(pass1);
+            this.setPassword(pass1); //set password if the two match
         } else {
             System.out.println("Passwords do not match.");
         }

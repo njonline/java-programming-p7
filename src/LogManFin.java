@@ -3,8 +3,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
+ * This class is the main GUI for logging in administrators.
+ * @author Nicklas_b
  *
- * @author daniele
  */
 public class LogManFin extends javax.swing.JFrame implements Observer {
 

@@ -11,17 +11,26 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * This is the class that represents the requests from the customers.
+ * This class is responsible for adding/deleting products in the request.
+ * @author Group 5
+ *
+ */
 public class Request {
 
     private int id;
     private double value;
     private Date date;
 
-    private RequestDB requestdatabase = new RequestDB();
-    private ArrayList<Product> requestItems = new ArrayList<Product>();
+    private RequestDB requestdatabase = new RequestDB(); //data structure for requests
+    private ArrayList<Product> requestItems = new ArrayList<Product>(); //data structure for added items
        
     /**
-     * Creates a new order. Assigns an ID. Sets the value of the order to 0.
+     * Creates a new order. 
+     * Assigns an ID. 
+     * Sets the value of the order to 0.
+     * Sets the date to now.
      */
     public Request() {
         this.setRequestId(newRequestId());
@@ -39,14 +48,14 @@ public class Request {
      * equal to 0.
      */
     public void addItems(Product product, JSpinner spinner, JLayeredPane pane, JTable table) throws IllegalArgumentException {
-        int qty = (int) spinner.getValue();
+        int qty = (int) spinner.getValue(); //get the added quantity from table
 
         if (qty > 0) {
             if (qty <= product.getQuantity()) {
                 for (int i = 0; i < qty; i++) {
-                    this.setRequestValue(getRequestValue() + product.getPrice());
+                    this.setRequestValue(getRequestValue() + product.getPrice()); //update request value
                     requestItems.add(product);
-                    product.setQuantity(product.getQuantity() - 1);
+                    product.setQuantity(product.getQuantity() - 1); //update product in stock
                 }
             } else {
             	DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -91,7 +100,7 @@ public class Request {
      * Updates the employees' total revenue with the order value. Updates the
      * employees' number of sales. Add the order to the order db. Removes all
      * items from the order.
-     *
+     * Clears the order table. 
      * @param employee
      */
     public void closeRequest(JTable table, JTextField textfield) throws IllegalArgumentException {
@@ -112,6 +121,14 @@ public class Request {
         table.setModel(model);
     }
 
+    /**
+     * Removes all items from the order.
+     * Clears the order table.
+     * Returns the added products to stock.
+     * @param table
+     * @param col1
+     * @param col2
+     */
     public void cancelRequest(JTable table, int col1, int col2) {
     	DefaultTableModel model = (DefaultTableModel) table.getModel();
     	int rowCount = model.getRowCount();

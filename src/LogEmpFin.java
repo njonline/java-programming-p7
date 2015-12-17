@@ -1,5 +1,10 @@
 import java.text.ParseException;
 
+/**
+ * This is the GUI for loggin in employees.
+ * @author Group 5
+ *
+ */
 public class LogEmpFin extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = -8519842815833625226L;
@@ -8,7 +13,7 @@ public class LogEmpFin extends javax.swing.JFrame {
 	
     public LogEmpFin() {
     	admin = new Administrator();
-    	admin.addEmployeeOnStartup();
+    	admin.addEmployeeOnStartup(); //add employees in text file to data structure
         initComponents();
     }
 

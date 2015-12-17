@@ -1,6 +1,13 @@
 
 import javax.swing.JPanel;
 
+/**
+ * This abstract class of Product acts as a superclass for all products in the bakery.
+ * At this moment only cupcakes exist, but the superclass makes it easy to expand with other types of products.
+ * This class contains mainly products attributes and getters/setters.
+ * @author Group 5
+ *
+ */
 public abstract class Product {
 
     protected String name;
@@ -9,15 +16,16 @@ public abstract class Product {
     protected int quantity;
     protected int id;
 
-    /**
-     * Creates a new product. Sets the flavor and price.
-     *
-     * @param flavor
-     * @param price
-     * @param name
-     */
+   /**
+    * Abstract method to be implemented in subclasses.
+    * @param panel
+    */
     public abstract void createProduct(JPanel panel);
     
+    /**
+     * Abstract method to be implemented in subclasses.
+     * @param panel
+     */
     public abstract void addProductOnStartup();
 
     protected String productNameInput() {

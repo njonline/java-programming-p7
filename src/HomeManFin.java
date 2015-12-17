@@ -2,6 +2,11 @@
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+/**
+ * This is the main GUI for the administrator after login.
+ * @author Group 5
+ *
+ */
 public class HomeManFin extends javax.swing.JFrame {
 	
 	private static final long serialVersionUID = -672205673403473842L;
@@ -1282,6 +1287,9 @@ public class HomeManFin extends javax.swing.JFrame {
             System.exit(0);   }
     }
     
+    /**
+     * Clears create new employee fields after saving.
+     */
     private void clearCreateEmpFields() {
     	createEmpNameField.setText("");
         createEmpSurnameField.setText("");
@@ -1291,6 +1299,9 @@ public class HomeManFin extends javax.swing.JFrame {
         repeatEmpPassword.setText("");
     }
     
+    /**
+     * Displays the home screen.
+     */
     private void returnToHome() {
     	layerAddEmp.setVisible(false);
         layerEmpCard.setVisible(false);
@@ -1300,6 +1311,9 @@ public class HomeManFin extends javax.swing.JFrame {
         empCardSaveButton.setVisible(false);
     }
     
+    /**
+     * Displays the admins personal info in text fields.
+     */
     private void displayAdminInfo() {    	
     	manNameField.setText(admin.getFirstname());
     	manSurnameField.setText(admin.getLastname());
@@ -1309,9 +1323,15 @@ public class HomeManFin extends javax.swing.JFrame {
     	manNewRepPasswordField.setText(admin.getPassword());
     }
     
+    /**
+     * Displays employee personal info after employee search.
+     */
     private void displayEmployeeInfoSearch() {
-    	Employee employee = admin.search(searchEmpField.getText());
+    	Employee employee = admin.search(searchEmpField.getText()); //find employee by username entered in text field
     	
+    	/**
+    	 * Populate text fields with emmployee info
+    	 */
     	iDField.setText(Integer.toString(employee.getId()));
     	empNameField.setText(employee.getFirstname());
     	empSurnameField.setText(employee.getLastname());
@@ -1319,49 +1339,64 @@ public class HomeManFin extends javax.swing.JFrame {
     	empNumberField.setText(employee.getTelephone());
     }
     
+    /**
+     * Sets the employee info to what has been entered in the text fields.
+     */
     private void editEmployeeInfo() {
-    	Employee employee = admin.search(searchEmpField.getText());
+    	Employee employee = admin.search(searchEmpField.getText()); //find employee by entered username
     	
     	employee.setFirstname(empNameField.getText());
     	employee.setLastname(empSurnameField.getText());
     	employee.setAddress(empAddressField.getText());
     	employee.setTelephone(empNumberField.getText());
     	
-        JOptionPane.showMessageDialog(layerEmpCard, "Succesfully saved.");
+        JOptionPane.showMessageDialog(layerEmpCard, "Succesfully saved."); //confirmation that everything has been saved.
     }
     
+    /**
+     * Display the revenue of specific employee.
+     */
     private void displayEmployeeInfoSales() {
-    	Employee employee = admin.search(searchEmpSalesField.getText());
+    	Employee employee = admin.search(searchEmpSalesField.getText()); //find employee by username entered in text field
     	
     	double total = employee.getRevenue();
     	total = Math.round(total * 100);
-    	total = total/100;
+    	total = total/100; //set total revenue in nice format
     	String newTotal = Double.toString(total);
     	
+    	/**
+    	 * Display info in text fields
+    	 */
     	empIDSalesField.setText(Integer.toString(employee.getId()));
     	empNameSalesField.setText(employee.getFirstname() + " " + employee.getLastname());
     	empSalesTextField.setText(newTotal + " DKK");
     }
     
+    /**
+     * Display the total revenue for all employee combined.
+     */
     private void displayTotalSales() {
     	Double total = 0.0;
     	
-    	for(int i = 0; i < employeedb.getNumOfEmployees(); i++) {
-    		Employee employee = employeedb.lookAt(i);
-    		total += employee.getRevenue();
+    	for(int i = 0; i < employeedb.getNumOfEmployees(); i++) { //loop through data structure
+    		Employee employee = employeedb.lookAt(i); //current employee is employee at index i
+    		total += employee.getRevenue(); //add the current employees' revenue to the total
     	}
     	
     	total = (double) Math.round(total * 100);
-    	total = total/100;
+    	total = total/100; //return total in nice format
     	String newTotal = Double.toString(total);
     	
     	totalRevenue.setText(newTotal + " DKK");
     }
     
+    /**
+     * Finds employee by entered username and deletes from data structure.
+     */
     private void deleteEmployee() {
     	Employee employee = admin.search(searchEmpField.getText());
     	employeedb.removeEmployee(employee);
-        JOptionPane.showMessageDialog(layerEmpCard, "Employee deleted.");
+        JOptionPane.showMessageDialog(layerEmpCard, "Employee deleted."); //confirmation that employee has been deleted
     }
     
     public static String getEmployeeName() {
